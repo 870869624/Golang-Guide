@@ -44,7 +44,7 @@
 
 Go 语言的例子如下：
 
-```
+```go
 type Animal struct {
     name string
 }
@@ -75,7 +75,7 @@ func (p *Animal) GetName() string {
 从实际的例子来看，就是动物是一个大父类，下面又能细分为 “食草动物”、“食肉动物”，这两者会包含 “动物” 这个父类的基本定义。
  **在 Go 语言中，是没有类似 extends 关键字的这种继承的方式，在语言设计上采取的是组合的方式** ：
 
-```
+```go
  type Animal struct {
      Name string
 }
@@ -93,7 +93,7 @@ type Dog struct {
 
 在上述例子中，我们声明了 Cat 和 Dog 结构体，其在内部匿名组合了 Animal 结构体。因此 Cat 和 Dog 的实例都可以调用 Animal 结构体的方法：
 
-```
+```go
 func main() {
      p := NewAnimal()
      p.SetName("我是搬运工，去给煎鱼点赞~")
@@ -105,7 +105,7 @@ func main() {
 
 同时 Cat 和 Dog 的实例可以拥有自己的方法：
 
-```
+```go
 func main() {
      p := NewAnimal()
      p.SetName("我是搬运工，去给煎鱼点赞~")
@@ -124,7 +124,7 @@ func main() {
 多态也使得不同内部结构的对象可以共享相同的外部接口，也就是都是一套外部模板，内部实际是什么，只要符合规格就可以。
 **在 Go 语言中，多态是通过接口来实现的：**
 
-```
+```go
 type AnimalSounder interface {
      MakeDNA()
 }
@@ -137,7 +137,7 @@ func MakeSomeDNA(animalSounder AnimalSounder) {		// 参数是AnimalSounder接口
 在上述例子中，我们声明了一个接口类型 AnimalSounder，配套一个 MakeSomeDNA 方法，其接受 AnimalSounder 接口类型作为入参。
 因此在 Go 语言中。只要配套的 Cat 和 Dog 的实例也实现了 MakeSomeDNA 方法，那么我们就可以认为他是 AnimalSounder 接口类型：
 
-```
+```go
 type AnimalSounder interface {
      MakeDNA()
 }
@@ -254,7 +254,7 @@ defer，return，return value（函数返回值） 执行顺序：首先return�
 
 **有名返回值**
 
-```
+```go
 func b() (i int) { 
     defer func() { 
         i++ 
@@ -275,7 +275,7 @@ func main() {
 
 函数返回指针
 
-```
+```go
 func c() *int { 
     var i int 
     defer func() { 
@@ -390,7 +390,7 @@ Go提供了map类型，但是我们知道，map类型的key是不能重复的，
 说到继承我们都知道，在Go中没有extends关键字，也就意味着Go并没有原生级别的继承支持。这也是为什么我在文章开头用了**伪继承**这个词。本质上，Go使用interface实现的功能叫组合，Go是使用组合来实现的继承，说的更精确一点，是使用组合来代替的继承，举个很简单的例子:
 **通过组合实现了继承：**
 
-```
+```go
 type Animal struct {
     Name string
 }
