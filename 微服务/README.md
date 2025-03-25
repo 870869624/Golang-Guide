@@ -15,7 +15,7 @@
 
 ### CODE
 
-* [HTTP调用RESTful API](https://github.com/mao888/golang-guide/tree/main/%E5%BE%AE%E6%9C%8D%E5%8A%A1/code/HTTP%E8%B0%83%E7%94%A8RESTful%20API)
+* [HTTP调用RESTful API](https://github.com/870869624/Golang-Guide/tree/main/%E5%BE%AE%E6%9C%8D%E5%8A%A1/code/HTTP%E8%B0%83%E7%94%A8RestFul%20API)
 
 #### rpc demo
 
