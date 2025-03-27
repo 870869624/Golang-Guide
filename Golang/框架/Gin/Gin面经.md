@@ -57,6 +57,7 @@ v1 := r.Group("/v1")
     v1.POST("/user",addUser)
 }
 ```
+
 # **三、中间件**
 
 ## 5.**什么是中间件？Gin 中间件的执行流程是怎样的？**
@@ -84,6 +85,7 @@ func LoggerMiddleware(c *gin.Context) {
 全局中间件：在初始化时使用Use方法添加中间件。
 
 路由组中间件：在路由组中添加中间件，仅影响该路由组下的路由。
+
 ```go
 r.Use(LoggerMiddleware) // 全局中间件
 authGroup := r.Group("/admin", AuthMiddleware) // 路由组中间件
@@ -107,7 +109,8 @@ Context是Gin框架的核心，用于传递请求和响应信息。
 
 ## 8.**如何在中间件之间传递数据？**
 
-##  回答：
+## 回答：
+
 使用 Context.Set(key, value) 和 Context.Get(key)，示例：
 
 ```go
