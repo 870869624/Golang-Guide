@@ -196,7 +196,7 @@ type Response struct {
 ├── docs
 │   ├── docs.go
 │   ├── swagger.json
-│    └── swagger.yaml
+│   └── swagger.yaml
 ├── internal
 │   ├── handler
 │   │   └── user.go
