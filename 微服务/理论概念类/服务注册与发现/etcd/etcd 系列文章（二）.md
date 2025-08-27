@@ -94,9 +94,7 @@ Go OS/Arch: linux/amd64
 
 ### 2.2 源码安装
 
-
 使用源码安装，首先需要确保本地的 Go 语言环境。如未安装，请参考 [https://golang.org/doc/install](https://go.dev/doc/install)。
-
 
 对于那些想尝试最新版本的人，可以从 master 分支构建 etcd。需要 Go 版本为 1.13+，来构建最新版本的 etcd。 本地的 Go 版本为：
 
