@@ -280,4 +280,4 @@ Go-zero 相关文档
 
 > go-zero | [《go-zero v1.6 教程》 - 书栈网 · BookStack](https://www.bookstack.cn/read/go-zero-1.6-zh/d41d8cd98f00b204.md)
 
-源代码：https://gitee.com/rxbook/go-demo-2025
+源代码：[https://github.com/870869624/Golang-Guide](https://github.com/870869624/Golang-Guide)
