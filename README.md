@@ -16,7 +16,7 @@
 - 仅限制个人使用,严禁商业化,转载在文首注明出处
 - 本仓库会长期的维护与更新，非常期待各位的 **pr**
 - 配套哔站讲解视频：
-- [【golang-guide】golang学习、实习、校招求职之路全总结【超全八股】](https://www.bilibili.com/video/BV1wd4y1v7Fu/?spm_id_from=333.999.0.0&vd_source=8321160752e4f07c473e11ebc0dd0a28) 
+- [【golang-guide】golang学习、实习、校招求职之路全总结【超全八股】](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-interview/golang%E5%85%AB%E8%82%A1%E6%96%87.md) 
 - [算法和数据结构 ——【Golang实现】](https://www.bilibili.com/video/BV1FG4y1n7oK/?spm_id_from=333.999.0.0&vd_source=8321160752e4f07c473e11ebc0dd0a28)
 - 校招不止,offer不停,更新不断
 
