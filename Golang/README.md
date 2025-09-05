@@ -8,7 +8,7 @@
 
 - [Golang八股 (必看👍)](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-interview/golang%E5%85%AB%E8%82%A1%E6%96%87.md)
 - [Golang实战面经 (必看👍)](https://github.com/870869624/Golang-Guide/tree/main/%E5%AE%9E%E6%88%98)
-- 数据结构与算法Guide【Golang实现】(必看👍)
+- [数据结构与算法Guide【Golang实现】(必看👍)](https://github.com/870869624/Golang-Guide/blob/main/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%A2%E7%BB%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95Guide%E3%80%90Golang%E5%AE%9E%E7%8E%B0%E3%80%91.md)
 - 数据结构-Golang代码
 - 算法-Golang代码
 - 哔站讲解：算法和数据结构 ——【Golang实现】(必看👍)
@@ -16,14 +16,14 @@
 
 ### golang-study
 
-- golang学习路线
-- golang项目 (必看👍 )
+- [golang学习路线](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/golang%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF.md)
+- golang项目 (必看👍)
     - [7 个 yyds 的 Go 项目](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E9%A1%B9%E7%9B%AE/7%E4%B8%AAyyds%E7%9A%84Go%E9%A1%B9%E7%9B%AE.md)
     - [成为 Go 高手的 8 个 GitHub 开源项目](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E9%A1%B9%E7%9B%AE/%E6%88%90%E4%B8%BAGo%E9%AB%98%E6%89%8B%E7%9A%848%E4%B8%AAgithub%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE.md)
-- Go语言学习之路--李文周
+- [Go语言学习之路--李文周](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E6%9D%8E%E6%96%87%E5%91%A8%EF%BC%89.md)
 - 第五届字节跳动青训营
-- 超高质量网站 (必看👍 )
-- Go 学习推荐社区/网站/博主(必看👍 )
+- [超高质量网站 (必看👍)](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/%E8%B6%85%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BD%91%E7%AB%99.md)
+- Go 学习推荐社区/网站/博主(必看👍)
 - 常用组件库 持续更新中～
 - [规范]
 
