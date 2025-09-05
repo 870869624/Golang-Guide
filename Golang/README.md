@@ -23,7 +23,7 @@
 - [Go语言学习之路--李文周](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%EF%BC%88%E6%9D%8E%E6%96%87%E5%91%A8%EF%BC%89.md)
 - [第五届字节跳动青训营](https://github.com/870869624/Golang-Guide/tree/main/Golang/go-study/%E7%AC%AC%E4%BA%94%E5%B1%8A%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%92%E8%AE%AD%E8%90%A5)
 - [超高质量网站 (必看👍)](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/%E8%B6%85%E9%AB%98%E8%B4%A8%E9%87%8F%E7%BD%91%E7%AB%99.md)
-- Go 学习推荐社区/网站/博主(必看👍)
+- [Go 学习推荐社区/网站/博主(必看👍)](https://github.com/870869624/Golang-Guide/blob/main/Golang/go-study/%E8%B5%84%E6%96%99%E5%BA%93/Go%20%E5%AD%A6%E4%B9%A0%E6%8E%A8%E8%8D%90%E7%A4%BE%E5%8C%BA%E7%BD%91%E7%AB%99%E5%8D%9A%E4%B8%BB.md)
 - [常用组件库](https://github.com/870869624/Golang-Guide/tree/main/Golang/go-study/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E5%BA%93) 持续更新中～
 - [规范]
 
