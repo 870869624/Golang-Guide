@@ -98,10 +98,10 @@ Transfer/sec:    606.33MB
 首先需要创建一个post.lua文件，内容如下：
 
 ```lua
-wrk.method = "POST"
+wrk.method  = "POST"
 wrk.headers["uid"] = "127.0.0.1"
 wrk.headers["Content-Type"] = "application/json"
-wrk.body     ='{"uid":"127.0.0.1","Version":"1.0","devicetype":"web","port":"8080"}'
+wrk.body  ='{"uid":"127.0.0.1","Version":"1.0","devicetype":"web","port":"8080"}'
 ```
 
 测试执行命令如下：
