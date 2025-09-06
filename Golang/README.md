@@ -11,7 +11,7 @@
 - [数据结构与算法Guide【Golang实现】(必看👍)](https://github.com/870869624/Golang-Guide/blob/main/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E9%9D%A2%E7%BB%8F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95Guide%E3%80%90Golang%E5%AE%9E%E7%8E%B0%E3%80%91.md)
 - [数据结构-Golang代码](https://github.com/870869624/Golang-Guide/tree/main/Golang/go-interview/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
 - [算法-Golang代码](https://github.com/870869624/Golang-Guide/tree/main/Golang/go-interview/%E7%AE%97%E6%B3%95)
-- 哔站讲解：算法和数据结构 ——【Golang实现】(必看👍)
+- [哔站讲解：算法和数据结构 ——【Golang实现】(必看👍)](https://www.bilibili.com/video/BV12k4y1C7jE/?spm_id_from=333.337.search-card.all.click&vd_source=1414a18c86ab5b1bbdc87b7a58b37cd4)
 - [Gin源码阅读与分析](https://github.com/870869624/Golang-Guide/blob/main/Golang/%E6%A1%86%E6%9E%B6/Gin/Gin%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB.md)
 
 ### golang-study
