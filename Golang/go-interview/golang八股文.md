@@ -284,10 +284,22 @@ Go拥有强大的编译检查、严格的编码规范和完整的软件生命周
 ## **go defer，多个 defer 的顺序，defer 在什么时机会修改返回值？**
 
 [Golang中的Defer必掌握的7知识点-地鼠文档](https://www.topgoer.cn/docs/golangxiuyang/golangxiuyang-1cmee0q64ij5p)
-作用：defer延迟函数，释放资源，收尾工作；如释放锁，关闭文件，关闭链接；捕获panic;
-避坑指南：defer函数紧跟在资源打开后面，否则defer可能得不到执行，导致内存泄露。
-多个 defer 调用顺序是 LIFO（后入先出），defer后的操作可以理解为压入栈中
-defer，return，return value（函数返回值） 执行顺序：首先return，其次return value，最后defer。defer可以修改函数最终返回值，修改时机：**有名返回值或者函数返回指针** 参考：
+作用：
+
+- defer延迟函数，释放资源，收尾工作；
+
+- 如释放锁，关闭文件，关闭链接；捕获panic;
+
+避坑指南：
+
+- defer函数紧跟在资源打开后面，否则defer可能得不到执行，导致内存泄露。
+
+- 多个 defer 调用顺序是 LIFO（后入先出），defer后的操作可以理解为压入栈中
+defer，return，return value（函数返回值） 
+
+执行顺序：
+
+- 首先return，其次return value，最后defer。defer可以修改函数最终返回值,修改时机：**有名返回值或者函数返回指针** 参考：
 [【Golang】Go语言defer用法大总结(含return返回机制)__奶酪的博客-CSDN博客blog.csdn.net/Cassie_zkq/article/details/108567205](https://link.zhihu.com/?target=https%3A//blog.csdn.net/Cassie_zkq/article/details/108567205)
 
 **有名返回值**
