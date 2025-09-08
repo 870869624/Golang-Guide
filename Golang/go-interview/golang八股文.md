@@ -24,12 +24,17 @@
 
 # Go语言和Java有什么区别?
 
-1、Go上不允许函数重载，必须具有方法和函数的唯一名称，而Java允许函数重载。
-2、在速度方面，Go的速度要比Java快。
-3、Java默认允许多态，而Go没有。
-4、Go语言使用HTTP协议进行路由配置，而Java使用Akka.routing.ConsistentHashingRouter和Akka.routing.ScatterGatherFirstCompletedRouter进行路由配置。
-5、Go代码可以自动扩展到多个核心，而Java并不总是具有足够的可扩展性。
-6、Go语言的继承通过匿名组合完成，基类以Struct的方式定义，子类只需要把基类作为成员放在子类的定义中，支持多继承;而Java的继承通过extends关键字完成，不支持多继承。
+1. Go上不允许函数重载，必须具有方法和函数的唯一名称，而Java允许函数重载。
+
+2. 在速度方面，Go的速度要比Java快。
+
+3. Java默认允许多态，而Go没有。
+
+4. Go语言使用HTTP协议进行路由配置，而Java使用Akka.routing.ConsistentHashingRouter和Akka.routing.ScatterGatherFirstCompletedRouter进行路由配置。
+
+5. Go代码可以自动扩展到多个核心，而Java并不总是具有足够的可扩展性。
+
+6. Go语言的继承通过匿名组合完成，基类以Struct的方式定义，子类只需要把基类作为成员放在子类的定义中，支持多继承;而Java的继承通过extends关键字完成，不支持多继承。
 
 # Go 是面向对象的语言吗？
 
