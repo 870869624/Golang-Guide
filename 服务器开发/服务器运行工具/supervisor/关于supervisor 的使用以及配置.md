@@ -75,6 +75,7 @@ python2 setup.py install
 
 ![1757302488619](image/关于supervisor的使用以及配置/1757302488619.png)
 
+提示需要meld3模块，下载安装
 
 ```bash
 cd ../
@@ -82,8 +83,6 @@ wget https://pypi.python.org/packages/45/a0/317c6422b26c12fe0161e936fc35f3655206
 tar -xf meld3-1.0.2.tar.gz && cd meld3-1.0.2
 python setup.py install
 ```
-
-提示需要meld3模块
 
 返回继续安装
 
@@ -307,10 +306,10 @@ files = supervisord.d/*.ini  ;默认放在安装目录的supervisord.d目录下�
 ## 6.进程配置文件
 
 ```yaml
-vim /etc/supervisor/conf.d/test.ini
+vim /etc/supervisor/conf.d/uefun.ini
 
-[program:test_one]  ;项目名
-command=java -jar /data/smallvideo/supervisor/taskApp-exec.jar TaskTestOne  ; 被监控的进程路径
+[program:uefun]  ;项目名
+command=/data/uefun/uefun -config=/data/uefun/config.conf  ; 被监控的进程路径
 priority=1                    ; 数字越高，优先级越高
 numprocs=1                    ; 启动几个进程
 autostart=true                ; 随着supervisord的启动而启动
