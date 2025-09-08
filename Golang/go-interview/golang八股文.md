@@ -110,7 +110,7 @@ func main() {
      p := NewAnimal()
      p.SetName("我是搬运工，去给煎鱼点赞~")
 
-    dog := Dog{Animal: *p}
+     dog := Dog{Animal: *p}
      fmt.Println(dog.GetName())
 }
 ```
@@ -122,7 +122,7 @@ func main() {
      p := NewAnimal()
      p.SetName("我是搬运工，去给煎鱼点赞~")
 
-    dog := Dog{Animal: *p}
+     dog := Dog{Animal: *p}
      fmt.Println(dog.GetName())
 }
 ```
@@ -206,6 +206,7 @@ Python的语法使用缩进来指示代码块。Go的语法基于打开和关闭
 # go 与 node.js
 
 深入对比Node.js和Golang 到底谁才是NO.1 : [https://zhuanlan.zhihu.com/p/421352168](https://zhuanlan.zhihu.com/p/421352168)
+
 从 Node 到 Go：一个粗略的比较 : [https://zhuanlan.zhihu.com/p/29847628](https://zhuanlan.zhihu.com/p/29847628)
 
 # **基础部分**
@@ -266,7 +267,8 @@ Go拥有强大的编译检查、严格的编码规范和完整的软件生命周
 ## **golang 中 make 和 new 的区别？（基本必问）**
 
 **共同点：**
-给变量分配内存
+
+1) 给变量分配内存
 
 **不同点：**
 
@@ -397,7 +399,7 @@ Go 中解析的 tag 是通过反射实现的，反射是指计算机程序在运
 
 反射将接口变量转换成反射对象 Type 和 Value；反射可以通过反射对象 Value 还原成原先的接口变量；反射可以用来修改一个变量的值，前提是这个值可以被修改；tag是啥:结构体支持标记，name string `json:name-field` 就是 `json:name-field` 这部分
 
-**gorm json yaml gRPC protobuf gin.Bind()都是通过反射来实现的**
+**`gorm、json、yaml、gRPC、protobuf、gin.Bind()`都是通过反射来实现的**
 
 # **调用函数传入结构体时，应该传值还是指针？ （Golang 都是传值）**
 
