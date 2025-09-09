@@ -1,4 +1,4 @@
-```go
+
 package main
 
 import (
@@ -149,4 +149,3 @@ func main() {
 	ref := node.FindValueNode(node, 17)
 	fmt.Println(ref)
 }
-```
