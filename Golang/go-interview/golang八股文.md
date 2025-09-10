@@ -1,3 +1,121 @@
+- 目录
+
+  - [go与其他语言](#go%E4%B8%8E%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80)
+
+  * [什么是面向对象](#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1httpssocsdnnetsosearchq%25e9%259d%25a2%25e5%2590%2591%25e5%25af%25b9%25e8%25b1%25a1spm1001210130017020)
+  * [Go语言和Java有什么区别?](#go%E8%AF%AD%E8%A8%80%E5%92%8Cjava%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB)
+  * [Go 是面向对象的语言吗？](#go-%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%AD%E8%A8%80%E5%90%97)
+    + [封装](#%E5%B0%81%E8%A3%85)
+    + [继承](#%E7%BB%A7%E6%89%BF)
+    + [多态](#%E5%A4%9A%E6%80%81)
+  * [go语言和python的区别：](#go%E8%AF%AD%E8%A8%80%E5%92%8Cpython%E7%9A%84%E5%8C%BA%E5%88%AB)
+
+  - [go 与 node.js](#go-%E4%B8%8E-nodejs)
+  - [**基础部分**](#%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86)
+
+  * [为什么选择golang](#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E6%8B%A9golang)
+  * [golang 缺点](#golang-%E7%BC%BA%E7%82%B9)
+  * [**golang 中 make 和 new 的区别？（基本必问）**](#golang-%E4%B8%AD-make-%E5%92%8C-new-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%9F%BA%E6%9C%AC%E5%BF%85%E9%97%AE)
+
+  - [IO多路复用](#io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8)
+
+  * [**for range 的时候它的地址会发生变化么？**](#for-range-%E7%9A%84%E6%97%B6%E5%80%99%E5%AE%83%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BC%9A%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%E4%B9%88)
+  * [**go defer，多个 defer 的顺序，defer 在什么时机会修改返回值？**](#go-defer%E5%A4%9A%E4%B8%AA-defer-%E7%9A%84%E9%A1%BA%E5%BA%8Fdefer-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E6%9C%BA%E4%BC%9A%E4%BF%AE%E6%94%B9%E8%BF%94%E5%9B%9E%E5%80%BC)
+
+  - [**uint 类型溢出问题**](#uint-%E7%B1%BB%E5%9E%8B%E6%BA%A2%E5%87%BA%E9%97%AE%E9%A2%98)
+  - [**能介绍下 rune 类型吗？**](#%E8%83%BD%E4%BB%8B%E7%BB%8D%E4%B8%8B-rune-%E7%B1%BB%E5%9E%8B%E5%90%97)
+  - [**golang 中解析 tag 是怎么实现的？反射原理是什么？(中高级肯定会问，比较难，需要自己多去总结)**](#golang-%E4%B8%AD%E8%A7%A3%E6%9E%90-tag-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%AD%E9%AB%98%E7%BA%A7%E8%82%AF%E5%AE%9A%E4%BC%9A%E9%97%AE%E6%AF%94%E8%BE%83%E9%9A%BE%E9%9C%80%E8%A6%81%E8%87%AA%E5%B7%B1%E5%A4%9A%E5%8E%BB%E6%80%BB%E7%BB%93)
+
+  * [**参考如下连接**](#%E5%8F%82%E8%80%83%E5%A6%82%E4%B8%8B%E8%BF%9E%E6%8E%A5)
+
+  - [**调用函数传入结构体时，应该传值还是指针？ （Golang 都是传值）**](#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E4%BC%A0%E5%85%A5%E7%BB%93%E6%9E%84%E4%BD%93%E6%97%B6%E5%BA%94%E8%AF%A5%E4%BC%A0%E5%80%BC%E8%BF%98%E6%98%AF%E6%8C%87%E9%92%88-golang-%E9%83%BD%E6%98%AF%E4%BC%A0%E5%80%BC)
+  - [goroutine什么情况下会阻塞](#goroutine%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E9%98%BB%E5%A1%9E)
+  - [**讲讲 Go 的 select 底层数据结构和一些特性？（难点，没有项目经常可能说不清，面试一般会问你项目中怎么使用select）**](#%E8%AE%B2%E8%AE%B2-go-%E7%9A%84-select-%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E4%B8%80%E4%BA%9B%E7%89%B9%E6%80%A7%E9%9A%BE%E7%82%B9%E6%B2%A1%E6%9C%89%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%B8%B8%E5%8F%AF%E8%83%BD%E8%AF%B4%E4%B8%8D%E6%B8%85%E9%9D%A2%E8%AF%95%E4%B8%80%E8%88%AC%E4%BC%9A%E9%97%AE%E4%BD%A0%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8select)
+
+  * [**select 的特性**](#select-%E7%9A%84%E7%89%B9%E6%80%A7)
+
+  - [**讲讲 Go 的 defer 底层数据结构和一些特性？**](#%E8%AE%B2%E8%AE%B2-go-%E7%9A%84-defer-%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E4%B8%80%E4%BA%9B%E7%89%B9%E6%80%A7)
+
+  * [**defer 的规则总结** ：](#defer-%E7%9A%84%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93-)
+
+  - [**单引号，双引号，反引号的区别？**](#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E5%8F%8D%E5%BC%95%E5%8F%B7%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [go出现panic的场景](#go%E5%87%BA%E7%8E%B0panic%E7%9A%84%E5%9C%BA%E6%99%AF)
+
+  * [Go出现panic的场景](#go%E5%87%BA%E7%8E%B0panic%E7%9A%84%E5%9C%BA%E6%99%AF)
+
+  - [go是否支持while循环，如何实现这种机制](#go%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81while%E5%BE%AA%E7%8E%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%BF%99%E7%A7%8D%E6%9C%BA%E5%88%B6)
+  - [go里面如何实现set？](#go%E9%87%8C%E9%9D%A2%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0set)
+  - [go如何实现类似于java当中的继承机制？](#go%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BC%E4%BA%8Ejava%E5%BD%93%E4%B8%AD%E7%9A%84%E7%BB%A7%E6%89%BF%E6%9C%BA%E5%88%B6)
+
+  * [**通过组合实现了继承：**](#%E9%80%9A%E8%BF%87%E7%BB%84%E5%90%88%E5%AE%9E%E7%8E%B0%E4%BA%86%E7%BB%A7%E6%89%BF)
+
+  - [怎么去复用一个接口的方法？](#%E6%80%8E%E4%B9%88%E5%8E%BB%E5%A4%8D%E7%94%A8%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%96%B9%E6%B3%95)
+  - [go里面的 _](#go%E9%87%8C%E9%9D%A2%E7%9A%84-_)
+  - [写go单元测试的规范？](#%E5%86%99go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%9A%84%E8%A7%84%E8%8C%83)
+  - [单步调试？](#%E5%8D%95%E6%AD%A5%E8%B0%83%E8%AF%95)
+  - [导入一个go的工程，有些依赖找不到，改怎么办？](#%E5%AF%BC%E5%85%A5%E4%B8%80%E4%B8%AAgo%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%9C%89%E4%BA%9B%E4%BE%9D%E8%B5%96%E6%89%BE%E4%B8%8D%E5%88%B0%E6%94%B9%E6%80%8E%E4%B9%88%E5%8A%9E)
+  - [值拷贝 与 引用拷贝，深拷贝 与 浅拷贝](#%E5%80%BC%E6%8B%B7%E8%B4%9D-%E4%B8%8E-%E5%BC%95%E7%94%A8%E6%8B%B7%E8%B4%9D%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E4%B8%8E-%E6%B5%85%E6%8B%B7%E8%B4%9D)
+
+  * [深浅拷贝的本质区别：](#%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB)
+
+  - [精通Golang项目依赖Go modules](#%E7%B2%BE%E9%80%9Agolang%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96go-modules)
+  - [Go 多返回值怎么实现的？](#go-%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84)
+  - [Go 语言中不同的类型如何比较是否相等？](#go-%E8%AF%AD%E8%A8%80%E4%B8%AD%E4%B8%8D%E5%90%8C%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A6%82%E4%BD%95%E6%AF%94%E8%BE%83%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89)
+  - [Go中init 函数的特征?](#go%E4%B8%ADinit-%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E5%BE%81)
+  - [Go中 uintptr和 unsafe.Pointer 的区别？](#go%E4%B8%AD-uintptr%E5%92%8C-unsafepointer-%E7%9A%84%E5%8C%BA%E5%88%AB)
+  - [什么是goroutine](#%E4%BB%80%E4%B9%88%E6%98%AFgoroutine)
+  - [slice](#slice)
+
+  * [**数组和切片的区别 （基本必问）**](#%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%87%E7%89%87%E7%9A%84%E5%8C%BA%E5%88%AB-%E5%9F%BA%E6%9C%AC%E5%BF%85%E9%97%AE)
+  * [**讲讲 Go 的 slice 底层数据结构和一些特性？**](#%E8%AE%B2%E8%AE%B2-go-%E7%9A%84-slice-%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E4%B8%80%E4%BA%9B%E7%89%B9%E6%80%A7)
+  * [golang中数组和slice作为参数的区别？slice作为参数传递有什么问题？](#golang%E4%B8%AD%E6%95%B0%E7%BB%84%E5%92%8Cslice%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%ABslice%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98)
+  * [从数组中取一个相同大小的slice有成本吗？](#%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%90%8C%E5%A4%A7%E5%B0%8F%E7%9A%84slice%E6%9C%89%E6%88%90%E6%9C%AC%E5%90%97)
+  * [新旧扩容策略](#%E6%96%B0%E6%97%A7%E6%89%A9%E5%AE%B9%E7%AD%96%E7%95%A5)
+    + [1.18之前](#118%E4%B9%8B%E5%89%8D)
+    + [总的来说](#%E6%80%BB%E7%9A%84%E6%9D%A5%E8%AF%B4)
+
+  - [**map相关**](#map%E7%9B%B8%E5%85%B3)
+
+  * [map 循环是有序的还是无序的？](#map-%E5%BE%AA%E7%8E%AF%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E8%BF%98%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84)
+  * [什么类型可以作为map 的key](#%E4%BB%80%E4%B9%88%E7%B1%BB%E5%9E%8B%E5%8F%AF%E4%BB%A5%E4%BD%9C%E4%B8%BAmap-%E7%9A%84key)
+  * [map 使用注意的点，是否并发安全？](#map-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E7%9A%84%E7%82%B9%E6%98%AF%E5%90%A6%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8)
+    + [map使用的注意点](#map%E4%BD%BF%E7%94%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9)
+  * [并发安全性](#%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8%E6%80%A7)
+  * [结论：](#%E7%BB%93%E8%AE%BA)
+  * [map 循环是有序的还是无序的？](#map-%E5%BE%AA%E7%8E%AF%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E8%BF%98%E6%98%AF%E6%97%A0%E5%BA%8F%E7%9A%84-1)
+  * [map 中删除一个 key，它的内存会释放么？](#map-%E4%B8%AD%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA-key%E5%AE%83%E7%9A%84%E5%86%85%E5%AD%98%E4%BC%9A%E9%87%8A%E6%94%BE%E4%B9%88)
+    + [内存标记与垃圾回收](#%E5%86%85%E5%AD%98%E6%A0%87%E8%AE%B0%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6)
+    + [注意事项](#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+    + [结论](#%E7%BB%93%E8%AE%BA)
+  * [怎么处理对 map 进行并发访问？有没有其他方案？ 区别是什么？](#%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%E5%AF%B9-map-%E8%BF%9B%E8%A1%8C%E5%B9%B6%E5%8F%91%E8%AE%BF%E9%97%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E5%85%B6%E4%BB%96%E6%96%B9%E6%A1%88-%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88)
+    + [使用互斥锁（sync.Mutex）](#%E4%BD%BF%E7%94%A8%E4%BA%92%E6%96%A5%E9%94%81syncmutex)
+    + [使用读写互斥锁（sync.RWMutex）](#%E4%BD%BF%E7%94%A8%E8%AF%BB%E5%86%99%E4%BA%92%E6%96%A5%E9%94%81syncrwmutex)
+    + [使用并发安全的map（sync.Map）](#%E4%BD%BF%E7%94%A8%E5%B9%B6%E5%8F%91%E5%AE%89%E5%85%A8%E7%9A%84mapsyncmap)
+    + [区别总结](#%E5%8C%BA%E5%88%AB%E6%80%BB%E7%BB%93)
+  * [注意事项](#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1)
+  * [nil map 和空 map 有何不同？](#nil-map-%E5%92%8C%E7%A9%BA-map-%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C)
+    + [初始状态与内存占用](#%E5%88%9D%E5%A7%8B%E7%8A%B6%E6%80%81%E4%B8%8E%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8)
+    + [对增删查操作的影响](#%E5%AF%B9%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%93%8D%E4%BD%9C%E7%9A%84%E5%BD%B1%E5%93%8D)
+    + [总结](#%E6%80%BB%E7%BB%93)
+  * [map 的数据结构是什么？](#map-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88)
+    + [hmap 的结构如下：](#hmap-%E7%9A%84%E7%BB%93%E6%9E%84%E5%A6%82%E4%B8%8B)
+    + [bucket数据结构](#bucket%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
+  * [解决哈希冲突（四种方法）](#%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%B3%95)
+    + [哈希冲突](#%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81)
+    + [链地址法：](#%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95)
+    + [负载因子](#%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90)
+  * [是怎么实现扩容？](#%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E6%89%A9%E5%AE%B9)
+    + [map 的容量大小](#map-%E7%9A%84%E5%AE%B9%E9%87%8F%E5%A4%A7%E5%B0%8F)
+    + [触发 map 扩容的条件](#%E8%A7%A6%E5%8F%91-map-%E6%89%A9%E5%AE%B9%E7%9A%84%E6%9D%A1%E4%BB%B6)
+    + [增量扩容](#%E5%A2%9E%E9%87%8F%E6%89%A9%E5%AE%B9)
+    + [等量扩容](#%E7%AD%89%E9%87%8F%E6%89%A9%E5%AE%B9)
+  * [查找过程](#%E6%9F%A5%E6%89%BE%E8%BF%87%E7%A8%8B)
+  * [插入过程](#%E6%8F%92%E5%85%A5%E8%BF%87%E7%A8%8B)
+  * [增删查的时间复杂度 O(1)](#%E5%A2%9E%E5%88%A0%E6%9F%A5%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-o1)
+  * [可以对map里面的一个元素取地址吗](#%E5%8F%AF%E4%BB%A5%E5%AF%B9map%E9%87%8C%E9%9D%A2%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E5%8F%96%E5%9C%B0%E5%9D%80%E5%90%97)
+  * [sync.map](#syncmap)
+    + [sync.map的锁机制跟你自己用锁加上map有区别么](#syncmap%E7%9A%84%E9%94%81%E6%9C%BA%E5%88%B6%E8%B7%9F%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%94%A8%E9%94%81%E5%8A%A0%E4%B8%8Amap%E6%9C%89%E5%8C%BA%E5%88%AB%E4%B9%88)
+
 # go与其他语言
 
 ## 什么是[面向对象](https://so.csdn.net/so/search?q=%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&spm=1001.2101.3001.7020)
@@ -19,15 +137,10 @@
 ## Go语言和Java有什么区别?
 
 1. Go上不允许函数重载，必须具有方法和函数的唯一名称，而Java允许函数重载。
-
 2. 在速度方面，Go的速度要比Java快。
-
 3. Java默认允许多态，而Go没有。
-
-4. Go语言使用HTTP协议进行路由配置，而Java使用`Akka.routing.ConsistentHashingRouter`和`Akka.routing.ScatterGatherFirstCompletedRouter`进行路由配置。
-
+4. Go语言使用HTTP协议进行路由配置，而Java使用 `Akka.routing.ConsistentHashingRouter`和 `Akka.routing.ScatterGatherFirstCompletedRouter`进行路由配置。
 5. Go代码可以自动扩展到多个核心，而Java并不总是具有足够的可扩展性。
-
 6. Go语言的继承通过匿名组合完成，基类以Struct的方式定义，子类只需要把基类作为成员放在子类的定义中，支持多继承;而Java的继承通过extends关键字完成，不支持多继承。
 
 ## Go 是面向对象的语言吗？
@@ -284,20 +397,18 @@ Go拥有强大的编译检查、严格的编码规范和完整的软件生命周
 作用：
 
 - defer延迟函数，释放资源，收尾工作；
-
 - 如释放锁，关闭文件，关闭链接；捕获panic;
 
 避坑指南：
 
 - defer函数紧跟在资源打开后面，否则defer可能得不到执行，导致内存泄露。
-
 - 多个 defer 调用顺序是 LIFO（后入先出），defer后的操作可以理解为压入栈中
-defer，return，return value（函数返回值） 
+  defer，return，return value（函数返回值）
 
 执行顺序：
 
 - 首先return，其次return value，最后defer。defer可以修改函数最终返回值,修改时机：**有名返回值或者函数返回指针** 参考：
-[【Golang】Go语言defer用法大总结(含return返回机制)__奶酪的博客-CSDN博客blog.csdn.net/Cassie_zkq/article/details/108567205](https://link.zhihu.com/?target=https%3A//blog.csdn.net/Cassie_zkq/article/details/108567205)
+  [【Golang】Go语言defer用法大总结(含return返回机制)__奶酪的博客-CSDN博客blog.csdn.net/Cassie_zkq/article/details/108567205](https://link.zhihu.com/?target=https%3A//blog.csdn.net/Cassie_zkq/article/details/108567205)
 
 **有名返回值**
 
@@ -669,25 +780,26 @@ func main() {
 # 什么是goroutine
 
 1. **定义**：
+
    - goroutine 是 Go 语言中的一种轻量级线程，由 Go 运行时管理。
-
 2. **使用方法**：
-   - 使用 `go` 关键字启动一个新的 goroutine。例如：`go 函数名(参数列表)`。
 
+   - 使用 `go` 关键字启动一个新的 goroutine。例如：`go 函数名(参数列表)`。
 3. **优势**：
+
    - goroutine 的创建和销毁开销非常小，可以高效地创建成千上万个 goroutine。
    - goroutine 是并发执行的，可以提高程序的执行效率。
-
 4. **调度**：
+
    - 由 Go 运行时调度和管理，无需手动管理线程。
-
 5. **通信**：
+
    - goroutine 之间通过 channel 进行通信，确保数据传递的安全性和同步性。
-
 6. **典型应用**：
-   - 适用于并发任务处理，如网络请求处理、并发计算等。
 
+   - 适用于并发任务处理，如网络请求处理、并发计算等。
 7. **示例**：
+
    - 在 Web 服务器中，每个请求可以由一个单独的 goroutine 处理，从而提高并发处理能力。
 
 这样回答简洁明了，可以帮助面试官快速了解你对 goroutine 的理解。
@@ -699,21 +811,17 @@ func main() {
 **相同点：**
 
 1) 只能存储一组相同类型的数据结构
-
 2) 都是通过下标来访问，并且有容量长度，长度通过 len 获取，容量通过 cap 获取
 
 **区别：**
 
 1) 数组是定长，访问和复制不能超过数组定义的长度，否则就会下标越界，切片长度和容量可以自动扩容
-
 2) 数组是值类型，切片是引用类型，每个切片都引用了一个底层数组，切片本身不能存储任何数据，都是这底层数组存储数据，所以修改切片的时候修改的是底层数组中的数据。切片一旦扩容，指向一个新的底层数组，内存地址也就随之改变
 
 **简洁的回答：**
 
 1) 定义方式不一样
-
 2) 初始化方式不一样，数组需要指定大小，大小不改变
-
 3) 在函数传递中，数组切片都是值传递。
 
 **数组的定义**
@@ -762,9 +870,7 @@ slice 的主要实现是扩容。对于 append 向 slice 添加元素时，假�
 [golang数组和切片作为参数和返回值_weixin_44387482的博客-CSDN博客_golang 返回数组](https://blog.csdn.net/weixin_44387482/article/details/119763558)
 
 1. 当使用数组作为参数和返回值的时候，传进去的是值，在函数内部对数组进行修改并不会影响原数据
-
 2. 当切片作为参数的时候穿进去的是值，也就是值传递，但是当我在函数里面修改切片的时候，我们发现源数据也会被修改，这是因为我们在切片的底层维护这一个匿名的数组，当我们把切片当成参数的时候，会重现创建一个切片，但是创建的这个切片和我们原来的数据是共享数据源的，所以在函数内被修改，源数据也会被修改
-
 3. 数组还是切片，在函数中传递的时候如果没有指定为指针传递的话，都是值传递，但是切片在传递的过程中，有着共享底层数组的风险，所以如果在函数内部进行了更改的时候，会修改到源数据，所以我们需要根据不同的需求来处理，如果我们不希望源数据被修改话的我们可以使用copy函数复制切片后再传入，如果希望源数据被修改的话我们应该使用指针传递的方式
 
 ## 从数组中取一个相同大小的slice有成本吗？

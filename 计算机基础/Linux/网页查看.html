@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux入门教程 - 从零基础到精通</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/daisyui/4.12.10/full.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .command-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .section-card {
+            transition: transform 0.2s;
+        }
+        .section-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="navbar bg-primary text-primary-content">
+        <div class="navbar-start">
+            <span class="text-xl font-bold">
+                <i class="fas fa-linux mr-2"></i>Linux入门教程
+            </span>
+        </div>
+        <div class="navbar-end">
+            <a href="#overview" class="btn btn-ghost btn-sm">概述</a>
+            <a href="#commands" class="btn btn-ghost btn-sm">命令</a>
+            <a href="#config" class="btn btn-ghost btn-sm">配置</a>
+            <a href="#practice" class="btn btn-ghost btn-sm">实践</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- 头部介绍 -->
+        <section id="overview" class="mb-12">
+            <div class="hero bg-base-200 rounded-lg">
+                <div class="hero-content text-center">
+                    <div>
+                        <h1 class="text-5xl font-bold text-primary">Linux入门教程</h1>
+                        <p class="py-6 text-lg">从零基础入门到精通的完整学习指南</p>
+                        <div class="stats shadow">
+                            <div class="stat">
+                                <div class="stat-figure text-primary">
+                                    <i class="fas fa-book text-3xl"></i>
+                                </div>
+                                <div class="stat-title">章节</div>
+                                <div class="stat-value text-primary">7</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-figure text-secondary">
+                                    <i class="fas fa-terminal text-3xl"></i>
+                                </div>
+                                <div class="stat-title">命令</div>
+                                <div class="stat-value text-secondary">50+</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-figure text-accent">
+                                    <i class="fas fa-cog text-3xl"></i>
+                                </div>
+                                <div class="stat-title">配置项</div>
+                                <div class="stat-value text-accent">20+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学习路径 -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">学习路径</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card bg-base-100 shadow-xl section-card">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary">
+                            <i class="fas fa-play-circle mr-2"></i>基础入门
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Linux简介与优势</li>
+                            <li>目录结构详解</li>
+                            <li>vi/vim编辑器使用</li>
+                            <li>网络配置基础</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-xl section-card">
+                    <div class="card-body">
+                        <h3 class="card-title text-secondary">
+                            <i class="fas fa-cogs mr-2"></i>系统管理
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>服务管理</li>
+                            <li>防火墙配置</li>
+                            <li>用户权限管理</li>
+                            <li>系统监控</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card bg-base-100 shadow-xl section-card">
+                    <div class="card-body">
+                        <h3 class="card-title text-accent">
+                            <i class="fas fa-terminal mr-2"></i>实战命令
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>文件操作命令</li>
+                            <li>系统管理命令</li>
+                            <li>网络配置命令</li>
+                            <li>软件包管理</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心命令速查 -->
+        <section id="commands" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">核心命令速查表</h2>
+            
+            <!-- 文件操作命令 -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-primary">
+                    <i class="fas fa-folder-open mr-2"></i>文件操作命令
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th>命令</th>
+                                <th>描述</th>
+                                <th>示例</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>ls</code></td>
+                                <td>列出目录内容</td>
+                                <td><code>ls -la</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>cd</code></td>
+                                <td>切换目录</td>
+                                <td><code>cd /home/user</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>mkdir</code></td>
+                                <td>创建目录</td>
+                                <td><code>mkdir -p /path/to/dir</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>cp</code></td>
+                                <td>复制文件/目录</td>
+                                <td><code>cp -r source dest</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>rm</code></td>
+                                <td>删除文件/目录</td>
+                                <td><code>rm -rf directory</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>mv</code></td>
+                                <td>移动/重命名</td>
+                                <td><code>mv old.txt new.txt</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 系统管理命令 -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-secondary">
+                    <i class="fas fa-server mr-2"></i>系统管理命令
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold mb-3">服务管理</h4>
+                        <div class="command-box text-sm">
+# 启动服务
+systemctl start nginx
+# 停止服务
+systemctl stop nginx
+# 查看状态
+systemctl status nginx
+# 设置开机启动
+systemctl enable nginx
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-3">用户管理</h4>
+                        <div class="command-box text-sm">
+# 添加用户
+useradd username
+# 设置密码
+passwd username
+# 查看用户信息
+id username
+# 删除用户
+userdel -r username
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 系统配置 -->
+        <section id="config" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">系统配置指南</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- 网络配置 -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary">
+                            <i class="fas fa-network-wired mr-2"></i>网络配置
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold">修改IP地址</h4>
+                                <div class="command-box text-sm">
+vim /etc/sysconfig/network-scripts/ifcfg-ens33
+# 修改后重启网络
+service network restart
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">配置主机名</h4>
+                                <div class="command-box text-sm">
+# 查看主机名
+hostname
+# 修改主机名
+vim /etc/hostname
+# 配置hosts映射
+vim /etc/hosts
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 防火墙配置 -->
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-secondary">
+                            <i class="fas fa-shield-alt mr-2"></i>防火墙配置
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold">基本操作</h4>
+                                <div class="command-box text-sm">
+# 查看状态
+systemctl status firewalld
+# 关闭防火墙
+systemctl stop firewalld
+# 开放端口
+firewall-cmd --add-port=80/tcp --permanent
+# 重载配置
+firewall-cmd --reload
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实践练习 -->
+        <section id="practice" class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">实践练习</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary">
+                            <i class="fas fa-tasks mr-2"></i>基础练习
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-100 rounded">
+                                <strong>练习1：</strong>创建目录结构
+                                <div class="command-box text-xs mt-2">
+mkdir -p ~/projects/web/{html,css,js}
+cd ~/projects/web
+ls -la
+                                </div>
+                            </div>
+                            <div class="p-3 bg-gray-100 rounded">
+                                <strong>练习2：</strong>文件操作
+                                <div class="command-box text-xs mt-2">
+touch index.html style.css script.js
+cp index.html backup.html
+mv script.js js/app.js
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h3 class="card-title text-secondary">
+                            <i class="fas fa-user-cog mr-2"></i>系统管理练习
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-100 rounded">
+                                <strong>练习3：</strong>用户管理
+                                <div class="command-box text-xs mt-2">
+sudo useradd devuser
+sudo passwd devuser
+id devuser
+su - devuser
+                                </div>
+                            </div>
+                            <div class="p-3 bg-gray-100 rounded">
+                                <strong>练习4：</strong>权限设置
+                                <div class="command-box text-xs mt-2">
+chmod 755 ~/projects
+chown devuser:devuser ~/projects
+ls -la ~/projects
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快捷参考 -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">快捷参考卡片</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="card bg-primary text-primary-content">
+                    <div class="card-body p-4">
+                        <h3 class="card-title text-sm">文件权限</h3>
+                        <div class="text-xs">
+                            <div>7 = rwx</div>
+                            <div>6 = rw-</div>
+                            <div>5 = r-x</div>
+                            <div>4 = r--</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-secondary text-secondary-content">
+                    <div class="card-body p-4">
+                        <h3 class="card-title text-sm">快捷键</h3>
+                        <div class="text-xs">
+                            <div>Ctrl+C: 中断</div>
+                            <div>Ctrl+D: 退出</div>
+                            <div>Ctrl+Z: 暂停</div>
+                            <div>Tab: 自动补全</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-accent text-accent-content">
+                    <div class="card-body p-4">
+                        <h3 class="card-title text-sm">常用路径</h3>
+                        <div class="text-xs">
+                            <div>/etc: 配置</div>
+                            <div>/var/log: 日志</div>
+                            <div>/home: 用户</div>
+                            <div>/usr/bin: 命令</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部来源 -->
+        <footer class="text-center py-8 border-t">
+            <p class="text-gray-600">
+                本文来源：<a href="https://blog.csdn.net/leah126/article/details/131558171" 
+                          class="link link-primary" 
+                          target="_blank">
+                    Linux入门教程（非常详细）从零基础入门到精通，看完这一篇就够了
+                </a>
+            </p>
+            <p class="text-sm text-gray-500 mt-2">
+                基于CSDN博客内容整理制作的学习指南
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
