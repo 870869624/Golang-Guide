@@ -1,4 +1,4 @@
-# 一、为什么要学linux
+# 一、为什么要学[linux](https://blog.csdn.net/leah126/article/details/131558171?ops_request_misc=%257B%2522request%255Fid%2522%253A%25222b48086c48e5f6300e160389c75202b9%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=2b48086c48e5f6300e160389c75202b9&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-131558171-null-null.142^v102^pc_search_result_base5&utm_term=linux&spm=1018.2226.3001.4187)
 
 因为我们要部署服务，Linux系统一直以其稳定性而闻名，它们可以连续运行多年而不发生任何重大问题。事实上，很多Linux用户都从未在自己的环境中遇到过系统崩溃的情况。相对windows而言，挂起和崩溃完全是一种常态。
 
@@ -207,6 +207,7 @@ systemctl enable service_name
 ```
 
 ## 5.3、防火墙
+
 1) 、查看、更改防火墙状态
 
 ```bash
