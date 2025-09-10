@@ -1,0 +1,11 @@
+version: '3'
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    container_name: pdf-toolbox
+    restart: always
+    ports:
+      - "8077:8080"
+    # 强烈建议添加这行防止内存泄漏
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
