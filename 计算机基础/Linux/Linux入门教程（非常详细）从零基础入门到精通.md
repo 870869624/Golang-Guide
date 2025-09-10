@@ -110,13 +110,13 @@ vim /etc/sysconfig/network-scripts/ifcfg-ens33
 
 ### 4.2.1、修改主机名称
 
-1) 、查看当前服务器主机名称
+1) 查看当前服务器主机名称
 
 ```bash
 hostname
 ```
 
-2) 、通过编辑/etc/hostname 文件修改主机名
+2) 通过编辑/etc/hostname 文件修改主机名
 
 ```bash
 vim /etc/hostname
@@ -156,7 +156,7 @@ chkconfig 设置后台服务的自启配置
 
 ![1757484406492](image/Linux入门教程（非常详细）从零基础入门到精通/1757484406492.png)
 
-2) 、开启/关闭 network(网络)服务的自动启动
+2) 开启/关闭 network(网络)服务的自动启动
 
 ```bash
 chkconfig network on
@@ -164,7 +164,7 @@ chkconfig network on
 chkconfig network off
 ```
 
-3) 、开启/关闭 network 服务指定级别的自动启动
+3) 开启/关闭 network 服务指定级别的自动启动
 
 ```bash
 chkconfig --level 指定级别 network on
@@ -172,13 +172,13 @@ chkconfig --level 指定级别 network on
 
 ## 5.2、systemctl
 
-1) 、基本语法
+1) 基本语法
 
 ```bash
 systemctl start | stop | restart | status 服务名
 ```
 
-2) 、查看服务的方法：/usr/lib/systemd/system
+2) 查看服务的方法：/usr/lib/systemd/system
 
 ```bash
 cd /usr/lib/systemd/system
@@ -208,7 +208,7 @@ systemctl enable service_name
 
 ## 5.3、防火墙
 
-1) 、查看、更改防火墙状态
+1) 查看、更改防火墙状态
 
 ```bash
 systemctl status firewalld  #查看防火墙状态
@@ -220,4 +220,78 @@ systemctl start firewalld # 开启防火墙
 systemctl enable firewalld.service  # 开机自启动防火墙
 
 systemctl disable firewalld.service # 开机不自启动防火墙
+```
+
+2) 防火墙开放、删除端口
+
+```bash
+firewall-cmd --list-ports                #查询所有开放的端口
+
+firewall-cmd --query-port=8080/tcp       #查询端口是否开放
+
+firewall-cmd --add-port=8080/tcp --permanent          #永久添加8080端口
+firewall-cmd --add-port=65001-65010/tcp --permanent   #永久增加65001-65010端口
+
+firewall-cmd --remove-port=8800/tcp --permanent       #永久删除8080端口
+
+# 对某个ip开放某个端口
+firewall-cmd --permanent --add-rich-rule=“rule family=“ipv4” source address=“192.168.142.166” port port=“5432” protocol=“tcp” accept”
+
+# 删除对某个ip开放某个端口
+firewall-cmd --permanent --remove-rich-rule=“rule family=“ipv4” source address=“192.168.142.166” port port=“5432” protocol=“tcp” accept”
+```
+
+命令解读
+
+```bash
+firwall-cmd：是Linux提供的操作firewall的一个工具（服务）命令
+--zone                                                                #作用域
+--add-port=8080/tcp                                                   #添加端口，格式为：端口/通讯协议 ；add表示添加，remove则对应移除
+--permanent                                                           #永久生效，没有此参数重启后失效
+```
+
+3) 更新防火墙规则，更改配置后要执行重载配置
+
+```bash
+firewall-cmd --reload
+```
+
+## 5.4、关机重启命令
+
+0) 将数据由内存同步到硬盘中
+
+```bash
+sync
+```
+
+1) 重启
+
+```bash
+reboot
+# 两者作用一样
+shutdown -r now
+```
+
+2) 关机
+
+```bash
+# 立马关机
+shutdown -h now
+
+# 计算机将在1分钟后关机，并且会显示在登录用户的当前屏幕中
+shutdown -h 1 ‘This server will shut down after 1 mins‘
+
+# 指定时间关机
+shutdown 15:28
+
+# 取消关机操作
+shutdown -c
+```
+
+## 5.5、查看系统内核与版本
+
+1) 查看内核/操作系统/CPU信息
+
+```bash
+uname -a
 ```
