@@ -129,48 +129,67 @@
             
             <!-- 文件操作命令 -->
             <div class="mb-8">
-                <h3 class="text-2xl font-semibold mb-4 text-primary">
-                    <i class="fas fa-folder-open mr-2"></i>文件操作命令
-                </h3>
-                <div class="overflow-x-auto">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-semibold text-primary cursor-pointer hover:text-primary-focus" 
+                        onclick="toggleSection('file-commands')">
+                        <i class="fas fa-folder-open mr-2"></i>文件操作命令
+                        <i class="fas fa-chevron-down ml-2 transition-transform" id="file-commands-icon"></i>
+                    </h3>
+                    <div class="space-x-2">
+                        <button class="btn btn-sm btn-primary" onclick="window.location.href='#file-detail'">
+                            <i class="fas fa-external-link-alt mr-1"></i>详细教程
+                        </button>
+                        <button class="btn btn-sm btn-outline" onclick="copyAllCommands('file')">
+                            <i class="fas fa-copy mr-1"></i>复制全部
+                        </button>
+                    </div>
+                </div>
+                <div id="file-commands" class="overflow-x-auto">
                     <table class="table table-zebra">
                         <thead>
                             <tr>
                                 <th>命令</th>
                                 <th>描述</th>
                                 <th>示例</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><code>ls</code></td>
                                 <td>列出目录内容</td>
-                                <td><code>ls -la</code></td>
+                                <td><code id="cmd-ls">ls -la</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-ls')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                             <tr>
                                 <td><code>cd</code></td>
                                 <td>切换目录</td>
-                                <td><code>cd /home/user</code></td>
+                                <td><code id="cmd-cd">cd /home/user</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-cd')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                             <tr>
                                 <td><code>mkdir</code></td>
                                 <td>创建目录</td>
-                                <td><code>mkdir -p /path/to/dir</code></td>
+                                <td><code id="cmd-mkdir">mkdir -p /path/to/dir</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-mkdir')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                             <tr>
                                 <td><code>cp</code></td>
                                 <td>复制文件/目录</td>
-                                <td><code>cp -r source dest</code></td>
+                                <td><code id="cmd-cp">cp -r source dest</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-cp')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                             <tr>
                                 <td><code>rm</code></td>
                                 <td>删除文件/目录</td>
-                                <td><code>rm -rf directory</code></td>
+                                <td><code id="cmd-rm">rm -rf directory</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-rm')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                             <tr>
                                 <td><code>mv</code></td>
                                 <td>移动/重命名</td>
-                                <td><code>mv old.txt new.txt</code></td>
+                                <td><code id="cmd-mv">mv old.txt new.txt</code></td>
+                                <td><button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-mv')"><i class="fas fa-copy"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -179,34 +198,66 @@
 
             <!-- 系统管理命令 -->
             <div class="mb-8">
-                <h3 class="text-2xl font-semibold mb-4 text-secondary">
-                    <i class="fas fa-server mr-2"></i>系统管理命令
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-semibold text-secondary cursor-pointer hover:text-secondary-focus" 
+                        onclick="toggleSection('system-commands')">
+                        <i class="fas fa-server mr-2"></i>系统管理命令
+                        <i class="fas fa-chevron-down ml-2 transition-transform" id="system-commands-icon"></i>
+                    </h3>
+                    <div class="space-x-2">
+                        <button class="btn btn-sm btn-secondary" onclick="window.location.href='#system-detail'">
+                            <i class="fas fa-external-link-alt mr-1"></i>详细教程
+                        </button>
+                        <button class="btn btn-sm btn-outline" onclick="copyAllCommands('system')">
+                            <i class="fas fa-copy mr-1"></i>复制全部
+                        </button>
+                    </div>
+                </div>
+                <div id="system-commands" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <h4 class="font-semibold mb-3">服务管理</h4>
                         <div class="command-box text-sm">
-# 启动服务
-systemctl start nginx
-# 停止服务
-systemctl stop nginx
-# 查看状态
-systemctl status nginx
-# 设置开机启动
-systemctl enable nginx
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-start">systemctl start nginx</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-start')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-stop">systemctl stop nginx</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-stop')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-status">systemctl status nginx</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-status')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-enable">systemctl enable nginx</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-enable')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div>
                         <h4 class="font-semibold mb-3">用户管理</h4>
                         <div class="command-box text-sm">
-# 添加用户
-useradd username
-# 设置密码
-passwd username
-# 查看用户信息
-id username
-# 删除用户
-userdel -r username
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-useradd">useradd username</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-useradd')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-passwd">passwd username</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-passwd')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-id">id username</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-id')"><i class="fas fa-copy"></i></button>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <code id="cmd-userdel">userdel -r username</code>
+                                    <button class="btn btn-xs btn-ghost" onclick="copyCommand('cmd-userdel')"><i class="fas fa-copy"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -375,7 +426,7 @@ ls -la ~/projects
         <!-- 底部来源 -->
         <footer class="text-center py-8 border-t">
             <p class="text-gray-600">
-                本文来源：<a href="https://github.com/870869624/Golang-Guide/blob/main/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/Linux%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E9%9D%9E%E5%B8%B8%E8%AF%A6%E7%BB%86%EF%BC%89%E4%BB%8E%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.md" 
+                本文来源：<a href="https://blog.csdn.net/leah126/article/details/131558171" 
                           class="link link-primary" 
                           target="_blank">
                     Linux入门教程（非常详细）从零基础入门到精通，看完这一篇就够了
@@ -396,6 +447,161 @@ ls -la ~/projects
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // 展开/收起功能
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                section.style.display = 'none';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+
+        // 复制单个命令
+        function copyCommand(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('命令已复制到剪贴板: ' + text);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                showToast('复制失败，请手动复制');
+            });
+        }
+
+        // 复制所有命令
+        function copyAllCommands(type) {
+            let commands = [];
+            
+            if (type === 'file') {
+                commands = [
+                    'ls -la',
+                    'cd /home/user',
+                    'mkdir -p /path/to/dir',
+                    'cp -r source dest',
+                    'rm -rf directory',
+                    'mv old.txt new.txt'
+                ];
+            } else if (type === 'system') {
+                commands = [
+                    'systemctl start nginx',
+                    'systemctl stop nginx',
+                    'systemctl status nginx',
+                    'systemctl enable nginx',
+                    'useradd username',
+                    'passwd username',
+                    'id username',
+                    'userdel -r username'
+                ];
+            }
+            
+            const allCommands = commands.join('\n');
+            navigator.clipboard.writeText(allCommands).then(() => {
+                showToast(type === 'file' ? '文件操作命令已复制' : '系统管理命令已复制');
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+
+        // 显示提示消息
+        function showToast(message) {
+            // 创建提示框
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded shadow-lg z-50';
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            // 2秒后移除
+            setTimeout(() => {
+                toast.remove();
+            }, 2000);
+        }
+
+        // 跳转到详细页面
+        function goToDetail(type) {
+            const detailPages = {
+                'file': {
+                    title: '文件操作命令详解',
+                    url: '#file-detail',
+                    content: `
+                        <h2>文件操作命令详细教程</h2>
+                        <p>这里将展示文件操作命令的详细说明和高级用法...</p>
+                    `
+                },
+                'system': {
+                    title: '系统管理命令详解',
+                    url: '#system-detail',
+                    content: `
+                        <h2>系统管理命令详细教程</h2>
+                        <p>这里将展示系统管理命令的详细说明和高级配置...</p>
+                    `
+                }
+            };
+            
+            const detail = detailPages[type];
+            if (detail) {
+                // 创建详细内容区域
+                const detailSection = document.createElement('section');
+                detailSection.id = type + '-detail';
+                detailSection.className = 'mb-12 p-6 bg-base-200 rounded-lg';
+                detailSection.innerHTML = `
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold">${detail.title}</h2>
+                        <button class="btn btn-sm btn-ghost" onclick="closeDetail('${type}-detail')">
+                            <i class="fas fa-times"></i> 关闭
+                        </button>
+                    </div>
+                    <div class="prose">
+                        ${detail.content}
+                    </div>
+                `;
+                
+                // 添加到页面
+                const commandsSection = document.getElementById('commands');
+                commandsSection.appendChild(detailSection);
+                
+                // 滚动到详细内容
+                detailSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 关闭详细内容
+        function closeDetail(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.remove();
+            }
+        }
+
+        // 添加键盘快捷键支持
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                // 显示快捷键帮助
+                showToast('快捷键: Ctrl+F 文件命令, Ctrl+S 系统命令');
+            }
+        });
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Linux教程页面已加载完成');
+            
+            // 添加页面统计
+            const stats = {
+                commands: document.querySelectorAll('code').length,
+                sections: document.querySelectorAll('section').length,
+                lastVisit: new Date().toLocaleString()
+            };
+            
+            console.log('页面统计:', stats);
         });
     </script>
 </body>
