@@ -94,7 +94,7 @@ func client(addr string) {
 // ---------- main ----------
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("usage: go run main.go <server|client>")
+		fmt.Println("usage: go run client.go <server|client>")
 		return
 	}
 
