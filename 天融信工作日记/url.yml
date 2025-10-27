@@ -1,0 +1,39 @@
+ClientReqConf:
+  task: 3.1-3.9
+  protocol: http
+  host: 0.0.0.0
+  port: 8888
+  sdmiCfgUrl: /api/v1/agclient/fillConfig/sdmi --
+  systemViewUrl: /api/v1/agclient/report/systemInfoView --
+  systemStatusViewUrl: /api/v1/agclient/report/systemStatusView --
+  topologyViewUrl: /api/v1/agclient/report/topologyView --
+  operationCmdUrl:  /api/v1/agclient/fillCommand/operation
+  updateCmdUrl:  /api/v1/agclient/fillCommand/update
+  operationLogNotifyUrl: /api/v1/agclient/report/operationLogNotify
+  errorLogNotifyUrl: /api/v1/agclient/report/errorLogNotify
+  updateLogNotifyUrl: /api/v1/agclient/report/updateLogNotify
+  eventNotifyUrl:     /api/v1/agclient/report/event -
+  getLoginTokenByUserUrl: /api/v1/agclient/getLoginTokenByUser
+  restoreConfigUrl:       /api/v1/agclient/restoreConfig
+  restorePolicyUrl:       /api/v1/agclient/restorePolicy
+  edr:
+    version: v1
+    queryPolicyParamUrl: /api/v1/agclient/queryPolicyParam
+    edrAssetsUrl:  /api/v1/agclient/report/edrAssets
+    scanPolicyUrl:  /api/v1/agclient/fillPolicy/scan
+    filemonPolicyUrl:  /api/v1/agclient/fillPolicy/filemon
+    behaviorPolicyUrl:  /api/v1/agclient/fillPolicy/behavior
+    browserprotPolicyUrl:  /api/v1/agclient/fillPolicy/browserprot
+    dlmonPolicyUrl:  /api/v1/agclient/fillPolicy/dlmon
+    instmonPolicyUrl:  /api/v1/agclient/fillPolicy/instmon
+    instrusionPolicyUrl:  /api/v1/agclient/fillPolicy/instrusion
+    ipaclPolicyUrl:  /api/v1/agclient/fillPolicy/ipacl
+    ipattackPolicyUrl:  /api/v1/agclient/fillPolicy/ipattack
+    ipblacklistPolicyUrl:  /api/v1/agclient/fillPolicy/ipblacklist
+    ipprotoPolicyUrl:  /api/v1/agclient/fillPolicy/ipproto
+    mailPolicyUrl:  /api/v1/agclient/fillPolicy/mail
+    malsitePolicyUrl:  /api/v1/agclient/fillPolicy/malsite
+    udiskmonPolicyUrl:  /api/v1/agclient/fillPolicy/udiskmon
+    idsPolicyUrl:  /api/v1/agclient/fillPolicy/ids
+    virusEventUrl:  /api/v1/agclient/event/virus
+    singleLoginUrl:  /api/v1/agclient/singleLogin
