@@ -1,0 +1,50 @@
+bff:
+  target: 10.8.227.134:30818
+  timeout: 30
+cbb_asset:
+  target: 10.8.227.134:30580
+  nonblock: true
+  timeout: 30
+cbb_agent:
+  target: 10.8.227.134:30581
+  nonblock: true
+  timeout: 30
+cbb_logminer:
+  target: 10.8.227.134:30582
+  nonblock: true
+  timeout: 30
+consumersvc:
+  target: 10.8.227.134:30828
+  nonblock: true
+  timeout: 30
+ersvc:
+  target: 10.8.227.134:30838
+  nonblock: true
+  timeout: 30
+licensesvc:
+  target: 10.8.227.134:30848
+  nonblock: true
+  timeout: 30
+managersvc:
+  target: 10.8.227.134:30858
+  nonblock: true
+  timeout: 30
+systemsvc:
+  target: 10.8.227.134:30868
+  nonblock: true
+  timeout: 30
+upgradesvc:
+  target: 10.8.227.134:30878
+  nonblock: true
+  timeout: 30
+externalsvc:
+  - name: ersvc
+    target: ersvc:30838
+    timeout: 30
+    nonblock: true
+    method: [ "/ersvc.ersvc/UploadFileEvent"]
+  - name: ngedr
+    target: 10.8.227.134:30888
+    timeout: 30
+    nonblock: true
+    method: [ "/ngedr.ngedr/VirusEventLogUpdate"]

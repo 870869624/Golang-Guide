@@ -1,0 +1,160 @@
+## this cleansvc k8s yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cleansvc-config
+  namespace: sdsp
+data:
+  cleansvc.yaml: |
+    server_name: cleansvc
+    mode: debug
+    ip: 0.0.0.0
+    port: 8888
+    rpcserverconf:
+      name: cleansvc.rpc
+      listenon: 0.0.0.0:8080
+      ## timeout seconds
+      timeout: 30
+    rpc_client:
+      bff:
+        target: common:8080
+        ## timeout seconds
+        timeout: 30
+    ## pprof server
+    #dev_server:
+    #  enable: true
+    #  listen_on: 0.0.0.0:6470
+    logger:
+      level: error
+      ## absolute path
+      path: /home/topsec/data/logs/cleansvc
+    mongo_db:
+      host: mongo:27017/?directConnection=true
+      username: admin
+      password: Cloud@talent123!@#
+    cacheredis:
+      - host: redis:6379
+        type: node
+        pass: Cloud@talent123!@#
+    queue:
+      driver: nats
+      brokers:
+        - nats:4222
+    middlewares:
+      ctx:
+        enable: true
+
+ # 添加新的配置文件
+  topology_view.conf: |    # 这里放置 topology_view.conf 文件的内容
+    {
+      "topology": {
+        "version": "1.0",
+        "nodes": []
+      }
+    }
+  
+  system_view.conf: |    # 这里放置 system_view.conf 文件的内容
+  
+  system_status.conf: |    # 这里放置 system_status.conf 文件的内容
+  
+  # 其他需要的配置文件...
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cleansvc
+  namespace: sdsp
+  labels:
+    app: cleansvc
+spec:
+  selector:
+    app: cleansvc
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8888
+      targetPort: 8888
+    - name: rpc
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cleansvc
+  namespace: sdsp
+  labels:
+    app: cleansvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cleansvc
+  template:
+    metadata:
+      labels:
+        app: cleansvc
+    spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - common
+              topologyKey: kubernetes.io/hostname
+#      imagePullSecrets:
+#        - name: dockerhub-secret
+      containers:
+        - name: cleansvc
+          imagePullPolicy: IfNotPresent
+#          imagePullPolicy: Always
+          image: docker-hub.cloud.top/aiop/cleansvc-arm64:1.0.0
+          env:
+            - name: TZ
+              value: Asia/Shanghai
+            - name: LOGGER_LEVEL
+              value: error
+          volumeMounts:
+            - name: timezone
+              mountPath: /etc/localtime
+              readOnly: true
+            - name: config
+              mountPath: /home/topsec/config-map/server/cleansvc
+            - name: soap-config  # 新增挂载点
+              mountPath: /var/config-map/soap/  # 按照您代码中使用的路径
+            - name: data
+              mountPath: /home/topsec/data/cleansvc
+      volumes:
+        - name: timezone
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+        - name: config
+          configMap:
+            name: cleansvc-config
+            items:
+              - key: cleansvc.yaml
+                path: cleansvc.yaml
+        
+        # 新增 SOAP 配置文件的卷
+        - name: soap-config
+          configMap:
+            name: cleansvc-config
+            items:
+              - key: topology_view.conf
+                path: topology_view.conf
+              - key: system_view.conf
+                path: system_view.conf
+              - key: system_status.conf
+                path: system_status.conf
+        # 其他需要的配置文件
+        
+        - name: data
+          hostPath:
+            path: /home/topsec/data/cleansvc
