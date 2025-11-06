@@ -320,3 +320,176 @@ stopsignal=KILL               ; 用来杀死进程的信号
 stopwaitsecs=10               ; 发送SIGKILL前的等待时间
 redirect_stderr=true          ; 重定向stderr到stdout
 ```
+
+
+# 懒人版教程
+
+下面给出一份「从 0 到 1」在 Ubuntu 上安装并配置 Supervisor 守护进程的完整流程，涵盖 apt 安装、编写自己的守护程序配置、常用运维命令、开机自启验证以及卸载方法。全部命令可直接复制粘贴。系统版本以 Ubuntu 20.04/22.04 为例，16.04/18.04 同样适用。
+
+---
+
+### 1. 安装 Supervisor
+```bash
+sudo apt update
+sudo apt install -y supervisor
+```
+
+安装完成后，systemd 服务已经自动注册并设为开机自启，可检查状态：
+```bash
+sudo systemctl status supervisor
+```
+
+---
+
+### 2. 目录结构速览
+- 主配置文件：`/etc/supervisor/supervisord.conf`  
+- 子进程配置目录：`/etc/supervisor/conf.d/*.conf`（默认已 include）  
+- 日志目录：`/var/log/supervisor/`  
+- 管理命令：`supervisorctl`
+
+---
+
+### 3. 为你的程序写一份守护配置
+假设要把 `/opt/app.py` 这个 Python 脚本作为常驻服务，步骤如下：
+
+#### 3.1 新建配置文件
+```bash
+sudo nano /etc/supervisor/conf.d/app.conf
+```
+
+#### 3.2 写入最小可用模板
+```ini
+[program:myapp]
+command=/usr/bin/python3 /opt/app.py
+directory=/opt
+user=ubuntu                 ; 以哪个用户身份运行
+autostart=true              ; 随 supervisor 启动
+autorestart=true            ; 异常退出后自动重启
+startretries=3
+stdout_logfile=/var/log/supervisor/myapp.log
+stderr_logfile=/var/log/supervisor/myapp_err.log
+environment=PATH="/usr/bin"
+```
+
+#### 3.3 重载配置并启动
+```bash
+sudo supervisorctl reread          # 读取新配置
+sudo supervisorctl update          # 加载并启动/重启有变动的程序
+sudo supervisorctl status myapp    # 查看状态
+```
+
+---
+
+### 4. 常用运维命令
+```bash
+sudo supervisorctl start|stop|restart 程序名
+sudo supervisorctl reload            # 完全重启 supervisor
+sudo supervisorctl shutdown          # 关闭 supervisor 主进程
+```
+
+---
+
+### 5. 开机自启验证（可选）
+Ubuntu ≥16.04 使用 systemd，安装包已自带。可再执行一次：
+```bash
+sudo systemctl enable supervisor
+```
+重启机器后确认：
+```bash
+sudo systemctl is-enabled supervisor  # enabled
+sudo supervisorctl status             # 子进程应全部 ONLINE
+```
+
+---
+
+### 6. 日志排错
+- 子进程标准输出/错误：上面配置里指定的 `stdout_logfile` / `stderr_logfile`  
+- supervisor 自身日志：`/var/log/supervisor/supervisord.log`  
+- 权限不足导致启动失败：把 `user=` 改成有权限的用户，或调整目录权限  
+- 配置写错：先 `supervisorctl reread`，会提示哪一行出错
+
+---
+
+### 7. 卸载（如不再需要）
+```bash
+sudo systemctl stop supervisor
+sudo systemctl disable supervisor
+sudo apt purge -y supervisor
+sudo rm -rf /etc/supervisor /var/log/supervisor
+```
+
+---
+
+### 8. 一键脚本（懒人版）
+把下面内容保存为 `install_supervisor.sh` 并 `chmod +x` 后直接运行即可安装并创建一个示例服务：
+
+```bash
+#!/usr/bin/env bash
+set -e
+apt update && apt install -y supervisor
+cat >/etc/supervisor/conf.d/demo.conf <<'EOF'
+[program:demo]
+command=/bin/bash -c 'while true; do echo "I am alive at $(date)"; sleep 10; done'
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/supervisor/demo.log
+EOF
+supervisorctl reread && supervisorctl update
+supervisorctl status demo
+```
+
+---
+
+至此，Supervisor 已安装完成，你的程序也已被守护。后续只需把 `command` 换成真实业务启动命令即可。祝使用顺利！
+
+# 常用项目模板
+
+下面给出一段可直接放到 `/etc/supervisor/conf.d/uefun.conf` 的最小可用模板，把你在 `start()` 函数里显式指定的 **启动命令、工作目录、日志路径、环境变量** 全部固化进去，真正做到“脚本零依赖，supervisor 一键守护”。
+
+```ini
+; /etc/supervisor/conf.d/uefun.conf
+[program:uefun]
+; === 1. 启动命令（对应脚本里的 nohup ./uefun -c config/test-config）===
+command=/www/wwwroot/api.uefun.net/uefun -c config/test-config
+
+; === 2. 工作目录（对应 cd /www/wwwroot/api.uefun.net）===
+directory=/www/wwwroot/api.uefun.net
+
+; === 3. 运行用户，按需修改 ===
+user=ubuntu
+
+; === 4. 日志文件（直接复用脚本里定义的 /tmp/uefun_logs/{start,error}.log）===
+stdout_logfile=/tmp/uefun_logs/start.log
+stderr_logfile=/tmp/uefun_logs/error.log
+; 日志文件大于 50 MB 自动轮转，保留 5 份
+stdout_logfile_maxbytes=50MB
+stdout_logfile_backups=5
+stderr_logfile_maxbytes=50MB
+stderr_logfile_backups=5
+
+; === 5. 异常退出后自动重启 ===
+autostart=true
+autorestart=true
+startretries=3
+
+; === 6. 环境变量（如脚本里依赖 PATH 等）===
+environment=PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+; === 7. 进程号/信号 ===
+; 默认 SIGTERM 即可实现脚本里 kill -15 的优雅停止
+stopsignal=TERM
+stopwaitsecs=10
+```
+
+保存后执行：
+
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl status uefun
+```
+
+此时  
+- 你的应用已脱离原 `start()` 函数，由 supervisor 守护；  
+- 日志仍写在 `/tmp/uefun_logs/*.log`，与原脚本完全兼容；  
+- `supervisorctl start|stop|restart uefun` 即可代替原来的 `sh xxx.sh start|stop|restart`。
