@@ -49,6 +49,17 @@ docker run -d \
   -v /data/mysql/logs:/var/log/mysqld \
   -v /data/mysql/conf/my.cnf:/etc/mysql/my.cnf \
   mysql:latest
+
+或者
+
+docker run -d \
+  --name mysql-light \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=123456 \  # root 密码
+  -e MYSQL_DATABASE=testdb \        # 初始化数据库
+  -v mysql-data:/var/lib/mysql \    # 数据持久化（避免容器删除后数据丢失）
+  --restart unless-stopped \        # 开机自启
+  mysql:8.0-alpine（本地镜像标签）
 ```
 
 解释：
