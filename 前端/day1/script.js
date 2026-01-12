@@ -14,3 +14,12 @@ html += `</ul>`;
 function displayDate() {
     document.getElementById("myText2").innerHTML = html;
 }
+
+function Counter() {
+  new pn = function() { // 箭头函数：这里的this指向定义时所在对象（即Counter实例）
+    this.count = 0;
+    setInterval(() => {
+      this.count++; // 正确！这里的this指向Counter实例
+    }, 1000);
+  }
+}
