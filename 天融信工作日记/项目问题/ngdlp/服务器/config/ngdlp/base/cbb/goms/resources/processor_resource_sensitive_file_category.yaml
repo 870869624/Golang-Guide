@@ -1,0 +1,7 @@
+# 终端连接日志消息处理器资源配置
+processor_resources:
+    - label: "processor_resource_sensitive_file_category"
+      bloblang: |
+       meta catalog   = "sensitive_file_category"
+       root           = this
+       root.message_type           = deleted()

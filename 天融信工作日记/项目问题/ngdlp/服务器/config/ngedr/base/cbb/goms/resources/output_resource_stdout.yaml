@@ -1,0 +1,4 @@
+# 标准输出资源配置
+output_resources:
+  - label: "output_resource_stdout"
+    stdout: {}

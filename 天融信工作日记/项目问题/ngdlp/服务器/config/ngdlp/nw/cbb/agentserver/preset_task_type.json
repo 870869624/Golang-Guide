@@ -1,0 +1,191 @@
+[
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reboot",
+    "name": "重启",
+    "order": 102,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "shutdown",
+    "name": "关机",
+    "order": 104,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "dispatch_file",
+    "name": "文件分发",
+    "order": 100,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "text": "string",
+      "saveto": "string",
+      "custom_dir": "string",
+      "launch": "bool",
+      "background": "bool",
+      "cmdline": "string",
+      "args": "string",
+      "file_id": "string",
+      "file_name": "string"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "update",
+    "name": "升级",
+    "order": 106,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reconnect",
+    "name": "重新连接",
+    "order": 103,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "message",
+    "name": "发布消息",
+    "order": 101,
+    "param": {
+      "text": "string",
+      "duration": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "agent_module_manager",
+    "name": "客户端组件运维",
+    "order": 1000,
+    "param": {
+      "operate": "string",
+      "options": {
+        "operate": [
+          "install",
+          "uninstall",
+          "restart",
+          "enable",
+          "disable"
+        ]
+      },
+      "module": "array"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "data_scan",
+    "name": "数据扫描",
+    "order": 1,
+    "param": {
+      "options": {
+        "scan_directory": [
+          "full_scan",
+          "custom_scan"
+        ],
+        "scan_speed": [
+          "high",
+          "mid",
+          "low",
+          "custom"
+        ]
+      },
+      "scan_object": "array",
+      "specify_ext": {
+        "enable": "bool",
+        "value": "string"
+      },
+      "scan_directory": "string",
+      "custom_scan": {
+        "custom_path": "string"
+      },
+      "scan_speed": "string",
+      "custom_scan_speed": {
+        "cpu": "int",
+        "mem": "int"
+      },
+      "idle_time_exec": {
+        "enable": "bool",
+        "value": "string"
+      }
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "uninstall",
+    "name": "卸载客户端",
+    "order": 105,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "delete_sensitive_file",
+    "name": "敏感文件删除",
+    "order": 2,
+    "param": {
+      "options": {
+        "way": [
+          "remind",
+          "direct"
+        ]
+      },
+      "way": "string",
+      "data": "array"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "isolated_sensitive_file",
+    "name": "敏感文件隔离",
+    "order": 3,
+    "param": {
+      "data": "array"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "recover_sensitive_file",
+    "name": "敏感文件隔离区恢复",
+    "order": 4,
+    "param": {
+      "data": "array"
+    }
+  }
+]

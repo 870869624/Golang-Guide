@@ -1,0 +1,17 @@
+processor_resources:
+  - label: "processor_resource_alarm_event_log"
+    bloblang: |
+      meta catalog   = "alarm_event_log"
+      root           = this
+      root.alarm_level              = match {
+         this.exists("alarm_level") => this.alarm_level.int32(),
+         _ => 0.int32(),
+      }
+      root.logged_at              = match {
+         this.exists("logged_at") => this.logged_at.int64(),
+         _ => 0.int64(),
+      }
+      root.merge_count              = match {
+         this.exists("merge_count") => this.merge_count.int64(),
+         _ => 0.int64(),
+      }

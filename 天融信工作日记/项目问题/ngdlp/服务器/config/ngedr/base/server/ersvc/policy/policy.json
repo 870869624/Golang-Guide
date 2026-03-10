@@ -1,0 +1,340 @@
+{
+  "config": {
+    "additional_information": {
+      "power": false
+    },
+    "additional_information_control": {
+      "edit_need_confirm": false,
+      "install_need_confirm": true,
+      "power": true,
+      "prohibit_edit": true,
+      "reinstall_options": "use_server"
+    },
+    "admin": {
+      "email": "",
+      "name": "admin",
+      "phone": "",
+      "power": true
+    },
+    "asset_frequency": {
+      "cron": {
+        "crontab": {
+          "days": [
+            1,
+            2
+          ],
+          "every": "everymonth",
+          "time_at": [
+            "08:20-09:20"
+          ],
+          "weekday": []
+        },
+        "description": "空闲时间段定时清理",
+        "enable": false,
+        "options": {
+          "every": [
+            "everyday",
+            "everyweek",
+            "everymonth"
+          ],
+          "weekday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "description": "资产清点频率(xxx分钟/次)",
+      "power": true,
+      "value": 60
+    },
+    "client_display": {
+      "power": false,
+      "shortcut": true,
+      "tray": true
+    },
+    "client_login": {
+      "allow_auto_login": true,
+      "allow_remember_password": true,
+      "auto_login_current": true,
+      "binding": false,
+      "limit_login_count": false,
+      "power": false,
+      "update_password_cron": false
+    },
+    "client_resource_usage": {
+      "cpu_exceeding_threshold": 1,
+      "cpu_threshold": 1,
+      "exceeding_threshold_when": {
+        "options": [
+          "report",
+          "disable_client",
+          "close_client"
+        ],
+        "value": "report"
+      },
+      "memory_exceeding_threshold": 1,
+      "memory_threshold": 20,
+      "monitor_frequency": 1,
+      "power": false
+    },
+    "client_state_collect": {
+      "collect_interval": 10,
+      "power": true,
+      "report_interval": 30
+    },
+    "data_level": {
+      "data": [],
+      "power": true
+    },
+    "devmon": {
+      "disable_bluetooth": false,
+      "disable_cdrom": false,
+      "disable_printer": false,
+      "disable_usb": false,
+      "power": false,
+      "whitelist": []
+    },
+    "edr_blackwhite_list": {
+      "blackwhite_group": [],
+      "power": true,
+      "whitelist_hash_group": [],
+      "whitelist_path_group": []
+    },
+    "edr_filemon": {
+      "backup_to_isolation": true,
+      "compress_file": {
+        "enable": false,
+        "max_level": {
+          "enable": false,
+          "value": 8
+        },
+        "skip_file_size": {
+          "enable": false,
+          "unit": "MB",
+          "value": 100
+        }
+      },
+      "handle_mode": "auto",
+      "handle_mode_prompt_action": {
+        "enable": true,
+        "handle_mode": "auto",
+        "unresponsive_seconds": 30
+      },
+      "options": {
+        "handle_mode": [
+          "auto",
+          "prompt",
+          "noop"
+        ],
+        "scan_trigger": [
+          "executed",
+          "changed",
+          "all"
+        ]
+      },
+      "power": false,
+      "scan_exclusion_action": {
+        "enable": false,
+        "value": ""
+      },
+      "scan_files_ext": {
+        "enable": false,
+        "options": {
+          "scan_type": [
+            "include",
+            "exclude"
+          ]
+        },
+        "scan_type": "include",
+        "value": ""
+      },
+      "scan_mount": false,
+      "scan_skip_file": {
+        "enable": false,
+        "unit": "MB",
+        "value": 500
+      },
+      "scan_trigger": "executed"
+    },
+    "edr_scan": {
+      "backup_to_isolation": true,
+      "compress_file": {
+        "enable": false,
+        "max_level": {
+          "enable": false,
+          "value": 8
+        },
+        "skip_file_size": {
+          "enable": false,
+          "unit": "MB",
+          "value": 100
+        }
+      },
+      "engine": [
+        "heuristic_engine"
+      ],
+      "handle_mode": "auto",
+      "handle_mode_prompt_action": {
+        "enable": false,
+        "handle_mode": "auto",
+        "unresponsive_seconds": 30
+      },
+      "ignore_trusted": false,
+      "isolation": {
+        "no_enough_space": "only_mon",
+        "prohibit_recover": false,
+        "size": 50,
+        "unit": "GB"
+      },
+      "options": {
+        "engine": [
+          "heuristic_engine",
+          "gene_engine",
+          "virtual_sandbox_engine",
+          "ai_engine"
+        ],
+        "handle_mode": [
+          "auto",
+          "prompt",
+          "noop"
+        ],
+        "no_enough_space": [
+          "only_mon",
+          "overwrite",
+          "delete"
+        ],
+        "scan_speed": [
+          "high",
+          "mid",
+          "low"
+        ]
+      },
+      "power": true,
+      "scan_files_ext": {
+        "enable": false,
+        "options": {
+          "scan_type": [
+            "include",
+            "exclude"
+          ]
+        },
+        "scan_type": "include",
+        "value": ""
+      },
+      "scan_mount": false,
+      "scan_skip_file": {
+        "enable": false,
+        "unit": "MB",
+        "value": 500
+      },
+      "scan_speed": "mid",
+      "virus_sample_reporting": true
+    },
+    "exception_report": {
+      "auto": false,
+      "power": true
+    },
+    "externalmon": {
+      "count": 20,
+      "illegal": {
+        "all": {
+          "flag": "0",
+          "text": "您当前同时连接内外网"
+        },
+        "internet": {
+          "flag": "0",
+          "text": "您当前在外网中"
+        }
+      },
+      "internetArr": [],
+      "interval": 5,
+      "local3": {
+        "item": []
+      },
+      "power": false,
+      "whitelist": {
+        "enable": true,
+        "local": {
+          "item": []
+        },
+        "output": {
+          "item": []
+        }
+      }
+    },
+    "heart_time": {
+      "power": true,
+      "value": 60
+    },
+    "host_resource_usage": {
+      "cpu_exceeding_threshold": 1,
+      "cpu_threshold": 10,
+      "exceeding_threshold_when": {
+        "options": [
+          "report",
+          "disable_client",
+          "close_client"
+        ],
+        "value": "report"
+      },
+      "memory_exceeding_threshold": 1,
+      "memory_threshold": 100,
+      "monitor_frequency": 1,
+      "power": false
+    },
+    "installer_set": {
+      "power": false
+    },
+    "license": {
+      "power": false
+    },
+    "log": {
+      "days": 5,
+      "power": false,
+      "size": 10,
+      "unit": "GB"
+    },
+    "log_schema": {
+      "power": false
+    },
+    "log_type": {
+      "data": [],
+      "power": true
+    },
+    "network_location": {
+      "data": [],
+      "float": false,
+      "power": false,
+      "right_menu": false,
+      "switch_network": false
+    },
+    "popup": {
+      "power": true,
+      "undisturbed": false
+    },
+    "self_protect": {
+      "leave_captcha": true,
+      "offline_gt_days": 180,
+      "power": true,
+      "uninstall_captcha": true
+    },
+    "server": {
+      "config": [],
+      "power": true
+    },
+    "threat_intelligence": {
+      "change_version": "",
+      "power": true
+    },
+    "upgrade": {
+      "interval": 60,
+      "power": true,
+      "unit": "minute"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "646323fd0a5b017d15e52c29",
+    "role_name": "tenant_admin",
+    "role_type": "preset",
+    "role_desc": "租户管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "63282f68277834fefd3a66fb",
+    "role_name": "user_aiop_admin",
+    "role_type": "preset",
+    "role_desc": "超级管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "6463254c2a151f6264303255",
+    "role_name": "tenant_aiop_general",
+    "role_type": "preset",
+    "role_desc": "普通租户",
+    "mode": "",
+    "client_id": ""
+  }
+]

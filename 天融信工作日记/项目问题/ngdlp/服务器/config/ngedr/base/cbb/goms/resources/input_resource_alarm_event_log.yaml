@@ -1,0 +1,8 @@
+input_resources:
+  - label: "input_resource_alarm_event_log"
+    nats:
+      urls:
+        - "nats:4222"
+      subject: "aiop.alarm_event_log"
+      nak_delay: 1m
+      prefetch_count: 10

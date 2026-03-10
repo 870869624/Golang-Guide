@@ -1,0 +1,68 @@
+bff:
+  target: 10.8.27.151:30818
+#  target: 10.8.227.188:8180
+cbb_asset:
+  target: 10.8.27.151:30580
+#  target: 10.34.11.191:8081
+  #  target: 10.8.227.188:5800
+  nonblock: true
+  timeout: 50000
+cbb_agent:
+  target: 10.8.27.151:30581
+#  target: 10.34.11.191:8080
+  #  target: 10.8.227.188:5801
+  nonblock: true
+cbb_logminer:
+  target: 10.8.27.151:30582
+  #  target: 10.8.227.188:5802
+  nonblock: true
+agentsvc:
+  target: 0.0.0.0:8080
+  nonblock: true
+consumersvc:
+  target: 10.8.27.151:30828
+  nonblock: true
+ersvc:
+  #  target: 10.8.27.151:8380
+  target: 0.0.0.0:30838
+  nonblock: true
+  timeout: 500000
+licensesvc:
+  target: 10.8.27.151:30848
+  #  target: 10.8.227.188:8480
+  nonblock: true
+managersvc:
+  target: 10.8.27.151:30858
+  #  target: 10.8.227.188:8580
+  nonblock: true
+systemsvc:
+  target: 10.8.27.151:30868
+  #  target: 10.8.227.188:8680
+  nonblock: true
+upgradesvc:
+  target: 10.8.27.151:30878
+  nonblock: true
+externalsvc:
+  ersvc:
+    name: ersvc
+    target: 10.8.27.151:30838
+    timeout: 600
+    nonblock: true
+    keepalive_time: 600
+    method: [ "/ersvc.ersvc/UploadFileEvent","/ersvc.ersvc/AuditLogUpdate" ]
+  ngdlp:
+    name: ngdlp
+    target: 10.8.27.151:30888
+    timeout: 600
+    nonblock: true
+    keepalive_time: 600
+    method: ["/ngdlp.ngdlp/PolicyConvert", "/ngdlp.ngdlp/UploadFileSensitive",
+             "/ngdlp.ngdlp/GetRuleBaseFileInfo", "/ngdlp.ngdlp/DownloadRuleBaseFile",
+             "/ngdlp.ngdlp/DownloadSensitiveFile", "/ngdlp.ngdlp/DownloadCenterFile"]
+  ngedr:
+    name: ngedr
+    target: 10.8.27.151:30888
+    timeout: 600
+    nonblock: true
+    keepalive_time: 600
+    method: [ "/ngedr.ThreatFile/ThreatFileUpdate"]

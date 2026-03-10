@@ -1,0 +1,9 @@
+input:
+  resource: input_resource_alarm_event_log
+
+pipeline:
+  processors:
+    - resource: processor_resource_alarm_event_log
+
+output:
+  resource: output_resource_clickhouse

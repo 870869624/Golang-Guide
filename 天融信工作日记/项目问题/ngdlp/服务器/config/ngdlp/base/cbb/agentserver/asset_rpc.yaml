@@ -1,0 +1,21 @@
+Name: asset.rpc
+ListenOn: 0.0.0.0:8080
+Timeout: 30
+Log:
+  Level: error
+  Path: /home/topsec/data/logs/agentserver
+CacheRedis:
+  - Host: redis:7379
+    Pass: TopsecCdu_1130
+Database:
+  Driver: mongo
+  Host: mongodb:27017
+  Username: root
+  Password: TopsecCdu_1130
+  DBName: asset
+  IndexEnabled: true
+Queue:
+  Driver: nats
+  Brokers:
+    - nats:4222
+  Stream: aiop

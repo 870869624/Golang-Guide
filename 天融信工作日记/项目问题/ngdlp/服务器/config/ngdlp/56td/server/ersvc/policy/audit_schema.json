@@ -1,0 +1,5959 @@
+{
+  "schemas": [
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "基础字段",
+      "description_en": "",
+      "identifier": "all",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "product",
+          "type": "string",
+          "description": "产品",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_event",
+          "type": "string",
+          "description": "告警事件",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_event_zh",
+          "type": "string",
+          "description": "告警事件",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_level",
+          "type": "int32",
+          "description": "告警等级",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_content",
+          "type": "string",
+          "description": "告警内容",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "告警时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "message",
+          "type": "bool",
+          "description": "消息通知",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "email",
+          "type": "bool",
+          "description": "邮件告警",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "终端告警",
+      "description_en": "",
+      "identifier": "alarm",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "alarm_event",
+          "type": "string",
+          "description": "告警事件",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_event_zh",
+          "type": "string",
+          "description": "告警事件",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_level",
+          "type": "int32",
+          "description": "告警等级",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "alarm_content",
+          "type": "string",
+          "description": "告警内容",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "告警时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "message",
+          "type": "bool",
+          "description": "消息通知",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "email",
+          "type": "bool",
+          "description": "邮件告警",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "管理中心告警",
+      "description_en": "",
+      "identifier": "alarm_system",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "errmsg",
+          "type": "string",
+          "description": "升级失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "err",
+          "type": "int32",
+          "description": "升级状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "auto",
+          "type": "int32",
+          "description": "升级方式",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_num",
+          "type": "int64",
+          "description": "升级文件个数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "parent_id",
+          "type": "string",
+          "description": "父级ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 1
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "description": "下载地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "dstfn",
+          "type": "string",
+          "description": "目标文件",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "product",
+          "type": "string",
+          "description": "版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "new_product",
+          "type": "string",
+          "description": "新版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        }
+      ],
+      "description": "升级",
+      "description_en": "",
+      "identifier": "upgrade",
+      "product": "DEFAULT",
+      "class": 1
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "asset_type",
+          "type": "string",
+          "description": "资产类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "change_item",
+          "type": "string",
+          "description": "变更项",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "change_type",
+          "type": "string",
+          "description": "变更类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "asset_category",
+          "type": "string",
+          "description": "统计类别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "original_configuration",
+          "type": "string",
+          "description": "原配置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "new_configuration",
+          "type": "string",
+          "description": "新配置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "资产变更",
+      "description_en": "",
+      "identifier": "asset_change",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "主机资源占用监控",
+      "description_en": "",
+      "identifier": "host_resource_usage",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "客户端资源占用监控",
+      "description_en": "",
+      "identifier": "client_resource_usage",
+      "product": "DEFAULT",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_channel",
+          "type": "string",
+          "description": "外发通道",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_proc",
+          "type": "string",
+          "description": "外发程序",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_action",
+          "type": "string",
+          "description": "外发操作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_result",
+          "type": "string",
+          "description": "外发结果",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_reason",
+          "type": "string",
+          "description": "外发原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "outgoing_channel_name",
+          "type": "string",
+          "description": "外发通道名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "description": "文件路径",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_size",
+          "type": "int64",
+          "description": "文件大小",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "description": "文件名",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "md5",
+          "type": "string",
+          "description": "文件md5",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sha1",
+          "type": "string",
+          "description": "文件sha1",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_tag",
+          "type": "string",
+          "description": "规则标签",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_name",
+          "type": "string",
+          "description": "规则名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_category",
+          "type": "string",
+          "description": "数据分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_level",
+          "type": "int64",
+          "description": "数据分级",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "update_type",
+          "type": "string",
+          "description": "分级分类更新类型",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sensitive_file_id",
+          "type": "string",
+          "description": "敏感文件ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sensitive_context",
+          "type": "string",
+          "description": "敏感信息",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sensitive_context_suffix_attr",
+          "type": "string",
+          "description": "敏感信息关键字",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "hit_keywords",
+          "type": "string",
+          "description": "命中关键字和次数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "isolation_result",
+          "type": "string",
+          "description": "隔离结果",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "err_msg",
+          "type": "string",
+          "description": "误报原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "外发管控",
+      "description_en": "",
+      "identifier": "dlp-outgoing",
+      "product": "DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_category",
+          "type": "string",
+          "description": "数据分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_level",
+          "type": "int64",
+          "description": "数据级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "description": "文件路径",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "description": "文件名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "md5",
+          "type": "string",
+          "description": "文件md5",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sha1",
+          "type": "string",
+          "description": "文件sha1",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "description": "操作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "文件操作监控",
+      "description_en": "",
+      "identifier": "dlp-operatemon",
+      "product": "DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "description": "文件路径",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_size",
+          "type": "int64",
+          "description": "文件大小",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "description": "文件名",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "md5",
+          "type": "string",
+          "description": "文件md5",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sha1",
+          "type": "string",
+          "description": "文件sha1",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_tag",
+          "type": "string",
+          "description": "规则标签",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_name",
+          "type": "string",
+          "description": "规则名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_category",
+          "type": "string",
+          "description": "数据分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hit_count",
+          "type": "int32",
+          "description": "命中次数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "数据分类",
+      "description_en": "",
+      "identifier": "dlp-category",
+      "product": "DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "define_level",
+          "type": "string",
+          "description": "定级方式",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "description": "文件路径",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_size",
+          "type": "int64",
+          "description": "文件大小",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "description": "文件名",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "md5",
+          "type": "string",
+          "description": "文件md5",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sha1",
+          "type": "string",
+          "description": "文件sha1",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_tag",
+          "type": "string",
+          "description": "规则标签",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "rule_name",
+          "type": "string",
+          "description": "规则名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_category",
+          "type": "string",
+          "description": "数据分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "data_level",
+          "type": "int64",
+          "description": "数据分级",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "数据分级",
+      "description_en": "",
+      "identifier": "dlp-level",
+      "product": "DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mon_type",
+          "type": "string",
+          "description": "监控类型",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "start_at",
+          "type": "int64",
+          "description": "开始时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "end_at",
+          "type": "int64",
+          "description": "结束时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "probe_type",
+          "type": "string",
+          "description": "探测方式",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "probe_ip",
+          "type": "string",
+          "description": "探测IP",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "duration",
+          "type": "int64",
+          "description": "消耗时长(秒)",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "network_name",
+          "type": "string",
+          "description": "网络名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "network_card_mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "network_card_name",
+          "type": "string",
+          "description": "网卡名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "network_card_type",
+          "type": "string",
+          "description": "网卡类型",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "网络连接监控",
+      "description_en": "",
+      "identifier": "externalmon",
+      "product": "EDR,DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "dev_name",
+          "type": "string",
+          "description": "设备名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "dev_type",
+          "type": "string",
+          "description": "设备类型",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "dev_id",
+          "type": "string",
+          "description": "设备ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "description": "操作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "终端外设管理",
+      "description_en": "",
+      "identifier": "devmon",
+      "product": "EDR,DLP",
+      "class": 0
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_found_num",
+          "type": "int64",
+          "description": "发现文件数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "file_num",
+          "type": "int64",
+          "description": "扫描文件数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "duration",
+          "type": "int64",
+          "description": "扫描时长",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "start_at",
+          "type": "int64",
+          "description": "扫描开始时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "end_at",
+          "type": "int64",
+          "description": "扫描结束时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "parent_id",
+          "type": "string",
+          "description": "父级ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 1
+        },
+        {
+          "name": "file_name",
+          "type": "string",
+          "description": "文件名",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "file_path",
+          "type": "string",
+          "description": "文件路径",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "file_size",
+          "type": "int64",
+          "description": "文件大小",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "scan_at",
+          "type": "int64",
+          "description": "文件扫描时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "data_category",
+          "type": "string",
+          "description": "数据分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "data_level",
+          "type": "int64",
+          "description": "数据分级",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "rule_tag",
+          "type": "string",
+          "description": "规则标签",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "rule_name",
+          "type": "string",
+          "description": "规则名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "md5",
+          "type": "string",
+          "description": "MD5",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "sha1",
+          "type": "string",
+          "description": "SHA1",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "sensitive_context",
+          "type": "string",
+          "description": "敏感信息",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "sensitive_context_suffix_attr",
+          "type": "string",
+          "description": "敏感信息关键字属性",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 1
+        },
+        {
+          "name": "hit_keywords",
+          "type": "string",
+          "description": "命中关键字和次数",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 1
+        },
+        {
+          "name": "policy_name",
+          "type": "string",
+          "description": "命中策略",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 2
+        }
+      ],
+      "description": "数据扫描",
+      "description_en": "",
+      "identifier": "dlp-scan",
+      "product": "DLP",
+      "class": 1
+    },
+    {
+      "fields": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "日志ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_type",
+          "type": "string",
+          "description": "日志类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logged_at",
+          "type": "int64",
+          "description": "日志时间",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "logging_at",
+          "type": "int64",
+          "description": "日志入库时间",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_id",
+          "type": "string",
+          "description": "终端ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_ip",
+          "type": "string",
+          "description": "终端IP",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "agent_version",
+          "type": "string",
+          "description": "终端版本",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "description": "物理位置",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "mac",
+          "type": "string",
+          "description": "MAC地址",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_id",
+          "type": "string",
+          "description": "部门ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "group_name",
+          "type": "string",
+          "description": "部门名称",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "hostname",
+          "type": "string",
+          "description": "计算机名",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "principal_name",
+          "type": "string",
+          "description": "责任人",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_id",
+          "type": "string",
+          "description": "关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_type",
+          "type": "string",
+          "description": "关联类型",
+          "description_en": "",
+          "required": true,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "related_name",
+          "type": "string",
+          "description": "关联名称",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "sup",
+          "type": "bool",
+          "description": "上级触发",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "tenant_id",
+          "type": "string",
+          "description": "租户ID",
+          "description_en": "",
+          "required": true,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_class",
+          "type": "int32",
+          "description": "日志分类",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "log_level",
+          "type": "int32",
+          "description": "日志级别",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "description": "事件描述",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "platform",
+          "type": "string",
+          "description": "上报平台",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "attach_file_id",
+          "type": "string",
+          "description": "附件关联ID",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": true,
+          "class": 0
+        },
+        {
+          "name": "defense_type",
+          "type": "string",
+          "description": "模块",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": true,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "reason",
+          "type": "string",
+          "description": "失败原因",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "handle",
+          "type": "string",
+          "description": "处理动作",
+          "description_en": "",
+          "required": false,
+          "enumerable": false,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "description": "处理状态",
+          "description_en": "",
+          "required": false,
+          "enumerable": true,
+          "showable": false,
+          "hidden": false,
+          "class": 0
+        }
+      ],
+      "description": "截屏管控",
+      "description_en": "",
+      "identifier": "dlp-screenshot",
+      "product": "DLP",
+      "class": 0
+    }
+  ],
+  "enums": [
+    {
+      "field": "log_type",
+      "items": [
+        {
+          "value": "upgrade",
+          "belong_to": "other",
+          "translated": "升级",
+          "translated_en": "upgrade",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "asset_change",
+          "belong_to": "other",
+          "translated": "资产变更",
+          "translated_en": "asset changed",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "host_resource_usage",
+          "belong_to": "other",
+          "translated": "主机资源占用监控",
+          "translated_en": "host resource usage",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "client_resource_usage",
+          "belong_to": "other",
+          "translated": "客户端资源占用监控",
+          "translated_en": "client resource usage",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "dlp-category",
+          "belong_to": "dlp_data_category",
+          "translated": "数据分类",
+          "translated_en": "data category",
+          "product": "DLP"
+        },
+        {
+          "value": "dlp-level",
+          "belong_to": "dlp_data_category",
+          "translated": "数据分级",
+          "translated_en": "data level",
+          "product": "DLP"
+        },
+        {
+          "value": "dlp-scan",
+          "belong_to": "dlp_data_category",
+          "translated": "数据扫描",
+          "translated_en": "data scan",
+          "product": "DLP"
+        },
+        {
+          "value": "dlp-outgoing",
+          "belong_to": "dlp_data_control",
+          "translated": "外发管控",
+          "translated_en": "outgoing control",
+          "product": "DLP"
+        },
+        {
+          "value": "dlp-operatemon",
+          "belong_to": "dlp_data_control",
+          "translated": "文件操作监控",
+          "translated_en": "file operate mon",
+          "product": "DLP"
+        },
+        {
+          "value": "externalmon",
+          "belong_to": "system_control",
+          "translated": "网络连接监控",
+          "translated_en": "networkmon",
+          "product": "EDR,DLP"
+        },
+        {
+          "value": "devmon",
+          "belong_to": "system_control",
+          "translated": "终端外设管理",
+          "translated_en": "devmon",
+          "product": "EDR,DLP"
+        },
+        {
+          "value": "dlp-screenshot",
+          "belong_to": "system_control",
+          "translated": "截屏管控",
+          "translated_en": "screenshot control",
+          "product": "DLP"
+        }
+      ]
+    },
+    {
+      "field": "defense_type",
+      "items": [
+        {
+          "value": "system_control",
+          "translated": "系统管控",
+          "translated_en": "system_control",
+          "product": "EDR,DLP"
+        },
+        {
+          "value": "dlp_data_category",
+          "translated": "数据分类分级",
+          "translated_en": "data category level",
+          "product": "DLP"
+        },
+        {
+          "value": "dlp_data_control",
+          "translated": "数据管控",
+          "translated_en": "data control",
+          "product": "DLP"
+        },
+        {
+          "value": "other",
+          "translated": "其他",
+          "translated_en": "other",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "outgoing_channel",
+      "items": [
+        {
+          "value": "IM",
+          "belong_to": "dlp_data_control",
+          "translated": "即时通讯",
+          "translated_en": "im",
+          "product": "DLP"
+        },
+        {
+          "value": "Remote",
+          "belong_to": "dlp_data_control",
+          "translated": "远程协助",
+          "translated_en": "remote",
+          "product": "DLP"
+        },
+        {
+          "value": "CDisk",
+          "belong_to": "dlp_data_control",
+          "translated": "网盘客户端",
+          "translated_en": "cdisk",
+          "product": "DLP"
+        },
+        {
+          "value": "Mail",
+          "belong_to": "dlp_data_control",
+          "translated": "邮件客户端",
+          "translated_en": "mail",
+          "product": "DLP"
+        },
+        {
+          "value": "Browser",
+          "belong_to": "dlp_data_control",
+          "translated": "浏览器程序",
+          "translated_en": "browser",
+          "product": "DLP"
+        },
+        {
+          "value": "VirtualMachine",
+          "belong_to": "dlp_data_control",
+          "translated": "虚拟机",
+          "translated_en": "virtual machine",
+          "product": "DLP"
+        },
+        {
+          "value": "Other",
+          "belong_to": "dlp_data_control",
+          "translated": "其他",
+          "translated_en": "other",
+          "product": "DLP"
+        },
+        {
+          "value": "USB",
+          "belong_to": "dlp_data_control",
+          "translated": "USB",
+          "translated_en": "usb",
+          "product": "DLP"
+        },
+        {
+          "value": "Print",
+          "belong_to": "dlp_data_control",
+          "translated": "打印",
+          "translated_en": "print",
+          "product": "DLP"
+        },
+        {
+          "value": "Burn",
+          "belong_to": "dlp_data_control",
+          "translated": "刻录",
+          "translated_en": "burn",
+          "product": "DLP"
+        },
+        {
+          "value": "Bluetooth",
+          "belong_to": "dlp_data_control",
+          "translated": "蓝牙",
+          "translated_en": "bluetooth",
+          "product": "DLP"
+        },
+        {
+          "value": "HTTP",
+          "belong_to": "dlp_data_control",
+          "translated": "HTTP协议",
+          "translated_en": "http",
+          "product": "DLP"
+        },
+        {
+          "value": "NetShare",
+          "belong_to": "dlp_data_control",
+          "translated": "网络共享",
+          "translated_en": "netshare",
+          "product": "DLP"
+        },
+        {
+          "value": "FTP",
+          "belong_to": "dlp_data_control",
+          "translated": "FTP协议",
+          "translated_en": "ftp",
+          "product": "DLP"
+        },
+        {
+          "value": "MailProtocol",
+          "belong_to": "dlp_data_control",
+          "translated": "Mail协议",
+          "translated_en": "mail protocol",
+          "product": "DLP"
+        },
+        {
+          "value": "NetBIOS",
+          "belong_to": "dlp_data_control",
+          "translated": "NetBIOS",
+          "translated_en": "NetBIOS",
+          "product": "DLP"
+        },
+        {
+          "value": "NNTP",
+          "belong_to": "dlp_data_control",
+          "translated": "NNTP",
+          "translated_en": "NNTP",
+          "product": "DLP"
+        },
+        {
+          "value": "Clipboard",
+          "belong_to": "dlp_data_control",
+          "translated": "剪切板",
+          "translated_en": "clipboard",
+          "product": "DLP"
+        }
+      ]
+    },
+    {
+      "field": "define_level",
+      "items": [
+        {
+          "value": "category",
+          "translated": "按类定级",
+          "translated_en": "category",
+          "product": "DLP"
+        },
+        {
+          "value": "rules",
+          "translated": "按特征定级",
+          "translated_en": "rules",
+          "product": "DLP"
+        }
+      ]
+    },
+    {
+      "field": "mon_type",
+      "items": [
+        {
+          "value": "external",
+          "translated": "连接外网",
+          "translated_en": "externalmon",
+          "product": "DLP,EDR"
+        },
+        {
+          "value": "internal",
+          "translated": "连接内网",
+          "translated_en": "internalmon",
+          "product": "DLP,EDR"
+        },
+        {
+          "value": "all",
+          "translated": "连接内外网",
+          "translated_en": "allmon",
+          "product": "DLP,EDR"
+        }
+      ]
+    },
+    {
+      "field": "blocked",
+      "items": [
+        {
+          "value": "allowed",
+          "translated": "放行",
+          "translated_en": "allowed",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "blocked",
+          "translated": "阻止",
+          "translated_en": "blocked",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "outbound",
+      "items": [
+        {
+          "value": "in",
+          "translated": "入站",
+          "translated_en": "in",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "out",
+          "translated": "出站",
+          "translated_en": "out",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "related_type",
+      "items": [
+        {
+          "value": "task",
+          "translated": "任务触发日志",
+          "translated_en": "related to task",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "policy",
+          "translated": "策略触发日志",
+          "translated_en": "related to policy",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "unrelated",
+          "translated": "客户端触发日志",
+          "translated_en": "related to client",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "result",
+      "items": [
+        {
+          "value": "unhandled",
+          "translated": "未处理",
+          "translated_en": "unhandled",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "handled",
+          "translated": "已处理",
+          "translated_en": "handled",
+          "product": "DLP"
+        },
+        {
+          "value": "not_handled",
+          "translated": "无需处理",
+          "translated_en": "not handled",
+          "product": "DLP"
+        },
+        {
+          "value": "handled_failed",
+          "translated": "处理失败",
+          "translated_en": "handle failed",
+          "product": "DLP"
+        },
+        {
+          "value": "deleted",
+          "translated": "已删除",
+          "translated_en": "deleted",
+          "product": "EDR,DLP"
+        },
+        {
+          "value": "deleted_failed",
+          "translated": "删除失败",
+          "translated_en": "deleted failed",
+          "product": "EDR,DLP"
+        },
+        {
+          "value": "error_reported",
+          "translated": "误报",
+          "translated_en": "error reported",
+          "product": "DLP"
+        }
+      ]
+    },
+    {
+      "field": "isolation_result",
+      "items": [
+        {
+          "value": "isolated",
+          "translated": "已隔离",
+          "translated_en": "isolated",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "isolated_failed",
+          "translated": "隔离失败",
+          "translated_en": "isolated failed",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "outgoing_result",
+      "items": [
+        {
+          "value": "0",
+          "translated": "忽略",
+          "translated_en": "ignored",
+          "product": "DLP"
+        },
+        {
+          "value": "1",
+          "translated": "信任",
+          "translated_en": "trusted",
+          "product": "DLP"
+        },
+        {
+          "value": "2",
+          "translated": "成功",
+          "translated_en": "success",
+          "product": "DLP"
+        },
+        {
+          "value": "3",
+          "translated": "失败",
+          "translated_en": "failed",
+          "product": "DLP"
+        },
+        {
+          "value": "4",
+          "translated": "已审计",
+          "translated_en": "audited",
+          "product": "DLP"
+        },
+        {
+          "value": "5",
+          "translated": "已禁用",
+          "translated_en": "prohibited",
+          "product": "DLP"
+        },
+        {
+          "value": "6",
+          "translated": "已拒绝",
+          "translated_en": "rejected",
+          "product": "DLP"
+        }
+      ]
+    },
+    {
+      "field": "log_level",
+      "items": [
+        {
+          "value": 0,
+          "translated": "一般",
+          "translated_en": "generic",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 1,
+          "translated": "低危",
+          "translated_en": "low risk",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 2,
+          "translated": "中危",
+          "translated_en": "mid risk",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 3,
+          "translated": "高危",
+          "translated_en": "high risk",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "protocol",
+      "items": [
+        {
+          "value": "ICMP",
+          "translated": "ICMP",
+          "translated_en": "ICMP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "IGMP",
+          "translated": "IGMP",
+          "translated_en": "IGMP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "GGP",
+          "translated": "GGP",
+          "translated_en": "GGP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "TCP",
+          "translated": "TCP",
+          "translated_en": "TCP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "PUP",
+          "translated": "PUP",
+          "translated_en": "PUP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "UDP",
+          "translated": "UDP",
+          "translated_en": "UDP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "IDP",
+          "translated": "IDP",
+          "translated_en": "IDP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "ND",
+          "translated": "ND",
+          "translated_en": "ND",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "ESP",
+          "translated": "ESP",
+          "translated_en": "ESP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "AH",
+          "translated": "AH",
+          "translated_en": "AH",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "RDP",
+          "translated": "RDP",
+          "translated_en": "RDP",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "RAW",
+          "translated": "RAW",
+          "translated_en": "RAW",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "auto",
+      "items": [
+        {
+          "value": 1,
+          "translated": "自动升级",
+          "translated_en": "auto upgrade",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 0,
+          "translated": "手动升级",
+          "translated_en": "manual upgrade",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "update_type",
+      "items": [
+        {
+          "value": "auto",
+          "translated": "自动",
+          "translated_en": "auto",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "manual",
+          "translated": "手动",
+          "translated_en": "manual",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "action",
+      "items": [
+        {
+          "value": "open",
+          "translated": "打开",
+          "translated_en": "open action",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "patch_type",
+      "items": []
+    },
+    {
+      "field": "status",
+      "items": [
+        {
+          "value": "marked",
+          "translated": "已标记",
+          "translated_en": "marked",
+          "product": "DLP"
+        },
+        {
+          "value": "unmarked",
+          "translated": "取消标记",
+          "translated_en": "unmarked",
+          "product": "DLP"
+        },
+        {
+          "value": "success",
+          "translated": "成功",
+          "translated_en": "success",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "failed",
+          "translated": "失败",
+          "translated_en": "failed",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "err",
+      "items": [
+        {
+          "value": 0,
+          "translated": "成功",
+          "translated_en": "success",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 1,
+          "translated": "失败",
+          "translated_en": "failed",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 6,
+          "translated": "网络错误",
+          "translated_en": "network error",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "weak_type",
+      "items": []
+    },
+    {
+      "field": "malicious_type",
+      "items": []
+    },
+    {
+      "field": "virus_type",
+      "items": []
+    },
+    {
+      "field": "prot_type",
+      "items": []
+    },
+    {
+      "field": "alarm_event",
+      "items": [
+        {
+          "value": "cpu_usage",
+          "belong_to": "alarm_system",
+          "translated": "CPU使用率",
+          "translated_en": "",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "memory_usage",
+          "belong_to": "alarm_system",
+          "translated": "内存使用率",
+          "translated_en": "",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "disk_usage",
+          "belong_to": "alarm_system",
+          "translated": "磁盘使用率",
+          "translated_en": "",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "login_lock",
+          "belong_to": "alarm_system",
+          "translated": "登录系统锁定",
+          "translated_en": "",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "invalid_ip",
+          "belong_to": "alarm_system",
+          "translated": "非法IP尝试访问系统",
+          "translated_en": "",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "client_offline",
+          "belong_to": "alarm",
+          "translated": "终端离线",
+          "translated_en": "",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "alarm_level",
+      "items": [
+        {
+          "value": 1,
+          "translated": "高",
+          "translated_en": "High",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 2,
+          "translated": "中",
+          "translated_en": "Middle",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 3,
+          "translated": "低",
+          "translated_en": "Low",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "asset_type",
+      "items": [
+        {
+          "value": "hardware",
+          "translated": "硬件",
+          "translated_en": "hardware",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "software",
+          "translated": "软件",
+          "translated_en": "software",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "change_item",
+      "items": [
+        {
+          "value": "disk",
+          "translated": "磁盘大小",
+          "translated_en": "disk size",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "memory",
+          "translated": "内存大小",
+          "translated_en": "memory size",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "core",
+          "translated": "CPU核数",
+          "translated_en": "cpu cores",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "software",
+          "translated": "软件",
+          "translated_en": "software",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "softversion",
+          "translated": "软件版本",
+          "translated_en": "soft version",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "network",
+          "translated": "网卡",
+          "translated_en": "network",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "change_type",
+      "items": [
+        {
+          "value": "add",
+          "translated": "新增",
+          "translated_en": "add",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "modify",
+          "translated": "更改",
+          "translated_en": "modify",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "remove",
+          "translated": "移除",
+          "translated_en": "remove",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "asset_category",
+      "items": [
+        {
+          "value": "enum_disk",
+          "translated": "磁盘",
+          "translated_en": "disk",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "enum_memory",
+          "translated": "内存",
+          "translated_en": "memory",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "enum_core",
+          "translated": "CPU",
+          "translated_en": "cpu core",
+          "product": "DEFAULT"
+        },
+        {
+          "value": "enum_network",
+          "translated": "网卡",
+          "translated_en": "network",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "log_class",
+      "items": [
+        {
+          "value": 0,
+          "translated": "常规日志",
+          "translated_en": "normal log",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 1,
+          "translated": "统计项日志",
+          "translated_en": "stat log",
+          "product": "DEFAULT"
+        },
+        {
+          "value": 2,
+          "translated": "统计项列表日志",
+          "translated_en": "stat_list log",
+          "product": "DEFAULT"
+        }
+      ]
+    },
+    {
+      "field": "sup",
+      "items": [
+        {
+          "value": false,
+          "translated": "否",
+          "translated_en": "false",
+          "product": "DEFAULT"
+        },
+        {
+          "value": true,
+          "translated": "是",
+          "translated_en": "true",
+          "product": "DEFAULT"
+        }
+      ]
+    }
+  ],
+  "modified_at": 0
+}

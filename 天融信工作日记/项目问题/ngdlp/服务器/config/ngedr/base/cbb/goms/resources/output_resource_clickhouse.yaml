@@ -1,0 +1,12 @@
+# clickhouse output 资源配置
+output_resources:
+  - label: output_resource_clickhouse
+    clickhouse:
+      addr:
+        - clickhouse:9000
+      username: default
+      password: TopsecCdu_1130
+      database: default
+      batching:
+        count: 10000
+        period: "8s"

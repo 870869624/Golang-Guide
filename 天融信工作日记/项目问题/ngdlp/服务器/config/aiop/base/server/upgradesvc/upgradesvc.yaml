@@ -1,0 +1,52 @@
+server_name: upgradesvc
+ip: 0.0.0.0
+port: 8888
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+rpcserverconf:
+  name: upgradesvc.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 120
+downloader:
+  server_name: downloader
+  ip: 0.0.0.0
+  port: 8000
+  middlewares:
+    from: local
+    permission:
+      enable: false
+    auth:
+      enable: false
+    logger:
+      enable: false
+    antireplay:
+      enable: false
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/upgradesvc
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:7379
+    type: node
+    pass: TopsecCdu_1130
+queue:
+  driver: nats
+  brokers:
+    - nats:4222
+default_installer_set:
+  name:
+  logo:
+  ico:
+  color:
+domestic_type_list:
+  - kylinV10
+  - uos

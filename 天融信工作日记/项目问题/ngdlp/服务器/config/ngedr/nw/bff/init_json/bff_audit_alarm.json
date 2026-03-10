@@ -1,0 +1,58 @@
+[
+  {
+    "id": "6344e7c0213b6677a251b170",
+    "ptype": "single",
+    "pid": 8000,
+    "pname": "NetAtkAlarm",
+    "builtin": true,
+    "enable": true,
+    "conti": true,
+    "level": 5,
+    "filter": "(this.recorder == \"IPSEVENT\")",
+    "remark": "网络攻击告警",
+    "ruleindex": 0,
+    "updateAt": "2006-01-02T15:04:05+08:00"
+  },
+  {
+    "id": "6344e7d10b3dc1930fd5acf7",
+    "ptype": "single",
+    "pid": 8001,
+    "pname": "WebAtkAlarm",
+    "builtin": true,
+    "enable": true,
+    "conti": true,
+    "level": 5,
+    "filter": "(this.recorder == \"waf_attack\")",
+    "remark": "WEB攻击告警",
+    "ruleindex": 1,
+    "updateAt": "2006-01-02T15:04:05+08:00"
+  },
+  {
+    "id": "6344e7db8361f098fa7cd6d1",
+    "ptype": "single",
+    "pid": 8002,
+    "pname": "DDosAtkAlarm",
+    "builtin": true,
+    "enable": true,
+    "conti": true,
+    "level": 5,
+    "filter": "(this.recorder == \"ads_clean\")",
+    "remark": "抗DOS攻击告警",
+    "ruleindex": 2,
+    "updateAt": "2006-01-02T15:04:05+08:00"
+  },
+  {
+    "id": "6344e7e73518b879acb8b59e",
+    "ptype": "single",
+    "pid": 8003,
+    "pname": "AntiVirusAlarm",
+    "builtin": true,
+    "enable": true,
+    "conti": true,
+    "level": 5,
+    "filter": "(this.recorder == \"streamav\")",
+    "remark": "网络病毒防御告警",
+    "ruleindex": 3,
+    "updateAt": "2006-01-02T15:04:05+08:00"
+  }
+]

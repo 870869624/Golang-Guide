@@ -1,0 +1,46 @@
+server_name: ngdlp
+ip: 0.0.0.0
+port: 8888
+max_bytes: 100
+nanomsguri: tcp://goms:15555
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+rpcserverconf:
+  name: ngdlp.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 600
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/ngdlp
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:6379
+    type: node
+    pass: TopsecCdu_1130
+    db: 2
+queue:
+  driver: nats
+  brokers:
+    - nats:4222
+# 终端信息敏感文件上报到日志平台配置
+# cron_report_to_log_platform:
+#   spec: ""
+#   queue:
+#     driver: kafka
+#     brokers:
+#       - 172.17.127.97:9092
+#     username: "admin"
+#     password: "admin"
+#   agent_topic: origin-log-dlpagent
+#   process_topic: origin-log-dlpprocess
+#   software_topic: origin-log-dlpsoftware
+#   sensitive_file_topic: origin-log-dlpsensitive

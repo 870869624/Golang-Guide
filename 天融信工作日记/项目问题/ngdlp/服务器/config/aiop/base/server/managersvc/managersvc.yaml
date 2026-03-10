@@ -1,0 +1,39 @@
+server_name: managersvc
+ip: 0.0.0.0
+port: 8888
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+rpcserverconf:
+  name: managersvc.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 30
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/managersvc
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:7379
+    type: node
+    pass: TopsecCdu_1130
+queue:
+  driver: nats
+  brokers:
+    - nats:4222
+  stream: aiop
+scanner:
+  nmap_path:
+  log_path: /home/topsec/data/logs/clientscanner
+  queue:
+    driver: nats
+    brokers:
+      - nats:4222
+    stream: aiop

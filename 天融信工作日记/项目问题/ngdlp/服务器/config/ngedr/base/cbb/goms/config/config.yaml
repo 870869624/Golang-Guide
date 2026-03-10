@@ -1,0 +1,31 @@
+http:
+  enabled: true
+  address: 0.0.0.0:4195
+  root_path: /goms
+  debug_endpoints: false
+  cert_file: ""
+  key_file: ""
+  cors:
+    enabled: false
+    allowed_origins: []
+  basic_auth:
+    enabled: false
+    realm: restricted
+    username: ""
+    password_hash: ""
+    algorithm: sha256
+    salt: ""
+logger:
+  level: INFO
+  format: json
+  add_timestamp: true
+  timestamp_name: time
+  message_name: msg
+  static_fields:
+    '@service': goms
+  file:
+    path: /home/topsec/data/logs/goms/goms.log
+    rotate: true
+    rotate_max_age_days: 60
+    #shutdown_delay: ""
+    #shutdown_timeout: 20s

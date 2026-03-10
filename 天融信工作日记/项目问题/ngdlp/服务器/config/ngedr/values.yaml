@@ -1,0 +1,21 @@
+## @section product parameters
+## ngedr values.yaml
+product:
+  ## @param product.version The version of the product to deploy [default: latest]
+  version: latest
+  ## @param product.ngdlp parameters
+  ngdlp:
+    ## @param product.ngdlp.replicas The Number of replicas to the ngdlp deployment [default: 1]
+    replicas: 1
+    ## @param product.ngdlp.image The image of the ngdlp to deploy [example: ngdlp/ngdlp]
+    image: ""
+    ## @param product.ngdlp.tag The image tag of the ngdlp to deploy [example: 1.0.0]
+    tag: ""
+  ## @param product.ngedr parameters
+  ngedr:
+    ## @param product.ngedr.replicas The Number of replicas to the ngedr deployment [default: 1]
+    replicas: 1
+    ## @param product.ngedr.image The image of the ngedr to deploy [example: ngedr/ngedr]
+    image: "ngedr/ngedr"
+    ## @param product.ngedr.tag The image tag of the ngedr to deploy [example: 1.0.0]
+    tag: ""

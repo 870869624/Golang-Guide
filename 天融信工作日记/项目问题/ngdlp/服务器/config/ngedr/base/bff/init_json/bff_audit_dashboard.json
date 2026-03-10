@@ -1,0 +1,47 @@
+[
+  {
+    "id": "63204e6fe9b3cb6b137f9846",
+    "name": "default_home",
+    "default": false,
+    "ui": "",
+    "panels": [
+      {
+        "name": "order",
+        "index": 0,
+        "view": "63184680b4727f25dc22ecfc",
+        "ui": "{\"x\":0,\"y\":0,\"cols\":2,\"rows\":1}"
+      },
+      {
+        "name": "security_examples",
+        "index": 1,
+        "view": "63184680b4727f25dc22ecf9",
+        "ui": "{\"x\":2,\"y\":0,\"cols\":2,\"rows\":1}"
+      },
+      {
+        "name": "resource_status",
+        "index": 2,
+        "view": "63184680b4727f25dc22ecfa",
+        "ui": "{\"x\":0,\"y\":1,\"cols\":3,\"rows\":2}"
+      },
+      {
+        "name": "attack_resource",
+        "index": 3,
+        "view": "63184680b4727f25dc22ed05",
+        "ui": "{\"x\":3,\"y\":1,\"cols\":3,\"rows\":2}"
+      },
+      {
+        "name": "aiop_attacked_hosts",
+        "index": 4,
+        "view": "63184680b4727f25dc22ed06",
+        "ui": "{\"x\":0,\"y\":3,\"cols\":6,\"rows\":2}"
+      },
+      {
+        "name": "system-info",
+        "index": 5,
+        "view": "631ffecc6358fa0f8c6cbbb4",
+        "ui": "{\"x\":4,\"y\":0,\"cols\":2,\"rows\":1}"
+      }
+    ],
+    "desc": ""
+  }
+]

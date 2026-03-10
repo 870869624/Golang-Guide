@@ -1,0 +1,103 @@
+[
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reboot",
+    "name": "重启",
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "shutdown",
+    "name": "关机",
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "dispatch_file",
+    "name": "文件分发",
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "text": "string",
+      "saveto": "string",
+      "custom_dir": "string",
+      "launch": "bool",
+      "background": "bool",
+      "cmdline": "string",
+      "args": "string",
+      "file_id": "string",
+      "file_name": "string"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "update",
+    "name": "升级",
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reconnect",
+    "name": "重新连接",
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "message",
+    "name": "发布消息",
+    "param": {
+      "text": "string",
+      "duration": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "agent_module_manager",
+    "name": "客户端组件运维",
+    "param": {
+      "operate": "string",
+      "options": {
+        "operate": [
+          "install",
+          "uninstall",
+          "restart",
+          "enable",
+          "disable"
+        ]
+      },
+      "module": "array"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "uninstall",
+    "name": "卸载客户端",
+    "param": {}
+  }
+]

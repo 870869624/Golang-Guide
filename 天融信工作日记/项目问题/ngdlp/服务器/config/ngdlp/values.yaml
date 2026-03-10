@@ -1,0 +1,35 @@
+## @section product parameters
+## ngdlp values.yaml
+product:
+  ## @param product.version The version of the product to deploy [default: latest]
+  version: latest
+  ## @param product.ngdlp parameters
+  ngdlp:
+    ## @param product.ngdlp.replicas The Number of replicas to the ngdlp deployment [default: 1]
+    replicas: 1
+    ## @param product.ngdlp.image The image of the ngdlp to deploy [example: ngdlp/ngdlp]
+    image: "ngdlp/ngdlp"
+    ## @param product.ngdlp.tag The image tag of the ngdlp to deploy [example: 1.0.0]
+    tag: ""
+  ## @param product.ngedr parameters
+  ngedr:
+    ## @param product.ngedr.replicas The Number of replicas to the ngedr deployment [default: 1]
+    replicas: 1
+    ## @param product.ngedr.image The image of the ngedr to deploy [example: ngedr/ngedr]
+    image: ""
+    ## @param product.ngedr.tag The image tag of the ngedr to deploy [example: 1.0.0]
+    tag: ""
+## @section paddleOcr parameters
+paddleOcr:
+  ## @param paddleOcr.nodeName The node name of the paddleOcr to deploy
+  nodeName: ""
+  ## @param paddleOcr.enabled Whether to enable paddleOcr. Allowed values: true, false [default: true]
+  enabled: true
+  ## @param paddleOcr.image The image of the paddleOcr to deploy [default: srp-tools/paddle-ocr]
+  image: srp-tools/paddle-ocr
+  ## @param paddleOcr.tag The image tag of the paddleOcr to deploy [default: "1.0.3"]
+  tag: "1.0.3"
+## @section mg2dm parameters
+mg2dm:
+  ## @param mg2dm.enabled Whether to enable mg2dm. Allowed values: true, false [default: true]
+  enabled: true

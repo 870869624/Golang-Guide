@@ -1,0 +1,5 @@
+# 删除消息处理器资源配置
+processor_resources:
+    - label: "processor_resource_deleted"
+      bloblang: |
+       root = deleted() # 此消息将被删除，不再向下游传递

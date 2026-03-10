@@ -1,0 +1,25 @@
+#应用名称(响应头信息中的server字段的值, 加载headers插件才能生效)
+server_name: goms-api
+#模式
+mode: debug
+#服务地址(默认0.0.0.0)
+ip: 0.0.0.0
+#服务端口
+port: "4196"
+#协议
+scheme: http
+#https证书信息
+certfile: ""
+keyfile:  ""
+#非空的时候以格式化json形式打印路由信息
+print_routes: true
+#配置目录
+etc: /home/topsec/config-map/cbb/goms
+#下发配置是否持久化
+persistence: true
+#中间件配置
+middlewares:
+  #极简认证
+  auth:
+    enable: true
+    PRIVATE-TOKEN: GogoUgXwPUmKIhpxnqqFq9JyESsZv46IucUQPvG5HSjSGNjYOtbfiU0ZIZMqMj6JXkCenU52s3LGxbHvt482

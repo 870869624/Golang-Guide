@@ -1,0 +1,26 @@
+output_resources:
+  - label: "output_resource_alarm_mailout"
+    mailout:
+      rules:
+        - pid: 'alarm_mailout'
+          filter: 'this.email'
+          send_interval: 0
+          send_limit:
+            enable: true
+            period: 3600
+            max_number: 20
+          event_queue_size: 6
+          queue_full_action: 'cover'
+          content_type: "text/html"
+          content: ${!metadata("mail_content")}<br/>
+          recver:
+            -
+          subject: "终端一体化平台(AIOP)告警"
+      server:
+        server_name: '-'
+        server_address: '-'
+        server_port: '-'
+        login_name: '-'
+        password: 'GxScz2PoJ1Hq+jnMN6BAGg=='
+        pwdkey: '6ZlcPK5xfRrd7W1oyIqVgiHGbamhBAJ3'
+        sender_name: 'AIOP'

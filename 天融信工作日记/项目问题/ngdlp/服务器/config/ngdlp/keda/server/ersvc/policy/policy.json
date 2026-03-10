@@ -1,0 +1,448 @@
+{
+  "config": {
+    "additional_information": {
+      "power": false
+    },
+    "additional_information_control": {
+      "edit_need_confirm": false,
+      "install_need_confirm": true,
+      "power": true,
+      "prohibit_edit": true,
+      "reinstall_options": "use_server"
+    },
+    "admin": {
+      "email": "",
+      "name": "admin",
+      "phone": "",
+      "power": true
+    },
+    "asset_frequency": {
+      "cron": {
+        "crontab": {
+          "days": [
+            1,
+            2
+          ],
+          "every": "everymonth",
+          "time_at": [
+            "08:20-09:20"
+          ],
+          "weekday": []
+        },
+        "description": "空闲时间段定时清理",
+        "enable": false,
+        "options": {
+          "every": [
+            "everyday",
+            "everyweek",
+            "everymonth"
+          ],
+          "weekday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "description": "资产清点频率(xxx分钟/次)",
+      "power": true,
+      "value": 60
+    },
+    "client_display": {
+      "power": false,
+      "shortcut": true,
+      "tray": true
+    },
+    "client_login": {
+      "allow_auto_login": true,
+      "allow_remember_password": true,
+      "auto_login_current": true,
+      "binding": false,
+      "limit_login_count": false,
+      "power": false,
+      "update_password_cron": false
+    },
+    "client_resource_usage": {
+      "cpu_exceeding_threshold": 1,
+      "cpu_threshold": 1,
+      "exceeding_threshold_when": {
+        "options": [
+          "report",
+          "disable_client",
+          "close_client"
+        ],
+        "value": "report"
+      },
+      "memory_exceeding_threshold": 1,
+      "memory_threshold": 20,
+      "monitor_frequency": 1,
+      "power": false
+    },
+    "client_state_collect": {
+      "collect_interval": 10,
+      "power": true,
+      "report_interval": 30
+    },
+    "data_level": {
+      "data": [],
+      "power": true
+    },
+    "devmon": {
+      "disable_bluetooth": false,
+      "disable_cdrom": false,
+      "disable_printer": false,
+      "disable_usb": false,
+      "power": false,
+      "whitelist": []
+    },
+    "dlp_category": {
+      "data": [],
+      "power": false
+    },
+    "dlp_file_encrypt": {
+      "allow_encrypt_decrypt": true,
+      "auto_encrypt": true,
+      "data_category": [],
+      "data_level": [],
+      "encrypted_at": "local_storage",
+      "encrypted_key": {
+        "advanced": [],
+        "middle": [],
+        "normal": []
+      },
+      "notin_scope_encrypted": true,
+      "options": {
+        "encrypted_at": [
+          "local_storage",
+          "outgoing"
+        ]
+      },
+      "power": false
+    },
+    "dlp_identifier": {
+      "power": true,
+      "showable": true
+    },
+    "dlp_im_trace": {
+      "options": {
+        "programs": [
+          "QQ",
+          "Elink",
+          "Espace",
+          "PersonalWechat",
+          "CompanyWechat"
+        ]
+      },
+      "outgoing_attach": false,
+      "power": false,
+      "programs": [],
+      "upload_record": false
+    },
+    "dlp_level": {
+      "data": [],
+      "level_up": {
+        "data": [
+          {
+            "level": 5,
+            "trigger_greater_than": 1000
+          }
+        ],
+        "enable": false
+      },
+      "power": false
+    },
+    "dlp_operate_mon": {
+      "data": [],
+      "options": {
+        "file_location": [
+          "local",
+          "usb",
+          "netshare"
+        ],
+        "match_agent_value": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "match_user_value": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "prohibit_operate": [
+          "open",
+          "copy",
+          "download",
+          "screenshot",
+          "desensitize",
+          "tagged"
+        ]
+      },
+      "power": false
+    },
+    "dlp_outgoing_control": {
+      "data": [],
+      "outgoing_detect": {
+        "enable": true,
+        "file_detect_failed": "block",
+        "file_detect_timeout": 60,
+        "file_detect_timeout_action": "block",
+        "file_size_gt": 30,
+        "file_size_gt_action": "block",
+        "options": {
+          "action": [
+            "allow",
+            "block"
+          ]
+        }
+      },
+      "power": false,
+      "white_list": []
+    },
+    "dlp_param_detect": {
+      "data": [
+        {
+          "name": "常见文档",
+          "suffix": "pdf;ofd;doc;docx;xls;xlsx;et;ppt;pptx;txt;rtf;wps;pg;vsd;xmind;emmx;dps"
+        },
+        {
+          "name": "常见压缩文件",
+          "suffix": "zip;rar;7z;arj;gz;tar"
+        },
+        {
+          "name": "常用图片",
+          "suffix": "bmp;gif;jpeg;jpg;png"
+        },
+        {
+          "name": "邮件存储",
+          "suffix": "pst"
+        },
+        {
+          "name": "代码文件",
+          "suffix": "html;js;sql;log;htm;mht;mhtml"
+        },
+        {
+          "name": "电子招标文件",
+          "suffix": "egp"
+        },
+        {
+          "name": "程序",
+          "suffix": "exe;dsps"
+        },
+        {
+          "name": "数据",
+          "suffix": "bak;db"
+        },
+        {
+          "name": "音频视频",
+          "suffix": "aif;au;ram;amr;mmf;flac;la;swf"
+        }
+      ],
+      "detect_picture": false,
+      "detect_position": {
+        "local_disk": true,
+        "usb": true
+      },
+      "max_pack_level": 20,
+      "power": true,
+      "white_list": []
+    },
+    "dlp_sandbox": {
+      "data_category": [],
+      "data_level": [],
+      "power": false
+    },
+    "dlp_setting": {
+      "auto": 2,
+      "auto_config": {
+        "allow_tag_insensitive": false,
+        "re-detect_insensitive": false,
+        "scan_setting": {
+          "file_operate_scan": true,
+          "full_scan": true,
+          "full_scan_config": {
+            "custom_scan_speed": {
+              "cpu": 80,
+              "disk": 10,
+              "mem": 3
+            },
+            "idle_scan": true,
+            "options": {
+              "scan_speed": [
+                "high",
+                "mid",
+                "low",
+                "custom"
+              ]
+            },
+            "scan_speed": "mid"
+          }
+        }
+      },
+      "first_confirm": {
+        "closed": "user_notify",
+        "outgoing": "user_notify",
+        "scan": "user_notify"
+      },
+      "options": [
+        "user_notify",
+        "user_must",
+        "noop"
+      ],
+      "power": true,
+      "sensitive_info_report": {
+        "enable": true,
+        "keyword_before_after_char": 50,
+        "maximum_enable": false,
+        "maximum_value": 1000
+      },
+      "update_confirm": {
+        "closed": "user_notify",
+        "outgoing": "user_notify"
+      },
+      "update_detect": {
+        "expired_at": true,
+        "file_content_changed": true
+      }
+    },
+    "dlp_water_mark": {
+      "@computername": "0",
+      "@datetime": "0",
+      "@hostname": "0",
+      "@ip": "1",
+      "@loginname": "0",
+      "@mac": "0",
+      "@username": "1",
+      "Angle": 60,
+      "CompanyText": "",
+      "Font": "微软雅黑",
+      "Fontcolor": "#000000",
+      "Lrdis": 300,
+      "Opacity": 20,
+      "Size": 40,
+      "Tbdis": 300,
+      "Text": "",
+      "only_running_show": false,
+      "only_running_show_programs": [],
+      "power": false
+    },
+    "dlp_whitelist": {
+      "address": [],
+      "im": {
+        "receiver": [],
+        "sender": []
+      },
+      "mail": {
+        "receiver": [],
+        "sender": []
+      },
+      "power": false,
+      "send_plaintext": true
+    },
+    "exception_report": {
+      "auto": false,
+      "power": true
+    },
+    "externalmon": {
+      "count": 20,
+      "illegal": {
+        "all": {
+          "flag": "0",
+          "text": "您当前同时连接内外网"
+        },
+        "internet": {
+          "flag": "0",
+          "text": "您当前在外网中"
+        }
+      },
+      "internetArr": [],
+      "interval": 5,
+      "local3": {
+        "item": []
+      },
+      "power": false,
+      "whitelist": {
+        "enable": true,
+        "local": {
+          "item": []
+        },
+        "output": {
+          "item": []
+        }
+      }
+    },
+    "heart_time": {
+      "power": true,
+      "value": 60
+    },
+    "host_resource_usage": {
+      "cpu_exceeding_threshold": 1,
+      "cpu_threshold": 10,
+      "exceeding_threshold_when": {
+        "options": [
+          "report",
+          "disable_client",
+          "close_client"
+        ],
+        "value": "report"
+      },
+      "memory_exceeding_threshold": 1,
+      "memory_threshold": 100,
+      "monitor_frequency": 1,
+      "power": false
+    },
+    "installer_set": {
+      "power": false
+    },
+    "license": {
+      "power": false
+    },
+    "log": {
+      "days": 5,
+      "power": false,
+      "size": 10,
+      "unit": "GB"
+    },
+    "log_schema": {
+      "power": false
+    },
+    "log_type": {
+      "data": [],
+      "power": true
+    },
+    "network_location": {
+      "data": [],
+      "float": false,
+      "power": false,
+      "right_menu": false,
+      "switch_network": false
+    },
+    "popup": {
+      "power": true,
+      "undisturbed": false
+    },
+    "self_protect": {
+      "leave_captcha": true,
+      "offline_gt_days": 180,
+      "power": true,
+      "uninstall_captcha": true
+    },
+    "server": {
+      "config": [],
+      "power": true
+    },
+    "upgrade": {
+      "interval": 60,
+      "power": true,
+      "unit": "minute"
+    }
+  }
+}

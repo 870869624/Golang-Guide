@@ -1,0 +1,508 @@
+# 自定义告警资源配置
+processor_resources:
+  - label: processor_resource_alarm
+    alarm: {
+      alarm_rules: [
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "abnormal_behavior",
+          ##告警规则名称
+          pname: "同部门异常行为",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "abnormal_behavior"',
+          ##告警内容
+          remark: "与同部门其他员工行为基线相比，此员工操作敏感数据次数或时间等维度出现异常风险",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "turnover_intention",
+          ##告警规则名称
+          pname: "用户离职意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "turnover_intention"',
+          ##告警内容
+          remark: "用户多次访问招骋网站、上传简历、收到入职邮件，同时访问过敏感数据",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "change_login_user",
+          ##告警规则名称
+          pname: "更换登录用户意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "change_login_user"',
+          ##告警内容
+          remark: "此终端出现短时间内多个不同账户登录现象，需考虑寻找关键数据的风险",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "keep_leak_intention",
+          ##告警规则名称
+          pname: "持续点滴外泄意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "keep_leak_intention"',
+          ##告警内容
+          remark: "风险员工长时间持续使用各种渠道外发少量敏感数据",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "hoard_many_data",
+          ##告警规则名称
+          pname: "囤积大量数据意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "hoard_many_data"',
+          ##告警内容
+          remark: "此用户出现了短时间内大量获取保存关键数据的行为，有未来发生数据泄露的潜在风险",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "mail_leak",
+          ##告警规则名称
+          pname: "邮件泄露意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "mail_leak"',
+          ##告警内容
+          remark: "特定时间周期内，此用户外发敏感数据的数量和频率远高于其日常邮件外发行为基线",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "cross-border_transfer_data",
+          ##告警规则名称
+          pname: "跨境传输数据意图",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "cross-border_transfer_data"',
+          ##告警内容
+          remark: "此员工向IP地理位置在国外的服务器传输敏感数据，有合规和入侵等潜在风险",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "download_many_business_data",
+          ##告警规则名称
+          pname: "大量下载业务数据",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "download_many_business_data"',
+          ##告警内容
+          remark: "短时间内风险用户从设定关注的重要业务系统中获取了大量敏感数据",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "remote_transfer_many_data",
+          ##告警规则名称
+          pname: "大量远程数据传输",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "remote_transfer_many_data"',
+          ##告警内容
+          remark: "向设定关注的目标服务器传输大量关键数据",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "delete_many_file",
+          ##告警规则名称
+          pname: "终端大量删除文件",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "delete_many_file"',
+          ##告警内容
+          remark: "短时间内大量删除敏感数据是内部威胁的重要标志之一",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "copy_many_file",
+          ##告警规则名称
+          pname: "终端大量拷贝文件",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "copy_many_file"',
+          ##告警内容
+          remark: "风险用户在终端上短时间内频繁拷贝敏感数据往往是泄漏发生前的搜集保存大量数据步骤",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "compress_many_file",
+          ##告警规则名称
+          pname: "终端大量压缩文件",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "compress_many_file"',
+          ##告警内容
+          remark: "短时间内此员工大量压缩敏感数据是发生数据泄露的先兆风险指征",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "save_many_file",
+          ##告警规则名称
+          pname: "终端大量另存文件",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: true,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "save_many_file"',
+          ##告警内容
+          remark: "此终端出现了频繁另存敏感数据的行为，员工有搜集或混淆关键数据的风险",
+          appends: {
+            "product": "DLP",
+            "group": "用户行为检测",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "cpu_usage",
+          ##告警规则名称
+          pname: "CPU使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "cpu_usage"',
+          ##告警内容
+          remark: 'CPU使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime": "600",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "memory_usage",
+          ##告警规则名称
+          pname: "内存使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "memory_usage"',
+          ##告警内容
+          remark: '内存使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime": "600",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "disk_usage",
+          ##告警规则名称
+          pname: "磁盘使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "disk_usage" && this.percent > 80',
+          ##告警内容
+          remark: '磁盘使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: cycle,
+          ##告警规则ID
+          pid: "login_lock",
+          ##告警规则名称
+          pname: "登录系统锁定",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 2,
+          filter: 'this.type == "bff:access:lock_ip" || this.type == "bff:access:access:lock_user"',
+          ##告警内容
+          remark: '登录系统锁定',
+          ##周期告警时间窗口，单位秒；表示周期告警的统计周期
+          lifetime: 3600,
+          ##周期告警条件；在统计周期内，满足该条件才产生周期告警
+          context: 'count(${{type}}) >= 3',
+          ##触发周期告警后，是否立即开始新的周期
+          cycle_next_immediately: false,
+          ##是否抑制周期告警； cycle_next_immediately 为 false 时生效
+          cycle_suppress: true,
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime":  "3600",
+            "threshold": "3",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: cycle,
+          ##告警规则ID
+          pid: "invalid_ip",
+          ##告警规则名称
+          pname: "非法IP尝试访问系统",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 2,
+          filter: 'this.type == "bff:access:invalid_ip"',
+          ##告警内容
+          remark: '非法IP尝试访问系统',
+          ##周期告警时间窗口，单位秒；表示周期告警的统计周期
+          lifetime: 3600,
+          ##周期告警条件；在统计周期内，满足该条件才产生周期告警
+          context: 'count(${{type}}) >= 10',
+          ##触发周期告警后，是否立即开始新的周期
+          cycle_next_immediately: false,
+          ##是否抑制周期告警； cycle_next_immediately 为 false 时生效
+          cycle_suppress: true,
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime":  "3600",
+            "threshold": "10",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "client_offline",
+          ##告警规则名称
+          pname: "终端离线",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "client_offline"',
+          ##告警内容
+          remark: '终端离线',
+          appends: {
+            "product": "DEFAULT",
+            "group": "终端",
+            "threshold": "60",
+            "message": "false",
+            "email": "false",
+          }
+        },
+      ]
+    }

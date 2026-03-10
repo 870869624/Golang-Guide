@@ -1,0 +1,30 @@
+Name: agent.rpc
+ListenOn: 0.0.0.0:8081
+Timeout: 30
+MethodTimeouts:
+  - FullMethod: /agent.agent/GroupCreateBulk
+    Timeout: "300s"
+Log:
+  Level: error
+  Path: /home/topsec/data/logs/agentserver
+CacheRedis:
+  - Host: redis:7379
+    Pass: TopsecCdu_1130
+Mongo:
+  Host: mongodb:27017
+  Username: root
+  Password: TopsecCdu_1130
+AssetRPC:
+  Target: agentserver:8080
+  Timeout: 30
+  NonBlock: true
+  KeepaliveTime: 30s
+Queue:
+  Driver: nats
+  Brokers:
+    - nats:4222
+  Stream: aiop
+Sender:
+  Addr: goms:8972
+  Interval: 2000
+  CacheCount: 20

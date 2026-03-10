@@ -1,0 +1,277 @@
+[
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reboot",
+    "name": "重启",
+    "order": 102,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "shutdown",
+    "name": "关机",
+    "order": 104,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "countdown_noop_continue": "bool",
+      "later_at": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "dispatch_file",
+    "name": "文件分发",
+    "order": 100,
+    "param": {
+      "notify_user": "bool",
+      "duration": "int",
+      "text": "string",
+      "saveto": "string",
+      "custom_dir": "string",
+      "launch": "bool",
+      "background": "bool",
+      "cmdline": "string",
+      "args": "string",
+      "file_id": "string",
+      "file_name": "string"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "update",
+    "name": "升级",
+    "order": 106,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "reconnect",
+    "name": "重新连接",
+    "order": 103,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "message",
+    "name": "发布消息",
+    "order": 101,
+    "param": {
+      "text": "string",
+      "duration": "int"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "agent_module_manager",
+    "name": "客户端组件运维",
+    "order": 1000,
+    "param": {
+      "operate": "string",
+      "options": {
+        "operate": [
+          "install",
+          "uninstall",
+          "restart",
+          "enable",
+          "disable"
+        ]
+      },
+      "module": "array"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "uninstall",
+    "name": "卸载客户端",
+    "order": 105,
+    "param": {}
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "quick_scan",
+    "name": "快速扫描",
+    "order": 1,
+    "param": {
+      "options": {
+        "handle_mode": [
+          "auto",
+          "prompt",
+          "noop"
+        ],
+        "scan_speed": [
+          "high",
+          "mid",
+          "low",
+          "custom"
+        ]
+      },
+      "handle_mode": "string",
+      "handle_mode_prompt_action": {
+        "enable": "bool",
+        "unresponsive_seconds": "int",
+        "handle_mode": "string"
+      },
+      "backup_to_isolation": "bool",
+      "scan_speed": "string",
+      "custom_scan_speed": {
+        "cpu": "int",
+        "mem": "int"
+      },
+      "scan_sysrepair": "bool",
+      "intervene_in_during": "bool",
+      "notify_in_during": "bool",
+      "notify_user_config": {
+        "enable": "bool",
+        "duration": "int",
+        "countdown_noop_continue": "bool",
+        "later_at": "int"
+      },
+      "active_scan_priority": "bool"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "full_scan",
+    "name": "全盘扫描",
+    "order": 2,
+    "param": {
+      "options": {
+        "handle_mode": [
+          "auto",
+          "prompt",
+          "noop"
+        ],
+        "scan_speed": [
+          "high",
+          "mid",
+          "low",
+          "custom"
+        ]
+      },
+      "handle_mode": "string",
+      "handle_mode_prompt_action": {
+        "enable": "bool",
+        "unresponsive_seconds": "int",
+        "handle_mode": "string"
+      },
+      "backup_to_isolation": "bool",
+      "scan_speed": "string",
+      "custom_scan_speed": {
+        "cpu": "int",
+        "mem": "int"
+      },
+      "scan_sysrepair": "bool",
+      "scan_decompo_size": "bool",
+      "scan_decompo_size_value": "int",
+      "scan_decompo_level": "bool",
+      "scan_decompo_level_value": "int",
+      "scan_files_ext": {
+        "enable": "bool",
+        "options": {
+          "scan_type": [
+            "include",
+            "exclude"
+          ]
+        },
+        "scan_type": "string",
+        "value": ""
+      },
+      "intervene_in_during": "bool",
+      "notify_in_during": "bool",
+      "notify_user_config": {
+        "enable": "bool",
+        "duration": "int",
+        "countdown_noop_continue": "bool",
+        "later_at": "int"
+      },
+      "active_scan_priority": "bool"
+    }
+  },
+  {
+    "product": [
+      "DEFAULT"
+    ],
+    "type": "custom_scan",
+    "name": "自定义扫描",
+    "order": 3,
+    "param": {
+      "options": {
+        "handle_mode": [
+          "auto",
+          "prompt",
+          "noop"
+        ],
+        "scan_speed": [
+          "high",
+          "mid",
+          "low",
+          "custom"
+        ]
+      },
+      "path": "string",
+      "handle_mode": "string",
+      "handle_mode_prompt_action": {
+        "enable": "bool",
+        "unresponsive_seconds": "int",
+        "handle_mode": "string"
+      },
+      "backup_to_isolation": "bool",
+      "scan_speed": "string",
+      "custom_scan_speed": {
+        "cpu": "int",
+        "mem": "int"
+      },
+      "scan_sysrepair": "bool",
+      "scan_decompo_size": "bool",
+      "scan_decompo_size_value": "int",
+      "scan_decompo_level": "bool",
+      "scan_decompo_level_value": "int",
+      "scan_files_ext": {
+        "enable": "bool",
+        "options": {
+          "scan_type": [
+            "include",
+            "exclude"
+          ]
+        },
+        "scan_type": "string",
+        "value": ""
+      },
+      "intervene_in_during": "bool",
+      "notify_in_during": "bool",
+      "notify_user_config": {
+        "enable": "bool",
+        "duration": "int",
+        "countdown_noop_continue": "bool",
+        "later_at": "int"
+      },
+      "active_scan_priority": "bool"
+    }
+  }
+]

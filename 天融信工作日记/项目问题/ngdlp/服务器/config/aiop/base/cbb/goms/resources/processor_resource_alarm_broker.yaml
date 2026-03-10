@@ -1,0 +1,17 @@
+processor_resources:
+  - label: "processor_resource_alarm_broker"
+    switch:
+      - check: this.type == "client_offline_detail"
+        processors:
+          - bloblang: |
+              root = this.clients
+          - resource: "processor_resource_flexer"
+          - resource: "processor_resource_offline_client_bloblang"
+      - processors:
+          - resource: "processor_resource_alarm" #经过该processor后会发送一条原始消息和一条告警消息
+          - switch:
+              - check: this.exists("rule_id")
+                processors:
+                  - resource: "processor_resource_alarm_bloblang"
+              - processors:
+                  - resource: "processor_resource_deleted" #丢掉原始消息

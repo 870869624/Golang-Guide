@@ -1,0 +1,54 @@
+{
+  "host_prefix": [
+    "Administrator*",
+    "local*",
+    "WWW-*",
+    "server*"
+  ],
+  "host_postfix": [
+    "*-PC",
+    "*domain"
+  ],
+  "ip": [
+    "192.168.0.*",
+    "192.168.1.*"
+  ],
+  "os_version": [
+    "Windows2000",
+    "WindowsXP",
+    "WindowsVista",
+    "WindowsServer2003",
+    "WindowsServer2008",
+    "WindowsServer2012",
+    "WindowsServer2016",
+    "WindowsServer2019",
+    "Windows7-32",
+    "Windows7-64",
+    "Windows8-32",
+    "Windows8-64",
+    "Windows10-32",
+    "Windows10-64",
+    "Windows11-32",
+    "Windows11-64",
+    "Debian",
+    "RHEL",
+    "Centos",
+    "Fedora",
+    "Suse",
+    "Ubuntu",
+    "Kylin",
+    "LinuxMint",
+    "Mageia",
+    "ArchLinux",
+    "Deepin",
+    "UOS"
+  ],
+  "os_type": [
+    "Windows终端",
+    "Windows服务器",
+    "Linux",
+    "国产操作系统"
+  ],
+  "field": [
+  ]
+}

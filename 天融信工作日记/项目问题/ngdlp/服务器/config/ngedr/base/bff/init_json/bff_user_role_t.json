@@ -1,0 +1,42 @@
+[
+  {
+    "id": "646323fd0a5b017d15e52c29",
+    "role_name": "tenant_admin",
+    "role_type": "preset",
+    "role_desc": "租户管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "63282f69277834fefd3a6730",
+    "role_name": "user_aiop_sysadmin",
+    "role_type": "preset",
+    "role_desc": "系统管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "63282f69277834fefd3a6731",
+    "role_name": "user_aiop_auditadmin",
+    "role_type": "preset",
+    "role_desc": "审计管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "63282f69277834fefd3a6732",
+    "role_name": "user_aiop_secadmin",
+    "role_type": "preset",
+    "role_desc": "安全保密管理员",
+    "mode": "",
+    "client_id": ""
+  },
+  {
+    "id": "6463254c2a151f6264303255",
+    "role_name": "tenant_aiop_general",
+    "role_type": "preset",
+    "role_desc": "普通租户",
+    "mode": "",
+    "client_id": ""
+  }
+]

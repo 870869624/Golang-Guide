@@ -1,0 +1,93 @@
+[
+  {
+    "id": "63282f69277834fefd3a6765",
+    "template": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>{{.title}}</title>\n</head>\n<body>\n    <p>  尊敬的用户{{.username}}:</p>\n <p class=\"text-indent\">{{.description}} <br /></p>\n</body>\n</html>",
+    "description": "默认模板",
+    "name": "default",
+    "fields": {
+      "description": "description",
+      "username": "username"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a6766",
+    "template": "<!DOCTYPE html>\n<html lang='en'>\n<head>\n<meta charset='utf-8' />\n</head>\n<body>\n    <p>尊敬的用户{{.username}}:</p>\n    <p class='suojin'>{{.description}},请及时<a href='/system/license/key-import'>续费</a></p>\n    <table border='true' class='table'>\n        <thead>\n            <tr id='thr'>\n                <th>模式</th>\n                {{if eq .mode \"点数模式\"}}\n                <th>剩余点数</th>\n                {{else}}\n                <th>类型</th>\n                <th>到期时间</th>\n                {{end}}\n            </tr>\n        </thead>\n        <tbody>\n            {{$l := len .table}}\n            {{$n := 1}}\n            {{$m := .mode}}\n            {{range $i, $v := .table}}\n               <tr>\n                {{if eq $n 1}}\n                <td rowspan='{{$l}}'>{{$m}}</td>\n                {{end}}\n                {{if eq  $m \"非点数模式\"}}\n                <td>{{$i}}</td>\n               {{end}}\n                <td>{{$v}}</td>\n               </tr>\n                {{$n = 0}}\n            {{end}}\n        </tbody>\n    </table>\n</body>\n</html>\n",
+    "description": "到期提醒模板",
+    "name": "expire",
+    "fields": {
+      "username": "username",
+      "mode": "mode",
+      "table": "services",
+      "description": "description"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a6767",
+    "template": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>{{.title}}</title>\n</head>\n<body>\n    <p>  尊敬的用户{{.username}}:</p>\n <p class=\"text-indent\">{{.description}}, 请及时<a href='/system/maintain/disk'>清理</a></p>\n </body>\n</html>",
+    "description": "资源利用率提醒模板",
+    "name": "usage",
+    "fields": {
+      "username": "username",
+      "description": "description"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a6768",
+    "template": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>{{.title}}</title>\n</head>\n<body>\n    <p>  尊敬的用户{{.username}}:</p>\n <p class=\"text-indent\">{{.description}}, 请及时处理</p>\n </body>\n</html>",
+    "description": "资源利用率提醒模板",
+    "name": "usage_noclean",
+    "fields": {
+      "description": "description",
+      "username": "username"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a6769",
+    "template": "<!DOCTYPE html>\n<html lang='en'>\n<head>\n<meta charset='utf-8' />\n</head>\n<body>\n    <p>尊敬的用户{{.username}}:</p>\n    <p class='suojin'>{{.description}}</a></p>\n    <table border='true' class='table'>\n        <thead>\n            <tr id='thr'>\n                <th>时间</th>\n                <th>实例类型</th>\n                <th>实例IP</th>\n                <th>告警等级</th>\n                <th>告警信息</th>\n                <th>规则名称</th>\n            </tr>\n        </thead>\n        <tbody>\n            {{$list_vm := .list_vm}}\n            {{$list_ip := .list_ip}}\n            {{$list_level := .list_level}}\n            {{$list_message := .list_message}}\n            {{$list_rulename := .list_rulename}}\n            {{range $index, $v := .list_time}}\n               <tr>\n                <td>{{$v}}</td>\n                <td>{{index $list_vm $index}}</td>\n                <td>{{index $list_ip $index}}</td>\n                <td>{{index $list_level $index}}</td>\n                <td>{{index $list_message $index}}</td>\n                <td>{{index $list_rulename $index}}</td>\n               </tr>\n            {{end}}\n        </tbody>\n    </table>\n</body>\n</html>\n",
+    "description": "告警模板",
+    "name": "alarm",
+    "fields": {
+      "list_message": "list_message",
+      "description": "description",
+      "username": "username",
+      "list_time": "list_time",
+      "list_ip": "list_ip",
+      "list_level": "list_level",
+      "list_rulename": "list_rulename",
+      "list_vm": "list_vm"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a676a",
+    "template": "{{.body}}",
+    "description": "空模板",
+    "name": "none",
+    "fields": {
+      "body": "body"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a676b",
+    "template": "<!DOCTYPE html>\n<html lang='en'>\n<head>\n<meta charset='utf-8' />\n</head>\n<body>\n    <p>尊敬的用户{{.username}}:</p>\n    <p class='suojin'>{{.description}},请及时<a href='/system/license/key-import'>续费</a></p>\n    <table border='true' class='table'>\n        <thead>\n           <tr id='thr'>\n                <th>模式</th>\n                {{if eq .mode \"点数月模式\"}}\n                <th>剩余点数</th>\n{{else if eq .mode \"点数模式\"}}\n{{if eq .grade \"0\"}}\n<th>剩余点数</th>\n <th>到期时间</th>\n{{else if eq .grade \"1\"}}\n<th>到期时间</th>\n{{else}}\n <th>剩余点数</th>\n{{end}}\n                   {{else}}\n                <th>类型</th>\n                <th>到期时间</th>\n             {{end}}\n            </tr>\n        </thead>\n        <tbody>\n            {{$l := len .table}}\n            {{$n := 1}}\n           {{$m := .mode}}\n   {{$g := .grade}}\n         {{range $i, $v := .table}}\n               <tr>\n                {{if eq $n 1}}\n                <td rowspan='{{$l}}'>{{$m}}</td>\n               {{end}}\n                {{if eq  $m \"非点数模式\"}}\n                <td>{{$i}}</td>\n               {{end}}\n{{if eq  $m \"点数模式\"}}\n {{if eq $g \"0\"}}\n               <td>{{$i}}</td>\n{{end}}\n               {{end}}\n             <td>{{$v}}</td>\n               </tr>\n               {{$n = 0}}\n            {{end}}\n        </tbody>\n    </table>\n</body>\n</html>\n",
+    "description": "到期提醒模板",
+    "name": "expire_new",
+    "fields": {
+      "table": "services",
+      "description": "description",
+      "grade": "grade",
+      "username": "username",
+      "mode": "mode"
+    }
+  },
+  {
+    "id": "63282f69277834fefd3a676c",
+    "template": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>{{.title}}</title>\n</head>\n<body>\n<p>  尊敬的用户{{.username}}:</p>\n<p class=\"text-indent\">{{.description}}&nbsp;&nbsp;&nbsp;&nbsp;<a href='/safety-analysis/alarm/detail?type=message_log&backto=message&id={{.alarm_log_id}}'>详情</a></p>\n</body>\n</html>",
+    "description": "终端离线模板",
+    "name": "client_offline",
+    "fields": {
+      "username": "username",
+      "description": "description",
+      "alarm_log_id": "alarm_log_id"
+    }
+  }
+]

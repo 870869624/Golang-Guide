@@ -1,0 +1,55 @@
+{
+  "config": {
+    "dlp_data_category": [
+      "dlp_category",
+      "dlp_level",
+      "dlp_setting",
+      "dlp_identifier",
+      "dlp_param_detect"
+    ],
+    "dlp_data_control": [
+      "dlp_outgoing_control",
+      "dlp_file_encrypt",
+      "dlp_whitelist",
+      "dlp_operate_mon",
+      "dlp_sandbox"
+    ],
+    "dlp_im": [
+      "dlp_im_trace"
+    ],
+    "dlp_screen_water_mark": [
+      "dlp_water_mark"
+    ],
+    "global_policy": [
+      "additional_information_control",
+      "additional_information",
+      "license",
+      "log_type",
+      "data_level",
+      "installer_set",
+      "log_schema"
+    ],
+    "other": [
+      "heart_time",
+      "client_state_collect",
+      "upgrade",
+      "client_display",
+      "popup",
+      "admin",
+      "server",
+      "log",
+      "host_resource_usage",
+      "client_resource_usage",
+      "asset_frequency",
+      "self_protect",
+      "client_login",
+      "network_location",
+      "exception_report"
+    ],
+    "system_control": [
+      "devmon",
+      "externalmon",
+      "dlp_screenshot"
+    ]
+  }
+}

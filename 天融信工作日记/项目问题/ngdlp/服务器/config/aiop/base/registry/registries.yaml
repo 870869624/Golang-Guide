@@ -1,0 +1,14 @@
+mirrors:
+  "topsec-epsec.com.cn:33500":
+    endpoint:
+      - "https://topsec-epsec.com.cn:33500"
+  "topsec-epsec.com.cn:30500":
+    endpoint:
+      - "https://topsec-epsec.com.cn:30500"
+configs:
+  "topsec-epsec.com.cn:33500":
+    tls:
+      insecure_skip_verify: true
+  "topsec-epsec.com.cn:30500":
+    tls:
+      insecure_skip_verify: true

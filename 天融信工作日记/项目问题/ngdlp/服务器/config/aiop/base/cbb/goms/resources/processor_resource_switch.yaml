@@ -1,0 +1,27 @@
+# switch 处理器资源配置样例
+processor_resources:
+    - label: "processor_resource_switch"
+      switch:
+        - check: this.message_type == 1
+          processors:
+            - resource: processor_resource_audited # 走审计处理器
+        - check: this.message_type == 4
+          processors:
+            - resource: processor_resource_connect_log # 走终端连接日志处理器
+        - check: this.message_type == 21
+          processors:
+            - resource: processor_resource_sensitive_file
+        - check: this.message_type == 22
+          processors:
+            - resource: processor_resource_sensitive_file_category
+        - check: this.message_type == 23
+          processors:
+            - resource: processor_resource_sensitive_file_level
+        - check: this.message_type == 24
+          processors:
+            - resource: processor_resource_sensitive_category_level
+        - check: this.message_type == 31 # 客户端产品进程资源信息资源配置
+          processors:
+            - resource: processor_resource_client_process_resource
+        - processors:
+            - resource: processor_resource_deleted   # 其他消息，默认什么都不处理，原样传递到下游

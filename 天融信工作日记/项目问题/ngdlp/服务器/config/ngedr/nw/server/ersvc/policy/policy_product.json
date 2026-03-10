@@ -1,0 +1,2352 @@
+[
+  {
+    "product": "EDR",
+    "defense_type": "virus_defense",
+    "defense_type_zh": "病毒防御",
+    "name": "edr_scan",
+    "name_zh": "病毒查杀",
+    "default_rule": {
+      "rule_name": "默认病毒查杀规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "all_clear": false,
+        "auto_scan": {
+          "compress_file": {
+            "max_level": 8,
+            "scan_continue": false,
+            "skip_file_size": 20,
+            "unit": "MB"
+          },
+          "enable": false,
+          "scan_exclude_ext": {
+            "enable": false,
+            "value": ""
+          },
+          "scan_include_ext": {
+            "enable": false,
+            "value": ""
+          }
+        },
+        "backup_to_isolation": false,
+        "handle_mode": "auto",
+        "kill_proc": false,
+        "options": [
+          "noop",
+          "prompt",
+          "upload",
+          "auto"
+        ],
+        "period_scan": {
+          "compress_file": {
+            "max_level": 8,
+            "scan_continue": false,
+            "skip_file_size": 20,
+            "unit": "MB"
+          },
+          "custom_scan": {
+            "crontab": {
+              "days": [
+                1,
+                2
+              ],
+              "every": "everymonth",
+              "interval_minute": 2,
+              "time_at": [
+                "08:20-09:20"
+              ],
+              "weekday": []
+            },
+            "enable": false,
+            "options": {
+              "every": [
+                "everyday",
+                "everyweek",
+                "everymonth",
+                "interval"
+              ],
+              "weekday": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            },
+            "scan_path": []
+          },
+          "enable": false,
+          "full_scan": {
+            "crontab": {
+              "days": [
+                1,
+                2
+              ],
+              "every": "everymonth",
+              "interval_minute": 2,
+              "time_at": [
+                "08:20-09:20"
+              ],
+              "weekday": []
+            },
+            "enable": false,
+            "options": {
+              "every": [
+                "everyday",
+                "everyweek",
+                "everymonth",
+                "interval"
+              ],
+              "weekday": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          },
+          "quick_scan": {
+            "crontab": {
+              "days": [
+                1,
+                2
+              ],
+              "every": "everymonth",
+              "interval_minute": 2,
+              "time_at": [
+                "08:20-09:20"
+              ],
+              "weekday": []
+            },
+            "enable": false,
+            "options": {
+              "every": [
+                "everyday",
+                "everyweek",
+                "everymonth",
+                "interval"
+              ],
+              "weekday": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+              ]
+            }
+          },
+          "scan_exclude_ext": {
+            "enable": false,
+            "value": ""
+          },
+          "scan_include_ext": {
+            "enable": false,
+            "value": ""
+          }
+        },
+        "power": false,
+        "resource_limited": {
+          "options": [
+            "balance",
+            "business",
+            "defense"
+          ],
+          "value": "balance"
+        },
+        "trigger_scan": {
+          "compress_file": {
+            "max_level": 8,
+            "scan_continue": false,
+            "skip_file_size": 20,
+            "unit": "MB"
+          },
+          "enable": false,
+          "scan_exclude_ext": {
+            "enable": false,
+            "value": ""
+          },
+          "scan_include_ext": {
+            "enable": false,
+            "value": ""
+          },
+          "trigger_at": [
+            "udisk"
+          ],
+          "trigger_options": [
+            "udisk",
+            "keydir",
+            "browser",
+            "start"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "virus_defense",
+    "defense_type_zh": "病毒防御",
+    "name": "edr_isolation",
+    "name_zh": "病毒隔离",
+    "default_rule": {
+      "rule_name": "默认病毒隔离规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "isolation_path": {
+          "custom_path": "",
+          "default_path": true
+        },
+        "isolation_save_days": {
+          "enable": true,
+          "value": 365
+        },
+        "isolation_size": {
+          "options": [
+            "only_mon",
+            "overwrite",
+            "delete"
+          ],
+          "size": 10,
+          "unit": "GB",
+          "value": "only_mon"
+        },
+        "power": false,
+        "prohibited_recover": true,
+        "recover_path": {
+          "custom_path": "",
+          "origin_path": true
+        }
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "virus_defense",
+    "defense_type_zh": "病毒防御",
+    "name": "edr_whitelist",
+    "name_zh": "白名单",
+    "default_rule": {
+      "rule_name": "默认白名单规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [
+          {
+            "enable": true,
+            "feature": "C:\\Users\\ma\\desktop",
+            "remark": "例子",
+            "type": "PATH"
+          }
+        ],
+        "options": [
+          "PATH",
+          "MD5"
+        ],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "virus_defense",
+    "defense_type_zh": "病毒防御",
+    "name": "edr_cloud_detect",
+    "name_zh": "云检测",
+    "default_rule": {
+      "rule_name": "默认云检测规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "virus_defense",
+    "defense_type_zh": "病毒防御",
+    "name": "edr_source_detect",
+    "name_zh": "源检测",
+    "default_rule": {
+      "rule_name": "默认源检测规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "multi-source-check": false,
+        "options": [
+          "heuristic_engine",
+          "gene_engine",
+          "virtual_sandbox_engine",
+          "ai_engine",
+          "threat"
+        ],
+        "power": false,
+        "values": [
+          "heuristic_engine",
+          "gene_engine"
+        ]
+      }
+    }
+  },
+  {
+    "product": "EDR,DLP",
+    "defense_type": "system_defense",
+    "defense_type_zh": "系统防御",
+    "name": "devmon",
+    "name_zh": "终端外设管理",
+    "default_rule": {
+      "rule_name": "默认终端外设管理规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "bluetooth": false,
+        "cdrom": false,
+        "hub": false,
+        "keyboard": false,
+        "mouse": false,
+        "network_card": false,
+        "power": false,
+        "printer": false,
+        "sdcard": false,
+        "sdisk": false,
+        "udisk": false
+      }
+    }
+  },
+  {
+    "product": "EDR,DLP",
+    "defense_type": "system_defense",
+    "defense_type_zh": "系统防御",
+    "name": "externalmon",
+    "name_zh": "网络连接监控",
+    "default_rule": {
+      "rule_name": "默认网络连接监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "count": 20,
+        "illegal": {
+          "all": {
+            "flag": "0",
+            "text": "您当前同时连接内外网"
+          },
+          "internet": {
+            "flag": "0",
+            "text": "您当前在外网中"
+          }
+        },
+        "internetArr": [],
+        "interval": 5,
+        "local3": {
+          "item": []
+        },
+        "network_port_mon": true,
+        "power": false,
+        "whitelist": {
+          "enable": true,
+          "local": {
+            "item": []
+          },
+          "output": {
+            "item": []
+          }
+        }
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "system_defense",
+    "defense_type_zh": "系统防御",
+    "name": "edr_sysprot",
+    "name_zh": "系统加固",
+    "default_rule": {
+      "rule_name": "默认系统加固规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "custom": {
+          "enable": false,
+          "rules": [
+            {
+              "path": "D:\\Program File(x86)\\SogouInput\\11.4.0.5250\\SGTool.exe",
+              "protection": [
+                "autorun",
+                "hosts"
+              ]
+            }
+          ]
+        },
+        "power": false,
+        "protect_file": [
+          {
+            "description": "对一些软件利用系统组件修改桌面任务栏进行拦截提示",
+            "enable": false,
+            "handle": "ask",
+            "id": "desktop_taskbar_use_system_components",
+            "title": "桌面任务栏(利用系统组件)",
+            "title_en": "The Option Of Desktop Taskbar(Using System Components)"
+          },
+          {
+            "description": "保护IE收藏夹目录不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_favorites",
+            "title": "IE收藏夹目录",
+            "title_en": "The Option Of IE Favorites"
+          },
+          {
+            "description": "保护桌面任务栏快捷方式不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "desktop_taskbar",
+            "title": "桌面任务栏",
+            "title_en": "The Option Of Desktop Taskbar"
+          },
+          {
+            "description": "保护关键的系统文件不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "key_system_file",
+            "title": "关键系统文件",
+            "title_en": "The Option Of Key System File"
+          },
+          {
+            "description": "保护启动目录不被恶意篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "startup_dir_protected",
+            "title": "启动目录(扩展保护)",
+            "title_en": "The Option Of Startup Dir(Protected Extension)"
+          },
+          {
+            "description": "对一些软件的后台桌面快捷方式创建进行拦截提示",
+            "enable": true,
+            "handle": "ask",
+            "id": "create_desktop_shortcut_maliciously",
+            "title": "恶意创建桌面快捷方式",
+            "title_en": "The Option Of Creating Desktop Shortcut Maliciously"
+          },
+          {
+            "description": "保护启动配置文件不被破坏",
+            "enable": true,
+            "handle": "ask",
+            "id": "startup_profile",
+            "title": "启动配置文件",
+            "title_en": "The Option Of Startup Profile"
+          },
+          {
+            "description": "保护Hosts配置文件不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "hosts_profile",
+            "title": "Hosts配置文件",
+            "title_en": "The Option Of Hosts Profile"
+          },
+          {
+            "description": "对一些软件的后台任务栏快捷方式创建进行拦截提示",
+            "enable": true,
+            "handle": "ask",
+            "id": "create_taskbar_shortcut_maliciously",
+            "title": "恶意创建任务栏快捷方式",
+            "title_en": "The Option Of Creating Taskbar Shortcuts Maliciously"
+          },
+          {
+            "description": "对一些软件后台创建系统任务目录进行拦截",
+            "enable": true,
+            "handle": "ask",
+            "id": "create_system_directory_maliciously",
+            "title": "恶意创建系统任务目录",
+            "title_en": "The Option Of Creating The System Task Directory Maliciously"
+          },
+          {
+            "description": "自动屏蔽恶意程序被创建",
+            "enable": true,
+            "handle": "ask",
+            "id": "create_rogue_program",
+            "title": "恶意程序创建",
+            "title_en": "The Option Of Automatic Masking Creating Rogue Program"
+          },
+          {
+            "description": "保护特殊的系统目录,拦截可疑程序文件的生成",
+            "enable": true,
+            "handle": "ask",
+            "id": "special_system_directory",
+            "title": "特殊系统目录",
+            "title_en": "The Option Of Special System Directory"
+          },
+          {
+            "description": "保护桌面快捷方式不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "desktop_shortcut",
+            "title": "桌面快捷方式",
+            "title_en": "The Option Of Desktop Shortcut"
+          },
+          {
+            "description": "保护IE快捷方式不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_shortcut",
+            "title": "IE快捷方式",
+            "title_en": "The Option Of IE Shortcut"
+          },
+          {
+            "description": "保护磁盘不被U盘病毒感染",
+            "enable": true,
+            "handle": "ask",
+            "id": "autorun",
+            "title": "Autorun配置文件",
+            "title_en": "The Option Of Autorun Config Files"
+          },
+          {
+            "description": "保护系统任务目录不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "system_task_directory",
+            "title": "系统任务目录",
+            "title_en": "The Option Of System Task Directory"
+          },
+          {
+            "description": "保护系统目录不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "system_directory",
+            "title": "系统目录",
+            "title_en": "The Option Of System Task Directory"
+          },
+          {
+            "description": "保护启动目录不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "startup_directory",
+            "title": "启动目录",
+            "title_en": "The Option Of Start Up Directory"
+          }
+        ],
+        "protect_immune": [
+          {
+            "description": "自动屏蔽利用其它扩展名伪装的病毒程序执行",
+            "enable": false,
+            "handle": "ask",
+            "id": "extension_cheat",
+            "title": "其它扩展名欺骗",
+            "title_en": "The Option Of Other Extensions Cheat"
+          },
+          {
+            "description": "自动阻止Powershell命令行脚本下载执行恶意程序",
+            "enable": true,
+            "handle": "ask",
+            "id": "powershell_script_download",
+            "title": "利用Powershell命令行脚本下载执行",
+            "title_en": "Download and execute with Powershell command line script"
+          },
+          {
+            "description": "自动屏蔽利用文档扩展名伪装的病毒程序执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "document_extension_cheat",
+            "title": "文档扩展名欺骗",
+            "title_en": "The Option Of Document Extensions Cheat"
+          },
+          {
+            "description": "自动屏蔽容易隐藏病毒的特殊目录下的程序执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "suspicious_position",
+            "title": "可疑位置启动",
+            "title_en": "The Option Of Suspicious Position Cheat"
+          },
+          {
+            "description": "自动屏蔽利用压缩包扩展名伪装的病毒程序执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "compressed_extension_cheat",
+            "title": "压缩包扩展名欺骗",
+            "title_en": "The Option Of Compressed Package Extension Cheat"
+          },
+          {
+            "description": "自动屏蔽利用视频扩展名伪装的病毒程序执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "video_extension_cheat",
+            "title": "视频扩展名欺骗",
+            "title_en": "The Option Of Video Extensions Cheat"
+          },
+          {
+            "description": "自动屏蔽流行病毒的执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "popular_virus_cheat",
+            "title": "流行病毒",
+            "title_en": "The Option Of Popular Virus Cheat"
+          },
+          {
+            "description": "自动屏蔽后台劫持浏览器快捷方式的程序执行",
+            "enable": true,
+            "handle": "ask",
+            "id": "background_hijacked_cheat",
+            "title": "后台劫持程序",
+            "title_en": "The Option Of The Background Hijacked Cheat"
+          },
+          {
+            "description": "自动阻止命令行脚本下载执行恶意程序",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_script_download",
+            "title": "命令行脚本下载执行",
+            "title_en": "Command line script download and execute"
+          }
+        ],
+        "protect_process": [
+          {
+            "description": "保护资源管理器进程,对其防注入加固",
+            "enable": false,
+            "handle": "ask",
+            "id": "resource_manage_extension",
+            "title": "资源管理器(扩展)",
+            "title_en": "The Option Of Resource Manager(Extension)"
+          },
+          {
+            "description": "保护资源管理器进程,对其防篡改加固",
+            "enable": false,
+            "handle": "ask",
+            "id": "resource_manage",
+            "title": "资源管理器",
+            "title_en": "The Option Of Resource Manager"
+          },
+          {
+            "description": "保护IE浏览器进程,对其防注入加固",
+            "enable": false,
+            "handle": "ask",
+            "id": "IE_process_extension",
+            "title": "IE浏览器进程(扩展)",
+            "title_en": "The Option Of IE Process(Extension)"
+          },
+          {
+            "description": "保护关键系统进程,对其防篡改加固",
+            "enable": true,
+            "handle": "ask",
+            "id": "key_system_process",
+            "title": "篡改关键系统进程",
+            "title_en": "The Option Of Key System Process"
+          },
+          {
+            "description": "保护IE浏览器进程,对其防篡改加固",
+            "enable": false,
+            "handle": "ask",
+            "id": "IE_process",
+            "title": "IE浏览器进程",
+            "title_en": "The Option Of IE Process"
+          },
+          {
+            "description": "保护关键系统进程,对其防注入加固",
+            "enable": true,
+            "handle": "ask",
+            "id": "key_system_process_extension",
+            "title": "关键系统进程(扩展)",
+            "title_en": "The Option Of Key System Process(Extension)"
+          }
+        ],
+        "protect_reg": [
+          {
+            "description": "保护RunServices不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "run_services",
+            "options": [
+              "ask",
+              "allow",
+              "prohibited"
+            ],
+            "title": "RunServices项",
+            "title_en": "The Option Of The RunServices"
+          },
+          {
+            "description": "保护管理辅助(Ras)项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "ras",
+            "title": "管理辅助(Ras)项",
+            "title_en": "The Option Of The Management Assistance(Ras)"
+          },
+          {
+            "description": "保护Winlogon Taskman不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winlogon_taskman",
+            "title": "Winlogon Taskman项",
+            "title_en": "The Option Of The Winlogon Taskman"
+          },
+          {
+            "description": "保护WinNT Load/Run不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winNT_load_run",
+            "title": "WinNT Load/Run项",
+            "title_en": "The Option Of WinNT Load/Run"
+          },
+          {
+            "description": "保护Winlogon Userinit不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winlogon_userinit",
+            "title": "Winlogon Userinit项",
+            "title_en": "The Option Of Winlogon Userinit"
+          },
+          {
+            "description": "保护IE首页锁定配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_homepage_locked",
+            "title": "IE首页锁定配置项",
+            "title_en": "The Option Of IE Homepage's Locked Config"
+          },
+          {
+            "description": "保护IE扩展不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "IE_extension",
+            "title": "IE扩展项",
+            "title_en": "The Option Of IE Extension"
+          },
+          {
+            "description": "保护IE标题项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_title",
+            "title": "IE标题项",
+            "title_en": "The Option Of IE Title"
+          },
+          {
+            "description": "保护IE扩展BHO不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "IE_extension_bho",
+            "title": "IE扩展BHO项",
+            "title_en": "The Option Of IE Extension BHO"
+          },
+          {
+            "description": "保护启动项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "startup",
+            "title": "启动项",
+            "title_en": "The Option Of Startup"
+          },
+          {
+            "description": "保护其它启动项不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "other_startup",
+            "title": "其它启动项",
+            "title_en": "The Option Of Other Startup"
+          },
+          {
+            "description": "保护Explorer扩展不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "explorer_extension",
+            "title": "Explorer扩展项",
+            "title_en": "The Option Of Explorer Extension"
+          },
+          {
+            "description": "保护Explorer Shell启动钩子不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "explorer_shell",
+            "title": "Explorer Shell启动钩子项",
+            "title_en": "The Option Of Explorer Shell Start Hook"
+          },
+          {
+            "description": "保护脚本服务配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "script_service",
+            "title": "脚本服务配置项",
+            "title_en": "The Option Of Script Service Config"
+          },
+          {
+            "description": "保护系统LSA启动项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "system_lsa",
+            "title": "系统LSA启动项",
+            "title_en": "The Option Of System LSA Startup"
+          },
+          {
+            "description": "保护系统服务扩展不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "system_extension",
+            "title": "系统服务扩展项",
+            "title_en": "The Option Of System Service Extension"
+          },
+          {
+            "description": "保护WinNT Shell不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winNT_shell",
+            "title": "WinNT Shell项",
+            "title_en": "The Option Of WinNT Shell"
+          },
+          {
+            "description": "保护映像劫持项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "image_hijacked",
+            "title": "映像劫持项",
+            "title_en": "The Option Of The Image Hijacked"
+          },
+          {
+            "description": "保护媒体驱动项不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "media_drive",
+            "title": "媒体驱动项",
+            "title_en": "The Option Of The Media Drive"
+          },
+          {
+            "description": "保护IE快捷启动不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_quick_startup",
+            "title": "IE快捷启动项",
+            "title_en": "The Option Of IE Quick Start"
+          },
+          {
+            "description": "保护初始启动项不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "initial_startup",
+            "title": "初始启动项",
+            "title_en": "The Option Of Initial Start"
+          },
+          {
+            "description": "保护WinNT启动钩子不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winNT_startup_hook",
+            "title": "WinNT启动钩子项",
+            "title_en": "The Option Of WinNT Start Hook"
+          },
+          {
+            "description": "保护Explorer延迟服务不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "explorer_delay_service",
+            "title": "Explorer延迟服务项",
+            "title_en": "The Option Of Explorer Delay Service"
+          },
+          {
+            "description": "保护Winlogon Shell不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winlogon_shell",
+            "title": "Winlogon Shell项",
+            "title_en": "The Option Of Winlogon Shell"
+          },
+          {
+            "description": "保护输入法不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "input_method",
+            "title": "输入法项",
+            "title_en": "The Option Of Input Method"
+          },
+          {
+            "description": "保护远程Scriptlet项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "remote_scriptlet",
+            "title": "远程Scriptlet项",
+            "title_en": "The Option Of Remote Scriptlet Startup"
+          },
+          {
+            "description": "保护远程服务启动项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "remote_service_startup",
+            "title": "远程服务启动项",
+            "title_en": "The Option Of Remote Service Startup"
+          },
+          {
+            "description": "保护锁定DOS模块不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "locking_dos",
+            "title": "锁定DOS模块",
+            "title_en": "Locking DOS module"
+          },
+          {
+            "description": "保护WinNT ExplorerRun不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winNT_explorer_run",
+            "title": "WinNT ExplorerRun项",
+            "title_en": "The Option Of WinNT ExplorerRun"
+          },
+          {
+            "description": "保护IE首页不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "IE_homepage",
+            "title": "IE首页项",
+            "title_en": "The Option Of IE Homepage"
+          },
+          {
+            "description": "保护任务管理器屏蔽配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "task_manager_shield",
+            "title": "任务管理器屏蔽配置项",
+            "title_en": "The Option Of Task Manager Shield Configuration"
+          },
+          {
+            "description": "保护SafeBoot配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "safe_boot",
+            "title": "SafeBoot配置项",
+            "title_en": "The Option Of SafeBoot Config"
+          },
+          {
+            "description": "保护文件隐藏配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "file_hidden",
+            "title": "文件隐藏配置项",
+            "title_en": "The Option Of File Hidden Config"
+          },
+          {
+            "description": "保护SFCDisable配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "SFCDisable",
+            "title": "SFCDisable配置项",
+            "title_en": "The Option Of SFCDisable Config"
+          },
+          {
+            "description": "保护Shim数据库配置项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "ShimDB",
+            "title": "Shim数据库配置项",
+            "title_en": "Shim DB Config Options"
+          },
+          {
+            "description": "保护SilentProcessExit启动项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "SilentProcessExit",
+            "title": "SilentProcessExit启动项",
+            "title_en": "SilentProcessExit StartUp Options"
+          },
+          {
+            "description": "保护打印机驱动不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "printer_driver",
+            "title": "打印机驱动项",
+            "title_en": "The Option Of Printer Driver"
+          },
+          {
+            "description": "保护数字证书禁用列表不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "digtal_cert_forbidden",
+            "title": "数字证书禁用列表",
+            "title_en": "The Digtal Cert Forbidden Lists"
+          },
+          {
+            "description": "保护服务/驱动配置不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "service_driver_config",
+            "title": "服务/驱动配置项",
+            "title_en": "The Option Of Service/Driver Config"
+          },
+          {
+            "description": "保护Winlogon GPExtensions不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "winlogon_GPExtensions",
+            "title": "Winlogon GPExtensions项",
+            "title_en": "The Option Of The Winlogon GPExtensions"
+          },
+          {
+            "description": "保护Explorer图标插件项不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "explorer_icon_plugins",
+            "title": "Explorer图标插件项",
+            "title_en": "The Option Of Protecting Explorer Icon Plugins No Falsify"
+          },
+          {
+            "description": "保护常用文件关联不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "file_association",
+            "title": "常用文件关联项",
+            "title_en": "The Option Of Common File Association"
+          },
+          {
+            "description": "保护注册表编辑器屏蔽配置不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "registry_editor_mask",
+            "title": "注册表编辑器屏蔽配置项",
+            "title_en": "The Option Of Registry Editor Mask Configuration"
+          },
+          {
+            "description": "保护Winlogon UIHost不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "winlogon_ui_host",
+            "title": "Winlogon UIHost项",
+            "title_en": "The Option Of Winlogon UIHost"
+          },
+          {
+            "description": "保护Winlogon Notify不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "winlogon_notify",
+            "title": "Winlogon Notify项",
+            "title_en": "The Option Of Winlogon Notify"
+          },
+          {
+            "description": "保护系统默认程序不被篡改",
+            "enable": false,
+            "handle": "ask",
+            "id": "system_default_program",
+            "title": "系统默认程序",
+            "title_en": "The Option Of System Default Program"
+          },
+          {
+            "description": "保护轻松访问中心启动项不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "access_center_launcher",
+            "title": "轻松访问中心启动项",
+            "title_en": "Easy Access To The Center Launcher"
+          },
+          {
+            "description": "保护可执行文件默认图标不被篡改",
+            "enable": true,
+            "handle": "ask",
+            "id": "exec_program_icon",
+            "title": "可执行文件默认图标",
+            "title_en": "The Setting of Default Icon of Exec Program"
+          }
+        ],
+        "protect_risk": [
+          {
+            "description": "拦截安装注册服务/驱动动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "register_service_driver",
+            "title": "注册服务/驱动",
+            "title_en": "The Option Of Register Service/Driver"
+          },
+          {
+            "description": "拦截对系统时间的修改动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "modify_system_time",
+            "title": "修改系统时间",
+            "title_en": "The Option Of Modify System Time"
+          },
+          {
+            "description": "拦截对引导保留扇区的修改动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "writing_disk_reserved_sector",
+            "title": "写磁盘保留扇区",
+            "title_en": "The Option Of Writing Disk Reserved Sector"
+          },
+          {
+            "description": "拦截安装全局消息HOOK动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "loading_global_hook",
+            "title": "加载全局钩子",
+            "title_en": "The Option Of Loading Global Hook"
+          },
+          {
+            "description": "拦截对物理内存的直接写操作",
+            "enable": true,
+            "handle": "ask",
+            "id": "writing_physical_memory_devices",
+            "title": "写物理内存设备",
+            "title_en": "The Option Of Writing To Physical Memory Devices"
+          },
+          {
+            "description": "拦截特殊方式注册表操作动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "special_operating_registry",
+            "title": "特殊方式操作注册表",
+            "title_en": "The Option Of Special Way To Manipulate The Registry"
+          },
+          {
+            "description": "拦截加载驱动模块动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "loading_driver_module",
+            "title": "加载驱动模块",
+            "title_en": "The Option Of Loading Driver Module"
+          }
+        ],
+        "protect_run": [
+          {
+            "description": "拦截从指定目录中删除卷装入点的动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "delete_volume_mount_point",
+            "title": "删除卷装入点",
+            "title_en": "Delete the volume mount point"
+          },
+          {
+            "description": "拦截利用BitsAdmin下载可执行文件的动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "bits_admin_download",
+            "title": "利用BitsAdmin下载可执行文件",
+            "title_en": "Using BitsAdmin To Download Exec Files"
+          },
+          {
+            "description": "拦截利用Certutil下载可执行文件的动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "certutil_download",
+            "title": "利用Certutil下载可执行文件",
+            "title_en": "Using Certutil To Download Exec Files"
+          },
+          {
+            "description": "拦截利用Mshta执行可疑脚本",
+            "enable": true,
+            "handle": "ask",
+            "id": "mshta_exec",
+            "title": "利用Mshta执行可疑脚本",
+            "title_en": "Using Mshta To Run Doubtable Scripts"
+          },
+          {
+            "description": "拦截利用PowerShell执行可疑脚本",
+            "enable": true,
+            "handle": "ask",
+            "id": "powershell_exec",
+            "title": "利用PowerShell执行可疑脚本",
+            "title_en": "Using PowerShell To Run Doubtable Scripts"
+          },
+          {
+            "description": "拦截利用Schtasks创建可疑计划任务的动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "schtasks_tasks",
+            "title": "利用Schtasks创建可疑计划任务",
+            "title_en": "Using Schtasks To New Doubtable Tasks"
+          },
+          {
+            "description": "拦截命令行强制断开网络动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "commandline_disconnected_network",
+            "title": "命令行强制断开网络",
+            "title_en": "The Option Of The Command Line Forcing The Network To Be Disconnected"
+          },
+          {
+            "description": "拦截通过WMIC启动可疑进程动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "WMIC_start_suspicious_processes",
+            "title": "通过WMIC启动可疑进程",
+            "title_en": "The Option Of Starting Suspicious Processes Through WMIC"
+          },
+          {
+            "description": "拦截通过WMIC结束进程动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "WMIC_kill_processes",
+            "title": "通过WMIC结束进程",
+            "title_en": "The Option Of End the process through WMIC"
+          },
+          {
+            "description": "拦截通过WMIC进程安装程序动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "WMIC_install_program",
+            "title": "通过WMIC进程安装程序",
+            "title_en": "The Option Of Install the program through the WMIC process"
+          },
+          {
+            "description": "拦截命令行添加用户账号动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_add_accounts",
+            "title": "命令行添加用户账号",
+            "title_en": "The Option Of Add User Accounts From The Command Line"
+          },
+          {
+            "description": "拦截命令行注销系统动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "commandline_logout",
+            "title": "命令行注销系统",
+            "title_en": "The Option Of Log Out Of The System From Command Line"
+          },
+          {
+            "description": "拦截命令行修改用户账户激活状态动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_modify_account_activation",
+            "title": "命令行修改用户账户激活状态",
+            "title_en": "The Option Of Modify User Account Activation From Command Line"
+          },
+          {
+            "description": "拦截运行远程MSI安装包动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "remote_msi_installation",
+            "title": "运行远程MSI安装包",
+            "title_en": "The Option Of Runing The Remote MSI Installation Package"
+          },
+          {
+            "description": "拦截运行远程脚本动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "running_remote_scripts",
+            "title": "运行远程脚本",
+            "title_en": "The Option Of Running The Remote Scripts"
+          },
+          {
+            "description": "拦截通过IEExec执行可疑下载动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "IEExec_download",
+            "title": "通过IEExec执行可疑下载动作",
+            "title_en": "The Option Of Running Intercepting Suspicious Download Actions Via IEExec"
+          },
+          {
+            "description": "拦截隐藏执行可疑脚本动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "hide_exec_suspicious_scripts",
+            "title": "隐藏执行可疑脚本",
+            "title_en": "The Option Of Hide Execution Of Suspicious Scripts"
+          },
+          {
+            "description": "拦截Chrome隐藏执行扩展",
+            "enable": true,
+            "handle": "ask",
+            "id": "hide_exec_chrome_extension",
+            "title": "隐藏执行Chrome扩展",
+            "title_en": "The Option Of Hide Execution Of The Chrome Execing Suspicious Scripts"
+          },
+          {
+            "description": "拦截命令行修改用户账户密码动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_modify_password",
+            "title": "命令行修改用户账户密码",
+            "title_en": "The Option Of Changing The User Account Password From The Command Line"
+          },
+          {
+            "description": "拦截命令行删除用户账户动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_delete_account",
+            "title": "命令行删除用户账户",
+            "title_en": "The Option Of Deleting The User Account From The Command Line"
+          },
+          {
+            "description": "拦截脚本创建浏览器快捷方式动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "scripts_creating_browser_shortcuts",
+            "title": "脚本创建浏览器快捷方式",
+            "title_en": "The Option Of Scripts Creating Browser Shortcuts"
+          },
+          {
+            "description": "拦截通过PowerShell创建可疑启动项动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "powershell_create_startup",
+            "title": "通过PowerShell创建可疑启动项",
+            "title_en": "The Option Of Creating Suspicious Startup Items Through PowerShell"
+          },
+          {
+            "description": "拦截命令行重启系统动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "commandline_reboot",
+            "title": "命令行重启系统",
+            "title_en": "The Option Of Reboot From The Command Line"
+          },
+          {
+            "description": "拦截禁用Windows自动修复和错误恢复的动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "prohibit_windows_auto_repair",
+            "title": "禁用Windows自动修复",
+            "title_en": "The Option Of Windows Auto Repair And Error Recovery"
+          },
+          {
+            "description": "拦截隐藏执行PowerShell动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "hide_exec_powershell",
+            "title": "隐藏执行PowerShell",
+            "title_en": "The Option Of Executing PowerShell Hidden"
+          },
+          {
+            "description": "拦截命令行关闭系统动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "commandline_shutdown",
+            "title": "命令行关闭系统",
+            "title_en": "The Option Of Shutdown From The Command Line"
+          },
+          {
+            "description": "拦截命令行强制删除注册表项动作",
+            "enable": false,
+            "handle": "ask",
+            "id": "commandline_delete_registry",
+            "title": "命令行强制删除注册表项",
+            "title_en": "The Option Of The Command Line Forcing The Deletion Of Registry Keys"
+          },
+          {
+            "description": "拦截命令行删除卷影还原点动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_delete_volume_shadow",
+            "title": "命令行删除卷影还原点",
+            "title_en": "The Option Of The Command Line Deleting The Volume Shadow Restore Point"
+          },
+          {
+            "description": "拦截命令行脚本启动FTP动作",
+            "enable": true,
+            "handle": "ask",
+            "id": "commandline_start_ftp",
+            "title": "命令行脚本启动FTP",
+            "title_en": "The Option Of Command line Script To Start FTP"
+          },
+          {
+            "description": "拦截运行数字货币矿工程序",
+            "enable": true,
+            "handle": "ask",
+            "id": "run_digital_miner_program",
+            "title": "运行数字货币矿工程序",
+            "title_en": "The Option Of Run The Digital Currency Miner Program"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "product": "EDR",
+    "defense_type": "system_defense",
+    "defense_type_zh": "系统防御",
+    "name": "edr_exception_login",
+    "name_zh": "",
+    "default_rule": {
+      "rule_name": "默认规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "login_at": {
+          "data": [
+            "8:20-9:30"
+          ],
+          "enable": false,
+          "weekday": [
+            1,
+            2
+          ],
+          "whitelist": true
+        },
+        "login_detect": true,
+        "login_ip": {
+          "data": [
+            {
+              "type": "ip",
+              "value": "192.168.0.1"
+            },
+            {
+              "type": "range",
+              "value": "192.168.0.1-192.168.1.1"
+            }
+          ],
+          "enable": false,
+          "options": [
+            "ip",
+            "range"
+          ],
+          "whitelist": true
+        },
+        "login_location": {
+          "enable": false,
+          "network_location": [],
+          "whitelist": true
+        },
+        "login_user": {
+          "data": [
+            {
+              "type": "user",
+              "value": "张三"
+            },
+            {
+              "type": "group",
+              "value": "测试部"
+            }
+          ],
+          "enable": false,
+          "options": [
+            "user",
+            "group"
+          ],
+          "whitelist": true
+        },
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "heart_time",
+    "name_zh": "心跳配置",
+    "default_rule": {
+      "rule_name": "默认心跳配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "value": 60
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_state_collect",
+    "name_zh": "客户端状态采集",
+    "default_rule": {
+      "rule_name": "默认客户端状态采集规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "collect_interval": 10,
+        "power": true,
+        "report_interval": 30
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "upgrade",
+    "name_zh": "升级配置",
+    "default_rule": {
+      "rule_name": "默认升级配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "interval": 60,
+        "power": true,
+        "unit": "minute"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_display",
+    "name_zh": "客户端显示",
+    "default_rule": {
+      "rule_name": "默认客户端显示规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "shortcut": true,
+        "tray": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "popup",
+    "name_zh": "弹窗配置",
+    "default_rule": {
+      "rule_name": "默认弹窗配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "undisturbed": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "admin",
+    "name_zh": "管理员配置",
+    "default_rule": {
+      "rule_name": "默认管理员配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "email": "",
+        "name": "admin",
+        "phone": "",
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "server",
+    "name_zh": "通信管理中心",
+    "default_rule": {
+      "rule_name": "默认通信管理中心规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "config": [],
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "log",
+    "name_zh": "日志非实时上传",
+    "default_rule": {
+      "rule_name": "默认日志非实时上传规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "days": 5,
+        "power": false,
+        "size": 10,
+        "unit": "GB"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "host_resource_usage",
+    "name_zh": "主机资源占用监控",
+    "default_rule": {
+      "rule_name": "默认主机资源占用监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cpu_exceeding_threshold": 1,
+        "cpu_threshold": 10,
+        "exceeding_threshold_when": {
+          "options": [
+            "report",
+            "disable_client",
+            "close_client"
+          ],
+          "value": "report"
+        },
+        "memory_exceeding_threshold": 1,
+        "memory_threshold": 100,
+        "monitor_frequency": 1,
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_resource_usage",
+    "name_zh": "客户端资源占用监控",
+    "default_rule": {
+      "rule_name": "默认客户端资源占用监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cpu_exceeding_threshold": 1,
+        "cpu_threshold": 1,
+        "exceeding_threshold_when": {
+          "options": [
+            "report",
+            "disable_client",
+            "close_client"
+          ],
+          "value": "report"
+        },
+        "memory_exceeding_threshold": 1,
+        "memory_threshold": 20,
+        "monitor_frequency": 1,
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "asset_frequency",
+    "name_zh": "资产清点频率",
+    "default_rule": {
+      "rule_name": "默认资产清点频率规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cron": {
+          "crontab": {
+            "days": [
+              1,
+              2
+            ],
+            "every": "everymonth",
+            "time_at": [
+              "08:20-09:20"
+            ],
+            "weekday": []
+          },
+          "description": "空闲时间段定时清理",
+          "enable": false,
+          "options": {
+            "every": [
+              "everyday",
+              "everyweek",
+              "everymonth"
+            ],
+            "weekday": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        },
+        "description": "资产清点频率(xxx分钟/次)",
+        "power": true,
+        "value": 60
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "self_protect",
+    "name_zh": "客户端自保护",
+    "default_rule": {
+      "rule_name": "默认客户端自保护规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "leave_captcha": true,
+        "offline_gt_days": 180,
+        "power": true,
+        "uninstall_captcha": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_login",
+    "name_zh": "客户端登录",
+    "default_rule": {
+      "rule_name": "默认客户端登录规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "allow_auto_login": true,
+        "allow_remember_password": true,
+        "auto_login_current": false,
+        "binding": false,
+        "limit_login_count": false,
+        "power": false,
+        "update_password_cron": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "network_location",
+    "name_zh": "网络位置",
+    "default_rule": {
+      "rule_name": "默认网络位置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "float": false,
+        "power": false,
+        "right_menu": false,
+        "switch_network": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "additional_information_control",
+    "name_zh": "客户端附加信息控制",
+    "default_rule": {
+      "rule_name": "默认客户端附加信息控制规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "edit_need_confirm": false,
+        "install_need_confirm": true,
+        "prohibit_edit": true,
+        "reinstall_options": "use_server"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "additional_information",
+    "name_zh": "客户端附加信息",
+    "default_rule": {
+      "rule_name": "默认客户端附加信息规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "license",
+    "name_zh": "客户端授权",
+    "default_rule": {
+      "rule_name": "默认客户端授权规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "log_type",
+    "name_zh": "客户端日志类型",
+    "default_rule": {
+      "rule_name": "默认客户端日志类型规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "data_level",
+    "name_zh": "客户端数据分级",
+    "default_rule": {
+      "rule_name": "默认客户端数据分级规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "installer_set",
+    "name_zh": "客户端安装设置",
+    "default_rule": {
+      "rule_name": "默认客户端安装设置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "log_schema",
+    "name_zh": "客户端日志定义",
+    "default_rule": {
+      "rule_name": "默认客户端日志定义规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_category",
+    "name_zh": "数据分类",
+    "default_rule": {
+      "rule_name": "默认数据分类规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_level",
+    "name_zh": "数据分级",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_data_level",
+        "name_zh": "数据分级",
+        "default_rule": {
+          "rule_name": "默认数据分级规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [],
+            "power": false
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_level_up",
+        "name_zh": "数据升级",
+        "default_rule": {
+          "rule_name": "默认数据升级规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "level_up": {
+              "data": [
+                {
+                  "level": 5,
+                  "trigger_greater_than": 1000
+                }
+              ],
+              "enable": false
+            },
+            "power": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_setting",
+    "name_zh": "分级分类设置",
+    "default_rule": {
+      "rule_name": "默认分级分类设置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "auto": 1,
+        "first_confirm": {
+          "closed": "user_notify",
+          "outgoing": "user_notify",
+          "scan": "user_notify"
+        },
+        "options": [
+          "user_notify",
+          "user_must",
+          "noop"
+        ],
+        "power": true,
+        "update_confirm": {
+          "closed": "user_notify",
+          "outgoing": "user_notify"
+        },
+        "update_detect": {
+          "expired_at": true,
+          "file_content_changed": true
+        }
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_identifier",
+    "name_zh": "数据标识",
+    "default_rule": {
+      "rule_name": "默认数据标识规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "extend_attr": false,
+        "icon": false,
+        "power": true,
+        "showable": true
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_param_detect",
+    "name_zh": "检测参数配置",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_detect_file_type",
+        "name_zh": "文件检测类型",
+        "default_rule": {
+          "rule_name": "默认文件检测类型规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [
+              {
+                "name": "常见文档",
+                "suffix": "pdf;ofd;doc;docx;xls;xlsx;et;ppt;pptx;txt;rtf;wps;pg;vsd;xmind;emmx"
+              },
+              {
+                "name": "常见压缩文件",
+                "suffix": "zip;rar;7z;arj;gz;tar"
+              },
+              {
+                "name": "常用图片",
+                "suffix": "bmp;gif;jpeg;jpg;png"
+              },
+              {
+                "name": "邮件存储",
+                "suffix": "pst"
+              },
+              {
+                "name": "代码文件",
+                "suffix": "html;js;sql;log"
+              },
+              {
+                "name": "电子招标文件",
+                "suffix": "egp"
+              },
+              {
+                "name": "程序",
+                "suffix": "exe;dsps"
+              },
+              {
+                "name": "数据",
+                "suffix": "bak"
+              },
+              {
+                "name": "音频视频",
+                "suffix": "aif;au;ram;amr;mmf;flac;la;swf"
+              }
+            ],
+            "max_pack_level": 20,
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_detect_white_list",
+        "name_zh": "文件检测白名单",
+        "default_rule": {
+          "rule_name": "默认文件检测白名单规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "power": true,
+            "white_list": []
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_outgoing_control",
+    "name_zh": "外发管控",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_outgoing_control",
+        "name_zh": "管控规则",
+        "default_rule": {
+          "rule_name": "默认管控规则规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [],
+            "power": false
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_outgoing_control_white_list",
+        "name_zh": "管控白名单程序",
+        "default_rule": {
+          "rule_name": "默认管控白名单程序规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "power": false,
+            "white_list": []
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_file_encrypt",
+    "name_zh": "文件加密",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_feature_encrypt",
+        "name_zh": "数据特征加密",
+        "default_rule": {
+          "rule_name": "默认数据特征加密规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "allow_encrypt_decrypt": true,
+            "auto_encrypt": true,
+            "data_category": [],
+            "data_level": [],
+            "encrypted_at": "local_storage",
+            "file_encrypt_level": [],
+            "options": {
+              "encrypted_at": [
+                "local_storage",
+                "outgoing"
+              ],
+              "encrypted_key": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            "power": false
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_notin_scope_encrypted",
+        "name_zh": "不在知悉范围加密",
+        "default_rule": {
+          "rule_name": "默认不在知悉范围加密规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "notin_scope_encrypted": true,
+            "power": false
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_encrypted_key",
+        "name_zh": "加密秘钥",
+        "default_rule": {
+          "rule_name": "默认加密秘钥规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "encrypted_key": {
+              "advanced": [],
+              "middle": [],
+              "normal": []
+            },
+            "options": {
+              "encrypted_at": [
+                "local_storage",
+                "outgoing"
+              ],
+              "encrypted_key": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            },
+            "power": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_whitelist",
+    "name_zh": "外发白名单",
+    "default_rule": {
+      "rule_name": "默认外发白名单规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "address": [],
+        "im": {
+          "receiver": [],
+          "sender": []
+        },
+        "mail": {
+          "receiver": [],
+          "sender": []
+        },
+        "power": false,
+        "send_plaintext": true
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_operate_mon",
+    "name_zh": "文件操作监控",
+    "default_rule": {
+      "rule_name": "默认文件操作监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "options": {
+          "file_location": [
+            "local",
+            "usb",
+            "netshare"
+          ],
+          "match_agent_value": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "match_user_value": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "prohibit_operate": [
+            "open",
+            "copy",
+            "download",
+            "screenshot",
+            "desensitize",
+            "tagged"
+          ]
+        },
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_sandbox",
+    "name_zh": "数据沙箱",
+    "default_rule": {
+      "rule_name": "默认数据沙箱规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data_category": [],
+        "data_level": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_im",
+    "defense_type_zh": "IM程序全溯源",
+    "name": "dlp_im_trace",
+    "name_zh": "IM程序全溯源",
+    "default_rule": {
+      "rule_name": "默认IM程序全溯源规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "options": {
+          "programs": [
+            "QQ",
+            "Elink",
+            "Espace",
+            "PersonalWechat",
+            "CompanyWechat"
+          ]
+        },
+        "outgoing_attach": false,
+        "power": false,
+        "programs": [],
+        "upload_record": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_screen_water_mark",
+    "defense_type_zh": "水印",
+    "name": "dlp_water_mark",
+    "name_zh": "水印",
+    "default_rule": {
+      "rule_name": "默认水印规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "@computername": "0",
+        "@datetime": "0",
+        "@hostname": "0",
+        "@ip": "1",
+        "@loginname": "0",
+        "@mac": "0",
+        "@username": "1",
+        "Angle": 60,
+        "CompanyText": "",
+        "Font": "微软雅黑",
+        "Fontcolor": "#000000",
+        "Lrdis": 300,
+        "Opacity": 20,
+        "Size": 40,
+        "Tbdis": 300,
+        "Text": "",
+        "only_running_show": false,
+        "only_running_show_programs": [],
+        "power": false
+      }
+    }
+  }
+]

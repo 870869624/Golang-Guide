@@ -1,0 +1,1176 @@
+[
+  {
+    "text": "主导航",
+    "i18n": "menu.main",
+    "group": true,
+    "hideInBreadcrumb": true,
+    "children": [
+      {
+        "text": "首页",
+        "link": "/dashboard",
+        "i18n": "menu.dashboard",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "001",
+        "hide": true,
+        "paths": [
+          "/api/v2/*",
+          "/api/v1/*"
+        ],
+        "skipper": [
+          "/api/v2/sso",
+          "/api/v2/system/current_time",
+          "/api/v2/auth/token/sso",
+          "/api/v2/auth/sso",
+          "/api/v2/auth/logout",
+          "/api/v2/auth/fresh_token",
+          "/api/v2/auth/pwd",
+          "/api/v2/system/msg",
+          "/api/v2/system/auth/menu",
+          "/api/v2/system/events/ws",
+          "/api/v2/system/auth/two_factor*",
+          "/api/v2/system/config/message_conf",
+          "/api/v2/system/config/pwdpolicy",
+          "/api/v1/license/manager/psn/tenant/check"
+        ],
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": []
+      },
+      {
+        "text": "登录页",
+        "link": "/passport/login",
+        "i18n": "public.login.login",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "002",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "children": []
+      },
+      {
+        "text": "个人设置",
+        "link": "/personset",
+        "i18n": "menu.account.settings",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "003",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "children": []
+      },
+      {
+        "text": "修改密码",
+        "link": "/settings/pwdset",
+        "i18n": "public.pwdset.edit_password",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "004",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "children": []
+      },
+      {
+        "text": "修改密码",
+        "link": "/pwdset",
+        "i18n": "public.pwdset.edit_password",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "006",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "children": []
+      },
+      {
+        "text": "登出",
+        "link": "/logout",
+        "i18n": "public.login.logout",
+        "icon": "anticon antanticon anticon-file-done",
+        "readOnly": false,
+        "disabled": false,
+        "id": "005",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "children": []
+      },
+      {
+        "text": "资产管理",
+        "link": "",
+        "i18n": "资产管理",
+        "icon": "anticon antanticon anticon-apartment",
+        "readOnly": false,
+        "disabled": false,
+        "id": "1",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": [
+          {
+            "text": "终端管理",
+            "link": "/terminal/terminal-admin-edr",
+            "i18n": "终端管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "11",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "终端管理",
+            "link": "/terminal/terminal-admin-all/terminal",
+            "i18n": "终端管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "12",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin"
+            ],
+            "children": []
+          },
+          {
+            "text": "资产变更",
+            "link": "/terminal/asset-change",
+            "i18n": "资产变更",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "15",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "终端发现",
+            "link": "/terminal/terminal-scan",
+            "i18n": "终端发现",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "13",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "IP地址池",
+            "link": "/terminal/terminal-scan/ip-address",
+            "i18n": "IP地址池",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "131",
+            "hide": true,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "安装部署",
+            "link": "/terminal/install-deploy",
+            "i18n": "安装部署",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "16",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "人员管理",
+            "link": "/terminal/user-manage",
+            "i18n": "人员管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "17",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "终端任务",
+        "link": "",
+        "i18n": "终端任务",
+        "icon": "anticon antanticon anticon-appstore",
+        "readOnly": false,
+        "disabled": false,
+        "id": "2",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": [
+          {
+            "text": "终端任务",
+            "link": "/terminal-task/task-edr",
+            "i18n": "终端任务",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "21",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "终端任务",
+            "link": "/terminal/terminal-admin-all/task",
+            "i18n": "终端任务",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "22",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "策略中心",
+        "link": "",
+        "i18n": "策略中心",
+        "icon": "anticon antanticon anticon-audit",
+        "readOnly": false,
+        "disabled": false,
+        "id": "3",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": [
+          {
+            "text": "策略管理",
+            "link": "/policy-center/policy-manage",
+            "i18n": "策略管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "31",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "规则管理",
+            "link": "/policy-center/rule-manage",
+            "i18n": "规则管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "32",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "规则库",
+            "i18n": "规则库",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "37",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": [
+              {
+                "text": "情报管理",
+                "link": "/policy-center/info-management",
+                "i18n": "情报管理",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "33",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_secadmin"
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "告警规则",
+            "link": "/policy-center/custom-alarm",
+            "i18n": "告警规则",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "36",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "微隔离",
+        "link": "",
+        "i18n": "微隔离",
+        "icon": "anticon antanticon anticon-gateway",
+        "readOnly": false,
+        "disabled": false,
+        "id": "4",
+        "hide": true,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": [
+          {
+            "text": "策略配置",
+            "link": "/micro-isolation/strategy-config",
+            "i18n": "策略配置",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "41",
+            "hide": true,
+            "paths": null,
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "流量可视分析",
+            "link": "/micro-isolation/net-visual-analyse",
+            "i18n": "流量可视分析",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "42",
+            "hide": true,
+            "paths": null,
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "安全分析与响应",
+        "link": "",
+        "i18n": "安全分析与响应",
+        "icon": "anticon antanticon anticon-dashboard",
+        "readOnly": false,
+        "disabled": false,
+        "id": "5",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ],
+        "children": [
+          {
+            "text": "威胁响应中心",
+            "link": "/comprehensive-response/threat-response-center",
+            "i18n": "威胁响应中心",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "56",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin",
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "统计分析",
+            "link": "/comprehensive-response/analyse",
+            "i18n": "统计分析",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "53",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin",
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "报表管理",
+            "link": "/comprehensive-response/modal",
+            "i18n": "报表管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "54",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin",
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "日志中心",
+        "link": "",
+        "i18n": "日志中心",
+        "icon": "anticon antanticon anticon-container",
+        "readOnly": false,
+        "disabled": false,
+        "id": "6",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin",
+          "user_aiop_auditadmin"
+        ],
+        "children": [
+          {
+            "text": "终端事件日志",
+            "link": "/safety-analysis/event",
+            "i18n": "终端事件日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "641",
+            "hide": true,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "skipper": null,
+            "children": []
+          },
+          {
+            "text": "告警日志",
+            "link": "/safety-analysis/alarm",
+            "i18n": "告警日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "612",
+            "hide": true,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "告警日志详情",
+            "link": "/safety-analysis/alarm/detail",
+            "i18n": "告警日志详情",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "611",
+            "hide": true,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "终端事件日志",
+            "link": "/safety-analysis/event",
+            "i18n": "终端事件日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "64",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "告警日志",
+            "link": "/safety-analysis/alarm",
+            "i18n": "告警日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "61",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "操作日志",
+            "link": "/safety-analysis/action",
+            "i18n": "操作日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "62",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin",
+              "user_aiop_admin",
+              "user_aiop_sysadmin",
+              "user_aiop_auditadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "系统日志",
+            "link": "/safety-analysis/system",
+            "i18n": "系统日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "63",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin",
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "终端连接日志",
+            "link": "/safety-analysis/connect",
+            "i18n": "终端连接日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "65",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "联动日志",
+            "link": "/safety-analysis/linkage",
+            "i18n": "联动日志",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "66",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "系统管理",
+        "link": "",
+        "i18n": "系统管理",
+        "icon": "anticon anticon-setting",
+        "readOnly": false,
+        "disabled": false,
+        "id": "7",
+        "hide": false,
+        "paths": null,
+        "skipper": null,
+        "owner": [
+          "user_aiop_admin",
+          "user_aiop_sysadmin",
+          "user_aiop_secadmin"
+        ],
+        "children": [
+          {
+            "text": "认证管理",
+            "link": "",
+            "i18n": "认证管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "71",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_secadmin"
+            ],
+            "children": [
+              {
+                "text": "用户管理",
+                "link": "/system-admin/token-admin/user",
+                "i18n": "用户管理",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "911",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_secadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "角色管理",
+                "link": "/system-admin/token-admin/role",
+                "i18n": "角色管理",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "912",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin"
+                ],
+                "children": []
+              },
+              {
+                "text": "访问控制",
+                "link": "/system-admin/token-admin/controls",
+                "i18n": "访问控制",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "913",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_secadmin"
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "系统信息",
+            "link": "/system-admin/system-information",
+            "i18n": "系统信息",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "72",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "系统配置",
+            "link": "/system-admin/system-config",
+            "i18n": "menu.system_config",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "94",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "级联管理",
+            "link": "",
+            "i18n": "级联管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "75",
+            "hide": false,
+            "paths": null,
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": [
+              {
+                "text": "级联管理",
+                "link": "/system-admin/cascade-admin",
+                "i18n": "级联管理",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "751",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "级联终端",
+                "link": "/system-admin/cascade-admin/terminal",
+                "i18n": "级联终端",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "752",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "级联任务",
+                "link": "/system-admin/cascade-admin/task",
+                "i18n": "级联任务",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "753",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "text": "消息中心",
+            "link": "/system-admin/message",
+            "i18n": "消息中心",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "76",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": []
+          },
+          {
+            "text": "运维管理",
+            "i18n": "运维管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "100",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "user_aiop_admin",
+              "user_aiop_sysadmin"
+            ],
+            "children": [
+              {
+                "text": "服务器资源管理",
+                "link": "/system-admin/oMManagement/server",
+                "i18n": "服务器资源管理",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "101",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "自动化运维",
+                "link": "/system-admin/oMManagement/auto",
+                "i18n": "自动化运维",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "102",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "查看",
+                "link": "/system-admin/oMManagement/auto/function-view",
+                "i18n": "查看",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "1021",
+                "hide": true,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              },
+              {
+                "text": "系统升级",
+                "link": "/system-admin/oMManagement/upgrade",
+                "i18n": "系统升级",
+                "icon": "",
+                "readOnly": false,
+                "disabled": false,
+                "id": "103",
+                "hide": false,
+                "paths": [
+                  "/api/v2/*",
+                  "/api/v1/*"
+                ],
+                "skipper": null,
+                "owner": [
+                  "user_aiop_admin",
+                  "user_aiop_sysadmin"
+                ],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "租户管理",
+        "link": "",
+        "i18n": "租户管理",
+        "icon": "anticon antanticon anticon-user",
+        "readOnly": false,
+        "disabled": false,
+        "id": "8",
+        "hide": false,
+        "paths": [
+          "/api/v2/*",
+          "/api/v1/*"
+        ],
+        "skipper": null,
+        "owner": [
+          "tenant_admin"
+        ],
+        "children": [
+          {
+            "text": "租户管理",
+            "link": "/system-admin/token-admin/tenant",
+            "i18n": "租户管理",
+            "icon": "",
+            "readOnly": false,
+            "disabled": false,
+            "id": "81",
+            "hide": false,
+            "paths": [
+              "/api/v2/*",
+              "/api/v1/*"
+            ],
+            "skipper": null,
+            "owner": [
+              "tenant_admin"
+            ],
+            "children": []
+          }
+        ]
+      },
+      {
+        "text": "态势",
+        "link": "/large-visual-screen",
+        "i18n": "态势",
+        "icon": "anticon antanticon anticon-compass",
+        "readOnly": false,
+        "disabled": false,
+        "id": "10",
+        "hide": true,
+        "paths": [],
+        "skipper": null,
+        "owner": [
+          "tenant_admin",
+          "user_aiop_admin",
+          "user_aiop_sysadmin"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+# 终端连接日志消息处理器资源配置
+processor_resources:
+    - label: "processor_resource_connect_log"
+      bloblang: |
+       meta catalog   = "connect_log"
+       root           = this
+       root.message_type           = deleted()

@@ -1,0 +1,11 @@
+location:
+  - path: "/api/v1/system"              # 匹配的路径(前缀而非正则), 默认值: "/"
+    balancer: random                    # 均衡器类型, 默认值: round_robin, 可选值: round_robin, random, ip_hash, p2c, weighted_round_robin
+    addrs:                              # 代理的地址, 必填项，格式为 协议://ip:port , 如果有权重，则用空格分开，像这样 "http://0.0.0.0:8081 5"
+      - "http://systemsvc:8888"
+health_check:
+  enable: false                         # 健康检查，默认值: false
+  type: initiative                      # 健康检查类型, 默认值: initiative, 可选值: initiative(主动检查), passive(被动检查)
+  health_check_interval_seconds: 5      # 健康检查间隔(秒), 默认值: 5
+  health_check_timeout_seconds: 2       # 建立连接超时时间(秒), 主动检查有效, 默认值: 2
+  health_check_failure: 10%

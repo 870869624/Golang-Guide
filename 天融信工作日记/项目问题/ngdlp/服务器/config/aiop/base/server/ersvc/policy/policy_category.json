@@ -1,0 +1,30 @@
+{
+  "config": {
+    "global_policy": [
+      "additional_information_control",
+      "additional_information",
+      "license",
+      "log_type",
+      "data_level",
+      "installer_set",
+      "log_schema"
+    ],
+    "other": [
+      "heart_time",
+      "client_state_collect",
+      "upgrade",
+      "client_display",
+      "popup",
+      "admin",
+      "server",
+      "log",
+      "host_resource_usage",
+      "client_resource_usage",
+      "asset_frequency",
+      "self_protect",
+      "client_login",
+      "network_location",
+      "exception_report"
+    ]
+  }
+}

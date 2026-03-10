@@ -1,0 +1,8 @@
+# broker 输出资源配置
+output_resources:
+  - label: "output_resource_broker"
+    broker:
+      pattern: fan_out
+      outputs:
+#          - resource: output_resource_stdout
+          - resource: output_resource_clickhouse

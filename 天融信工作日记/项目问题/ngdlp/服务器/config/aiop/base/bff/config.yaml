@@ -1,0 +1,122 @@
+zap_logger:
+  mode: info
+  server_name: cloud-server-rpc
+  outputs:
+    - queue
+  queue:
+    driver: nats
+    addr: nats:4222
+    level: info
+    topics:
+      - log
+    nats:
+      stream_enabled: false
+      stream_name:
+services:
+  mongodb:
+    url: mongodb://mongodb:27017
+    db: bff_soc
+    shared_db: bff_shared
+    username: root
+    password: TopsecCdu_1130
+  redis:
+    url: redis:7379
+    db: 1
+    username: default
+    password: TopsecCdu_1130
+  clickhouse:
+    url: clickhouse:9000
+    db: bff_logs_soc
+    username: default
+    password: TopsecCdu_1130
+  cloud_events:
+    url: nats:4222
+    protocol: nats
+    send_channel: bff.send
+    receive_channel: bff.receive
+resources:
+  user:
+    menu_json_path: /home/topsec/config-map/bff/menu.json
+  audit:
+    enable: false
+rest:
+  server_name: cloud-server
+  mode: info
+  ip: 0.0.0.0
+  port: 8888
+  scheme: http
+  print_routes: false
+  outmost: false
+  read_timeout: 30
+  write_timeout: 30
+  middlewares:
+    # 故障恢复
+    recover:
+      enable: true
+    # 国际化
+    i18n:
+      enable: true
+      filepath: ./etc/i18n
+    # 操作请求日志
+    logger:
+      enable: true
+      type: clickhouse
+      #type: mongo
+      send_out_type: publisher
+      send_out_addr: tcp://0.0.0.0:40899
+    # 认证
+    auth:
+      enable: true
+      secret_key: q4gMYQtRH9bwr73fSOXp9SVJUnYixUufY9uiedBxC8XAQqz0
+    # 上下文拓展插件
+    ctx:
+      # 加密key
+      default_key: Nh1dZefm5BoCcAvUamrFMt2hZbLpmH6F
+      enable: true
+      # 加密方式 gm sm
+      algo: sm
+      # 是否忽略数据加密
+      skip_encryption: true
+    # 防重放攻击
+    antireplay:
+      enable: false
+      default_salt: q4WczGkLjS9nyegO
+      timeout: 60
+    # 最大连接数
+    maxconns:
+      enable: true
+      num: 1000
+    # 熔断器
+    breaker:
+      enable: true
+    # CPU 负载 cpu threshold
+    shedding:
+      enable: false
+    # 权限
+    permission:
+      enable: true
+    # IP黑白名单
+    ip_access:
+      enable: true
+      skip_path:
+        - "POST /api/v1/license/cascade/apply/superior"
+        - "POST /api/v1/license/cascade/circle/check"
+        - "POST /api/v1/license/cascade/sync/superior"
+        - "POST /api/v1/license/cascade/sync/subtract"
+        - "POST /api/v1/license/cascade/sync/subtract/apply"
+    # 代理
+    proxy:
+      enable: false
+      encrypt: false
+    # 三方认证
+    third_auth:
+      enable: true
+    # 链路跟踪
+    tracing:
+      enable: true
+rpc:
+  rpcserverconf:
+    serviceconf:
+      name: aiopbff.rpc
+    listenon: 0.0.0.0:8080
+    timeout: 30000

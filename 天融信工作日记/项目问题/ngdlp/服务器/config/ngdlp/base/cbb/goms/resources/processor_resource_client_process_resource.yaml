@@ -1,0 +1,7 @@
+# 客户端产品进程资源信息资源配置
+processor_resources:
+    - label: "processor_resource_client_process_resource"
+      bloblang: |
+       meta catalog   = "client_process_resource"
+       root           = this
+       root.message_type           = deleted()

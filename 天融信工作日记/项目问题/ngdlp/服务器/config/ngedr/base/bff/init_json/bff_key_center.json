@@ -1,0 +1,11 @@
+[
+  {
+    "platform": "AccessKeyRpc",
+    "app_name": "运营平台",
+    "desc": "默认模板",
+    "app_id": "SOC",
+    "app_secret": "MZNXBCVLAKDJHFGQOEIUEYRPTWQHRDGJ",
+    "status": "enable",
+    "expireAt": "2030-01-02T15:04:05+08:00"
+  }
+]

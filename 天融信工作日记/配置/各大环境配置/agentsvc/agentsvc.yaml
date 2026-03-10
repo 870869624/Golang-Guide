@@ -1,0 +1,56 @@
+server_name: agentsvc
+#mode: debug
+ip: 0.0.0.0
+port: 8888
+rpc_client_config: client.yaml
+rpcserverconf:
+  name: agentsvc.rpc
+  listenon: 0.0.0.0:8080
+  timeout: 60000
+logger:
+  level: info
+#  path: tmp/log
+#cache_expire: 10s
+max_concurrent_download: 100
+max_memory_percent_download: 90
+req_limit_time: 1
+services:
+  from: local
+  mongodb:
+    url: mongodb://10.8.27.151:32017
+    db: bff_soc
+    shared_db: bff_shareds
+    username: root
+    password: TopsecCdu_1130
+  redis:
+    url: 10.8.27.151:30379
+    db: 1
+    username: default
+    password: TopsecCdu_1130
+  clickhouse:
+    url: 10.8.27.151:30900
+    db: bff_logs_soc
+    username: default
+    password: TopsecCdu_1130
+middlewares:
+  from: local
+  permission:
+    enable: false
+  auth:
+    enable: false
+  logger:
+    enable: false
+  antireplay:
+    enable: false
+install_module_meta:
+  "FZDM": "辅助定密"
+  "KWKY": "跨网跨域"
+  "DLP": "秘密管理"
+  "EDR": "环境感知"
+cache_redis:
+  host: 10.8.27.151:30379
+  type: node
+  password: TopsecCdu_1130
+  db: 1
+#upload_sup_mem_max: 20971520
+#upload_sup_channel_count: 20

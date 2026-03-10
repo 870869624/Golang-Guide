@@ -1,0 +1,62 @@
+processor_resources:
+  - label: "processor_resource_alarm_bloblang"
+    bloblang: |
+      meta catalog = match {
+        this.rule_id == "cpu_usage" => "alarm_system_log",
+        this.rule_id == "memory_usage" => "alarm_system_log",
+        this.rule_id == "disk_usage" => "alarm_system_log",
+        this.rule_id == "login_lock" => "alarm_system_log",
+        this.rule_id == "invalid_ip" => "alarm_system_log",
+        this.rule_id == "client_offline" => "alarm_log"
+      }
+      let alarm_content = match {
+        this.rule_id == "cpu_usage" => match {
+          this.lifetime.int64() < 3600 => "节点%v占用超过%v%%，持续时间%v分钟".format(this.node_ip, this.threshold, (this.lifetime.int64()/60).int64()),
+          _ => "节点%v占用超过%v%%，持续时间%v小时".format(this.node_ip, this.threshold, (this.lifetime.int64()/3600).int64())
+        },
+        this.rule_id == "memory_usage" => match {
+          this.lifetime.int64() < 3600 => "节点%v占用超过%v%%，持续时间%v分钟".format(this.node_ip, this.threshold, (this.lifetime.int64()/60).int64()),
+          _ => "节点%v占用超过%v%%，持续时间%v小时".format(this.node_ip, this.threshold, (this.lifetime.int64()/3600).int64())
+        },
+        this.rule_id == "disk_usage" => "节点%v占用超过%v%%".format(this.node_ip, this.threshold),
+        this.rule_id == "login_lock" => "%v小时内，锁定发生%v次".format((this.lifetime.int64()/3600).int64(), this.threshold),
+        this.rule_id == "invalid_ip" => "%v小时内，发生%v次".format((this.lifetime.int64()/3600).int64(), this.threshold),
+        this.rule_id == "client_offline" => this.alarm_content,
+        _ => ""
+      }
+      let level = match {
+        this.i_warninglevel.int32() == 1 => "告警等级(高)",
+        this.i_warninglevel.int32() == 2 => "告警等级(中)",
+        this.i_warninglevel.int32() == 3 => "告警等级(低)",
+        _ => "告警等级(未知)"
+      }
+      meta mail_content = "%v: %v, %v. %v".format(this.rule_name, $alarm_content, $level, this.server_href)
+      root = {
+        "product": match {
+          this.rule_id == "cpu_usage" => deleted(),
+          this.rule_id == "memory_usage" => deleted(),
+          this.rule_id == "disk_usage" => deleted(),
+          this.rule_id == "login_lock" => deleted(),
+          this.rule_id == "invalid_ip" => deleted(),
+          _ => this.product
+        },
+        "id": match {
+          this.rule_id == "client_offline" => this.uuid,
+          _ => uuid_v4()
+        },
+        "tenant_id": match {
+          this.rule_id == "client_offline" => this.tenant_id,
+          _ => deleted()
+        },
+        "logged_at": this.i_logtime,
+        "alarm_level": this.i_warninglevel.int32(),
+        "alarm_event": this.rule_id,
+        "alarm_event_zh": this.rule_name,
+        "alarm_content": $alarm_content,
+        "message": this.message.bool(),
+        "email": this.email.bool(),
+        "group_ids": match {
+          this.rule_id == "client_offline" => this.group_ids,
+          _ => deleted()
+        }
+      }

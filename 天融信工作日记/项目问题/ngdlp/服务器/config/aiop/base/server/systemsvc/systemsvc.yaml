@@ -1,0 +1,40 @@
+server_name: systemsvc
+ip: 0.0.0.0
+port: 8888
+max_bytes: 100
+nanomsguri: tcp://goms:15555
+## product name
+product_name:
+## product version
+product_version:
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+rpcserverconf:
+  name: systemsvc.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 300
+metricsrpc:
+  name: metrics.rpc
+  listenon: 0.0.0.0:9123
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/systemsvc
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:7379
+    type: node
+    pass: TopsecCdu_1130
+    db: 2
+queue:
+  driver: nats
+  brokers:
+    - nats:4222

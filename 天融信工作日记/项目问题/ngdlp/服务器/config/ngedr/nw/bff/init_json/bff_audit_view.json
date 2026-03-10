@@ -1,0 +1,44 @@
+[
+  {
+    "id": "63184680b4727f25dc22ecfc",
+    "name": "order",
+    "search": "{\"index\":\"cindex\",\"surl\":\"/dashboard/trade\",\"smethod\":\"get\"}",
+    "ui": "{\"type\":\"custom\",\"custom\":\"true\",\"options\":\"{\\\"hiddenKey\\\":\\\"total,under review\\\",\\\"toPage\\\":\\\"/customer/order\\\"}\"}",
+    "desc": "订单"
+  },
+  {
+    "id": "63184680b4727f25dc22ecf9",
+    "name": "security_examples",
+    "search": "{\"index\":\"cindex\",\"surl\":\"/dashboard/deviceintance\",\"smethod\":\"get\"}",
+    "ui": "{\"type\":\"custom\",\"custom\":true,\"options\":\"{\\\"hiddenKey\\\":\\\"total,abnormal,-1,-2\\\",\\\"toPage\\\":\\\"/user-center/service\\\"}\"}",
+    "desc": "安全实例"
+  },
+  {
+    "id": "63184680b4727f25dc22ecfa",
+    "name": "resource_status",
+    "search": "{\"index\":\"cindex\",\"surl\":\"/dashboard/resourcestatus\",\"filter\":[]}",
+    "ui": "{\"type\":\"combination\",\"custom\":true,\"showTable\":false,\"showIP\":false,\"showTenant\":true}",
+    "desc": "资源状态"
+  },
+  {
+    "id": "63184680b4727f25dc22ed05",
+    "name": "attack_resource",
+    "search": "{\"index\":\"alarm\",\"aggs\":{\"metrics\":[],\"buckets\":[{\"id\":3,\"label\":\"X-Axis\",\"enabled\":true,\"canRemove\":true,\"editorOpen\":false,\"params\":{\"status\":\"terms\",\"field\":\"src\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":\"5\",\"otherBucket\":false,\"missingBucket\":false},\"valid\":true}]},\"filter\":[{\"params\":{\"match_phrase\":{\"src\":{\"query\":\"null\"}}},\"flag\":false,\"disable\":false,\"label\":\"\"}]}",
+    "ui": "{\"type\":\"horizontalBar\",\"custom\":\"false\",\"options\":\"{\\\"chartType\\\":\\\"bar\\\",\\\"tooltip\\\":true,\\\"labels\\\":false,\\\"rotate\\\":0,\\\"yShow\\\":true,\\\"yLines\\\":false,\\\"yLabels\\\":true,\\\"xShow\\\":true,\\\"xLines\\\":false,\\\"xLabels\\\":true}\"}",
+    "desc": "攻击源TOP5"
+  },
+  {
+    "id": "63184680b4727f25dc22ed06",
+    "name": "aiop_attacked_hosts",
+    "search": "{\"index\":\"alarm\",\"aggs\":{\"metrics\":[],\"buckets\":[{\"id\":3,\"label\":\"X-Axis\",\"enabled\":true,\"canRemove\":true,\"editorOpen\":false,\"params\":{\"status\":\"terms\",\"field\":\"dst\",\"orderBy\":\"1\",\"order\":\"desc\",\"size\":\"5\",\"otherBucket\":false,\"missingBucket\":false},\"valid\":true}]},\"filter\":[{\"params\":{\"match_phrase\":{\"dst\":{\"query\":\"null\"}}},\"flag\":false,\"disable\":false,\"label\":\"\"}]}",
+    "ui": "{\"type\":\"horizontalBar\",\"custom\":\"false\",\"options\":\"{\\\"chartType\\\":\\\"bar\\\",\\\"tooltip\\\":true,\\\"labels\\\":false,\\\"rotate\\\":0,\\\"yShow\\\":true,\\\"yLines\\\":false,\\\"yLabels\\\":true,\\\"xShow\\\":true,\\\"xLines\\\":false,\\\"xLabels\\\":true,\\\"isConfigSaved\\\":true}\"}",
+    "desc": "被攻击主机TOP5"
+  },
+  {
+    "id": "631ffecc6358fa0f8c6cbbb4",
+    "name": "system-info",
+    "search": "{\"index\":\"cindex\",\"surl\":\"/dashboard/basic\",\"smethod\":\"get\"}",
+    "ui": "{\"type\":\"listinfo\",\"custom\":true,\"options\":\"{\\\"hiddenKey\\\":\\\"total,online,offline,banned\\\"}\"}",
+    "desc": "基本信息"
+  }
+]

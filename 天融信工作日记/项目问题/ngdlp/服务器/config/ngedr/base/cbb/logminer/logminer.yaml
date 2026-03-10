@@ -1,0 +1,15 @@
+Name: logminer.rpc
+ListenOn: 0.0.0.0:8080
+Timeout: 600
+Log:
+  Level: error
+  Path: /home/topsec/data/logs/logminer
+Database:
+  Addr:
+    - clickhouse:9000
+  Username: default
+  Password: TopsecCdu_1130
+  MaxOpenConns: 1005
+  MaxIdleConns: 1000
+  DialTimeout: 30
+  MaxExecutionTime: 600

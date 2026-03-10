@@ -1,0 +1,66 @@
+## timeout seconds
+bff:
+  target: bff:8080
+  timeout: 30
+  nonblock: true
+cbb_asset:
+  target: agentserver:8080
+  timeout: 30
+  nonblock: true
+cbb_agent:
+  target: agentserver:8081
+  timeout: 30
+  nonblock: true
+cbb_logminer:
+  target: logminer:8080
+  timeout: 600
+  nonblock: true
+consumersvc:
+  target: consumersvc:8080
+  timeout: 30
+  nonblock: true
+ersvc:
+  target: ersvc:8080
+  timeout: 600
+  nonblock: true
+  keepalivetime: 600
+licensesvc:
+  target: licensesvc:8080
+  timeout: 30
+  nonblock: true
+managersvc:
+  target: managersvc:8080
+  timeout: 30
+  nonblock: true
+systemsvc:
+  target: systemsvc:8080
+  timeout: 300
+  nonblock: true
+upgradesvc:
+  target: upgradesvc:8080
+  timeout: 30
+  nonblock: true
+externalsvc:
+  ersvc:
+    name: ersvc
+    target: ersvc:8080
+    timeout: 30
+    nonblock: true
+    keepalive_time: 360
+    method: [ "/ersvc.ersvc/UploadFileEvent" ]
+  ngedr:
+    name: ngedr
+    target: ngedr:8080
+    timeout: 30
+    nonblock: true
+    keepalive_time: 360
+    method: [ "/ngedr.ngedr/ThreatResponseResultLogUpdate", "/ngedr.ngedr/GetVirusDashboardStatistic",
+              "/ngedr.ngedr/GetAgentRank", "/ngedr.ngedr/GetVirusTypeStatistics",
+              "/ngedr.ngedr/GetVirusNameStatistics","/ngedr.intelligence/GetIntelligence"]
+  agentserver:
+    name: agentserver
+    target: agentserver:8081
+    timeout: 600
+    nonblock: true
+    keepalive_time: 600
+    method: [ "/agent.agent/PolicyRulesGet" ]

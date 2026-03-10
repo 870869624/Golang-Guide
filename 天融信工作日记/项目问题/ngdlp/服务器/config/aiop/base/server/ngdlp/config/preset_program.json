@@ -1,0 +1,482 @@
+[
+    {
+        "name": "QQ",
+        "content": "QQ.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "微信",
+        "content": "WeChat.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "微信",
+        "content": "weixin.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "企业微信",
+        "content": "WXWork.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "钉钉",
+        "content": "Dingtalk.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "易信",
+        "content": "yixin.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "阿里旺旺",
+        "content": "AliIM.exe;AliTask.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "TIM",
+        "content": "TIM.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "腾讯通",
+        "content": "RTX.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "飞秋",
+        "content": "FeiQ.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "腾讯会议",
+        "content": "WeMeetApp.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "yy",
+        "content": "YY.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "飞书",
+        "content": "Feishu.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "钉钉截屏",
+        "content": "ScreenTool.exe",
+        "os_type": "windows",
+        "group": "即时通讯"
+    },
+    {
+        "name": "谷歌浏览器",
+        "content": "chrome.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "edge浏览器",
+        "content": "msedge.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "edge浏览器渲染进程",
+        "content": "MicrosoftEdge.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "edge浏览器内容进程",
+        "content": "MicrosoftEdgeCP.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "IE浏览器",
+        "content": "*\\iexplore.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "火狐浏览器",
+        "content": "firefox.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "傲游浏览器",
+        "content": "Maxthon.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "欧朋浏览器",
+        "content": "opera.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "搜狗浏览器",
+        "content": "SogouExplorer.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "360浏览器",
+        "content": "360se.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "360急速浏览器",
+        "content": "360ChromeX.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "猎豹浏览器",
+        "content": "liebao.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "2345浏览器",
+        "content": "2345Explorer.exe",
+        "os_type": "windows",
+        "group": "浏览器"
+    },
+    {
+        "name": "OUTLOOK",
+        "content": "OUTLOOK.EXE",
+        "os_type": "windows",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "网易邮箱",
+        "content": "mailmaster.exe",
+        "os_type": "windows",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "WPS邮箱",
+        "content": "wpsmail.exe",
+        "os_type": "windows",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "139邮箱",
+        "content": "139Mail.exe",
+        "os_type": "windows",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "foxmail",
+        "content": "Foxmail.exe",
+        "os_type": "windows",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "远程桌面",
+        "content": "mstsc.exe",
+        "os_type": "windows",
+        "group": "远程协助"
+    },
+    {
+        "name": "向日葵",
+        "content": "SunloginClient.exe",
+        "os_type": "windows",
+        "group": "远程协助"
+    },
+    {
+        "name": "TeamViewer",
+        "content": "TeamViewer.exe",
+        "os_type": "windows",
+        "group": "远程协助"
+    },
+    {
+        "name": "ToDesk",
+        "content": "ToDesk.exe",
+        "os_type": "windows",
+        "group": "远程协助"
+    },
+    {
+        "name": "百度网盘",
+        "content": "baidunetdisk.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "百度网盘unite",
+        "content": "baidunetdiskunite.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "百度网盘host",
+        "content": "baidunetdiskhost.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "迅雷",
+        "content": "Thunder.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "迅雷网盘",
+        "content": "xunlei.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "阿里旺旺网盘",
+        "content": "aDrive.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "夸克网盘",
+        "content": "quark.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "夸克网盘",
+        "content": "QuarkCloudDrive.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "电信天翼云",
+        "content": "eCloud.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "联通沃云",
+        "content": "WoCloud.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "移动云盘",
+        "content": "mCloud.exe",
+        "os_type": "windows",
+        "group": "网盘"
+    },
+    {
+        "name": "sub",
+        "content": "Sub.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "nero",
+        "content": "nero.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "系统刻录",
+        "content": "isoburn.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "ISOBurner",
+        "content": "ISOBurner.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "ones",
+        "content": "ones.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "ones光盘刻录",
+        "content": "ones光盘刻录.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "UltraISO",
+        "content": "ultraiso.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "NeroStartSmart",
+        "content": "NeroStartSmart.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "其他",
+        "content": "ImgBurn.exe;infrarecorder.exe;DVDMaker.exe",
+        "os_type": "windows",
+        "group": "刻录"
+    },
+    {
+        "name": "钉钉",
+        "content": "com.alibabainc",
+        "os_type": "国产",
+        "group": "即时通讯"
+    },
+    {
+        "name": "QQ",
+        "content": "qq",
+        "os_type": "国产",
+        "group": "即时通讯"
+    },
+    {
+        "name": "传书",
+        "content": "kylin-ipmsg",
+        "os_type": "国产",
+        "group": "即时通讯"
+    },
+    {
+        "name": "飞书",
+        "content": "feishu",
+        "os_type": "国产",
+        "group": "即时通讯"
+    },
+    {
+        "name": "微信",
+        "content": "wechat",
+        "os_type": "国产",
+        "group": "即时通讯"
+    },
+    {
+        "name": "QQ浏览器",
+        "content": "qqbrowser",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "谷歌浏览器",
+        "content": "chrome",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "360浏览器",
+        "content": "browser360",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "uos浏览器",
+        "content": "browser;uosbrowser",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "奇安信浏览器",
+        "content": "qaxbrowser",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "火狐浏览器",
+        "content": "firefox",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "火狐浏览器插件",
+        "content": "Web Content",
+        "os_type": "国产",
+        "group": "浏览器"
+    },
+    {
+        "name": "Evolution",
+        "content": "evolution",
+        "os_type": "国产",
+        "group": "邮件客户端"
+    },
+    {
+        "name": "Deepin邮箱",
+        "content": "deepin-mail",
+        "os_type": "国产",
+        "group": "邮件客户端"
+    },
+    {
+      "name": "cmclient",
+      "content": "cmclient",
+      "os_type": "国产",
+      "group": "邮件客户端"
+    },
+    {
+        "name": "向日葵",
+        "content": "sunloginclient",
+        "os_type": "国产",
+        "group": "远程协助"
+    },
+    {
+        "name": "百度网盘",
+        "content": "baidunetdisk",
+        "os_type": "国产",
+        "group": "网盘"
+    },
+    {
+        "name": "fz客户端",
+        "content": "filezilla",
+        "os_type": "国产",
+        "group": "网络共享"
+    },
+    {
+        "name": "WinSCP",
+        "content": "WinSCP.exe",
+        "os_type": "windows",
+        "group": "网络共享"
+    },
+    {
+        "name": "Xftp",
+        "content": "Xftp.exe",
+        "os_type": "windows",
+        "group": "网络共享"
+    },
+    {
+        "name": "fz客户端",
+        "content": "filezilla.exe",
+        "os_type": "windows",
+        "group": "网络共享"
+    },
+    {
+        "name": "Brasero",
+        "content": "brasero",
+        "os_type": "国产",
+        "group": "刻录"
+    },
+    {
+        "name": "nero",
+        "content": "nero",
+        "os_type": "国产",
+        "group": "刻录"
+    },
+    {
+        "name": "麒麟burner",
+        "content": "kylin-burner",
+        "os_type": "国产",
+        "group": "刻录"
+    }
+]

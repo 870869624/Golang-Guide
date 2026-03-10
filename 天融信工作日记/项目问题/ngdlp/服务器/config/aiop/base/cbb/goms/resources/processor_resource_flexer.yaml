@@ -1,0 +1,12 @@
+processor_resources:
+  - label: "processor_resource_flexer"
+    flexer:
+      parse:
+        formats:
+          - json
+        append_header: false
+        append_original: false
+      normalization:
+        enable: false
+      device_whitelist:
+        enable: false

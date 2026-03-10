@@ -1,0 +1,5 @@
+input_resources:
+  - label: "input_resource_alarm_broker"
+    broker:
+      inputs:
+        - resource: "input_resource_consumersvc_alarm"

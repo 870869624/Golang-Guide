@@ -1,0 +1,10 @@
+input:
+  resource: input_resource_nanomsg
+
+pipeline:
+  threads: 4
+  processors:
+    - resource: processor_resource_switch
+
+output:
+  resource: output_resource_broker

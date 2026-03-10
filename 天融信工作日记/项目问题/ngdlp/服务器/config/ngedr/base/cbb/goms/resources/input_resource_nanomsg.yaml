@@ -1,0 +1,8 @@
+# nanomsg 输入资源配置
+input_resources:
+  - label: input_resource_nanomsg
+    nanomsg:
+      urls:
+        - tcp://0.0.0.0:15555
+      bind: true
+      socket_type: PULL

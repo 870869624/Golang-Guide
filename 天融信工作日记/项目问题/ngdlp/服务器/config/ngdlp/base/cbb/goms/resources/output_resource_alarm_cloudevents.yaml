@@ -1,0 +1,40 @@
+output_resources:
+  - label: "output_resource_alarm_cloudevents"
+    cloudevents:
+      rules:
+        - pid: 'alarm_cloudevents'
+          filter: 'this.message'
+          send_interval: 0
+          send_limit:
+            enable: true
+            period: 3600
+            max_number: 20
+          event_subject: "goms"
+          event_source: "bff"
+          event_type: "bff:message:send"
+          event_id: ${! uuid_v4() }
+          event_data: |
+            let level = match {
+              this.alarm_level == 1 => "告警等级：高",
+              this.alarm_level == 2 => "告警等级：中",
+              this.alarm_level == 3 => "告警等级：低",
+              _ => "告警等级：未知"
+            }
+            root.type = "message"
+            root.from = this.tenant_id
+            root.groups = this.group_ids
+            root.message.templateId = match {
+              this.alarm_event == "client_offline" => "63282f69277834fefd3a676c",
+              _ => "63282f69277834fefd3a6765"
+            }
+            root.message.title = this.alarm_event_zh
+            root.message.level = this.alarm_level
+            root.message.group = "safe"
+            root.message.time = this.logged_at.int64()
+            root.message.fields.username = ""
+            root.message.fields.description = "%v，%v".format(this.alarm_content, $level)
+            root.message.fields.alarm_log_id = this.id
+      server:
+        url: nats:4222
+        protocol: nats
+        send_channel: bff.receive

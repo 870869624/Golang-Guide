@@ -1,0 +1,43 @@
+server_name: agentsvc
+ip: 0.0.0.0
+port: 8888
+#http3_enabled: true
+#certfile: /nginx/ca/server.crt
+#keyfile: /nginx/ca/server.key
+#sup_log_report_enable: true
+#sup_log_report_by_related_name: true
+#sup_log_receive_enable: true
+#sup_sensitive_report_all_enable: false
+#sup_sensitive_report_enable: true
+#sup_sensitive_receive_enable: true
+#sup_queue_port: 30422
+#sup_agent_port: 8090
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/agentsvc
+middlewares:
+  from: local
+  permission:
+    enable: false
+  auth:
+    enable: false
+  logger:
+    enable: false
+  antireplay:
+    enable: false
+  maxconns:
+    enable: true
+    num: 10000
+terminalrequest:
+  freq: 2s
+  logsavelimit: 1000
+  taskchannum: 1
+req_limit_time: 30
+project: nw

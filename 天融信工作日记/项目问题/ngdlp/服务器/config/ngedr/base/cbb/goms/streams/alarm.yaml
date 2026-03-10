@@ -1,0 +1,9 @@
+input:
+  resource: input_resource_alarm_broker
+
+pipeline:
+  processors:
+    - resource: processor_resource_alarm_broker
+
+output:
+  resource: output_resource_alarm_broker

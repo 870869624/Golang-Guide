@@ -1,0 +1,1027 @@
+[
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "heart_time",
+    "name_zh": "心跳配置",
+    "default_rule": {
+      "rule_name": "默认心跳配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "value": 60
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_state_collect",
+    "name_zh": "客户端状态采集",
+    "default_rule": {
+      "rule_name": "默认客户端状态采集规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "collect_interval": 10,
+        "power": true,
+        "report_interval": 30
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "upgrade",
+    "name_zh": "升级配置",
+    "default_rule": {
+      "rule_name": "默认升级配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "interval": 60,
+        "power": true,
+        "unit": "minute"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_display",
+    "name_zh": "客户端显示",
+    "default_rule": {
+      "rule_name": "默认客户端显示规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false,
+        "shortcut": true,
+        "tray": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "popup",
+    "name_zh": "弹窗配置",
+    "default_rule": {
+      "rule_name": "默认弹窗配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "undisturbed": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "admin",
+    "name_zh": "管理员配置",
+    "default_rule": {
+      "rule_name": "默认管理员配置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "email": "",
+        "name": "admin",
+        "phone": "",
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "server",
+    "name_zh": "通信管理中心",
+    "default_rule": {
+      "rule_name": "默认通信管理中心规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "config": [],
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "log",
+    "name_zh": "日志非实时上传",
+    "default_rule": {
+      "rule_name": "默认日志非实时上传规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "days": 5,
+        "power": false,
+        "size": 10,
+        "unit": "GB"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "host_resource_usage",
+    "name_zh": "主机资源占用监控",
+    "default_rule": {
+      "rule_name": "默认主机资源占用监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cpu_exceeding_threshold": 1,
+        "cpu_threshold": 10,
+        "exceeding_threshold_when": {
+          "options": [
+            "report",
+            "disable_client",
+            "close_client"
+          ],
+          "value": "report"
+        },
+        "memory_exceeding_threshold": 1,
+        "memory_threshold": 100,
+        "monitor_frequency": 1,
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_resource_usage",
+    "name_zh": "客户端资源占用监控",
+    "default_rule": {
+      "rule_name": "默认客户端资源占用监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cpu_exceeding_threshold": 1,
+        "cpu_threshold": 1,
+        "exceeding_threshold_when": {
+          "options": [
+            "report",
+            "disable_client",
+            "close_client"
+          ],
+          "value": "report"
+        },
+        "memory_exceeding_threshold": 1,
+        "memory_threshold": 20,
+        "monitor_frequency": 1,
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "asset_frequency",
+    "name_zh": "资产清点频率",
+    "default_rule": {
+      "rule_name": "默认资产清点频率规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "cron": {
+          "crontab": {
+            "days": [
+              1,
+              2
+            ],
+            "every": "everymonth",
+            "time_at": [
+              "08:20-09:20"
+            ],
+            "weekday": []
+          },
+          "description": "空闲时间段定时清理",
+          "enable": false,
+          "options": {
+            "every": [
+              "everyday",
+              "everyweek",
+              "everymonth"
+            ],
+            "weekday": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          }
+        },
+        "description": "资产清点频率(xxx分钟/次)",
+        "power": true,
+        "value": 60
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "self_protect",
+    "name_zh": "客户端自保护",
+    "default_rule": {
+      "rule_name": "默认客户端自保护规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "leave_captcha": true,
+        "offline_gt_days": 180,
+        "power": true,
+        "uninstall_captcha": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "client_login",
+    "name_zh": "客户端登录",
+    "default_rule": {
+      "rule_name": "默认客户端登录规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "allow_auto_login": true,
+        "allow_remember_password": true,
+        "auto_login_current": true,
+        "binding": false,
+        "limit_login_count": false,
+        "power": false,
+        "update_password_cron": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "network_location",
+    "name_zh": "网络位置",
+    "default_rule": {
+      "rule_name": "默认网络位置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "float": false,
+        "power": false,
+        "right_menu": false,
+        "switch_network": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "other",
+    "defense_type_zh": "其他设置",
+    "name": "exception_report",
+    "name_zh": "异常上报",
+    "default_rule": {
+      "rule_name": "默认异常上报规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "auto": false,
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "additional_information_control",
+    "name_zh": "客户端附加信息控制",
+    "default_rule": {
+      "rule_name": "默认客户端附加信息控制规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "edit_need_confirm": false,
+        "install_need_confirm": true,
+        "power": true,
+        "prohibit_edit": true,
+        "reinstall_options": "use_server"
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "additional_information",
+    "name_zh": "客户端附加信息",
+    "default_rule": {
+      "rule_name": "默认客户端附加信息规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "license",
+    "name_zh": "客户端授权",
+    "default_rule": {
+      "rule_name": "默认客户端授权规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "log_type",
+    "name_zh": "客户端日志类型",
+    "default_rule": {
+      "rule_name": "默认客户端日志类型规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "data_level",
+    "name_zh": "客户端数据分级",
+    "default_rule": {
+      "rule_name": "默认客户端数据分级规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": true
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "installer_set",
+    "name_zh": "客户端安装设置",
+    "default_rule": {
+      "rule_name": "默认客户端安装设置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DEFAULT",
+    "defense_type": "global_policy",
+    "defense_type_zh": "",
+    "name": "log_schema",
+    "name_zh": "客户端日志定义",
+    "default_rule": {
+      "rule_name": "默认客户端日志定义规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_category",
+    "name_zh": "数据分类",
+    "default_rule": {
+      "rule_name": "默认数据分类规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_level",
+    "name_zh": "数据分级",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_data_level",
+        "name_zh": "数据分级",
+        "default_rule": {
+          "rule_name": "默认数据分级规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [],
+            "power": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_setting",
+    "name_zh": "分级分类设置",
+    "default_rule": {
+      "rule_name": "默认分级分类设置规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "auto": 2,
+        "auto_config": {
+          "allow_tag_insensitive": false,
+          "re-detect_insensitive": false,
+          "scan_setting": {
+            "file_operate_scan": true,
+            "full_scan": true,
+            "full_scan_config": {
+              "custom_scan_speed": {
+                "cpu": 80,
+                "disk": 10,
+                "mem": 3
+              },
+              "idle_scan": true,
+              "options": {
+                "scan_speed": [
+                  "high",
+                  "mid",
+                  "low",
+                  "custom"
+                ]
+              },
+              "scan_speed": "mid"
+            }
+          }
+        },
+        "first_confirm": {
+          "closed": "user_notify",
+          "outgoing": "user_notify",
+          "scan": "user_notify"
+        },
+        "options": [
+          "user_notify",
+          "user_must",
+          "noop"
+        ],
+        "power": true,
+        "sensitive_info_report": {
+          "enable": true,
+          "keyword_before_after_char": 50,
+          "maximum_enable": false,
+          "maximum_value": 1000
+        },
+        "update_confirm": {
+          "closed": "user_notify",
+          "outgoing": "user_notify"
+        },
+        "update_detect": {
+          "expired_at": true,
+          "file_content_changed": true
+        }
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_identifier",
+    "name_zh": "数据标识",
+    "default_rule": {
+      "rule_name": "默认数据标识规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "power": true,
+        "showable": true
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_category",
+    "defense_type_zh": "数据分类分级",
+    "name": "dlp_param_detect",
+    "name_zh": "检测参数配置",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_detect_file_type",
+        "name_zh": "文件检测类型",
+        "default_rule": {
+          "rule_name": "默认文件检测类型规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [
+              {
+                "name": "常见文档",
+                "suffix": "pdf;ofd;doc;docx;xls;xlsx;et;ppt;pptx;txt;rtf;wps;pg;vsd;xmind;emmx;dps"
+              },
+              {
+                "name": "常见压缩文件",
+                "suffix": "zip;rar;7z;arj;gz;tar"
+              },
+              {
+                "name": "常用图片",
+                "suffix": "bmp;gif;jpeg;jpg;png"
+              },
+              {
+                "name": "邮件存储",
+                "suffix": "pst"
+              },
+              {
+                "name": "代码文件",
+                "suffix": "html;js;sql;log;htm;mht;mhtml"
+              },
+              {
+                "name": "电子招标文件",
+                "suffix": "egp"
+              },
+              {
+                "name": "程序",
+                "suffix": "exe;dsps"
+              },
+              {
+                "name": "数据",
+                "suffix": "bak;db"
+              },
+              {
+                "name": "音频视频",
+                "suffix": "aif;au;ram;amr;mmf;flac;la;swf"
+              }
+            ],
+            "detect_picture": false,
+            "detect_position": {
+              "local_disk": true,
+              "usb": true
+            },
+            "max_pack_level": 20,
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_detect_white_list",
+        "name_zh": "文件检测白名单",
+        "default_rule": {
+          "rule_name": "默认文件检测白名单规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "power": true,
+            "white_list": []
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_outgoing_control",
+    "name_zh": "外发管控",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_outgoing_detect",
+        "name_zh": "外发检测",
+        "default_rule": {
+          "rule_name": "默认外发检测规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "outgoing_detect": {
+              "enable": true,
+              "file_detect_failed": "block",
+              "file_detect_timeout": 60,
+              "file_detect_timeout_action": "block",
+              "file_size_gt": 30,
+              "file_size_gt_action": "block",
+              "options": {
+                "action": [
+                  "allow",
+                  "block"
+                ]
+              }
+            },
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_outgoing_control",
+        "name_zh": "管控规则",
+        "default_rule": {
+          "rule_name": "默认管控规则规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "data": [],
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_outgoing_control_white_list",
+        "name_zh": "管控白名单程序",
+        "default_rule": {
+          "rule_name": "默认管控白名单程序规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "power": true,
+            "white_list": []
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_file_encrypt",
+    "name_zh": "文件加密",
+    "children": [
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_feature_encrypt",
+        "name_zh": "数据特征加密",
+        "default_rule": {
+          "rule_name": "默认数据特征加密规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "allow_encrypt_decrypt": true,
+            "auto_encrypt": true,
+            "data_category": [],
+            "data_level": [],
+            "encrypted_at": "local_storage",
+            "options": {
+              "encrypted_at": [
+                "local_storage",
+                "outgoing"
+              ]
+            },
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_notin_scope_encrypted",
+        "name_zh": "不在知悉范围加密",
+        "default_rule": {
+          "rule_name": "默认不在知悉范围加密规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "notin_scope_encrypted": true,
+            "power": true
+          }
+        }
+      },
+      {
+        "product": "",
+        "defense_type": "",
+        "defense_type_zh": "",
+        "name": "rule_encrypted_key",
+        "name_zh": "加密秘钥",
+        "default_rule": {
+          "rule_name": "默认加密秘钥规则",
+          "rule_level": 0,
+          "rule_tags": null,
+          "rule_source": "本级",
+          "content": {
+            "encrypted_key": {
+              "advanced": [],
+              "middle": [],
+              "normal": []
+            },
+            "options": {
+              "encrypted_at": [
+                "local_storage",
+                "outgoing"
+              ]
+            },
+            "power": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_whitelist",
+    "name_zh": "外发白名单",
+    "default_rule": {
+      "rule_name": "默认外发白名单规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "address": [],
+        "im": {
+          "receiver": [],
+          "sender": []
+        },
+        "mail": {
+          "receiver": [],
+          "sender": []
+        },
+        "power": false,
+        "send_plaintext": true
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_operate_mon",
+    "name_zh": "文件操作监控",
+    "default_rule": {
+      "rule_name": "默认文件操作监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data": [],
+        "options": {
+          "file_location": [
+            "local",
+            "usb",
+            "netshare"
+          ],
+          "match_agent_value": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "match_user_value": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "prohibit_operate": [
+            "open",
+            "copy",
+            "download",
+            "screenshot",
+            "desensitize",
+            "tagged"
+          ]
+        },
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_data_control",
+    "defense_type_zh": "数据管控",
+    "name": "dlp_sandbox",
+    "name_zh": "数据沙箱",
+    "default_rule": {
+      "rule_name": "默认数据沙箱规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "data_category": [],
+        "data_level": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_im",
+    "defense_type_zh": "IM程序全溯源",
+    "name": "dlp_im_trace",
+    "name_zh": "IM程序全溯源",
+    "default_rule": {
+      "rule_name": "默认IM程序全溯源规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "options": {
+          "programs": [
+            "QQ",
+            "Elink",
+            "Espace",
+            "PersonalWechat",
+            "CompanyWechat"
+          ]
+        },
+        "outgoing_attach": false,
+        "power": false,
+        "programs": [],
+        "upload_record": false
+      }
+    }
+  },
+  {
+    "product": "DLP",
+    "defense_type": "dlp_screen_water_mark",
+    "defense_type_zh": "水印",
+    "name": "dlp_water_mark",
+    "name_zh": "水印",
+    "default_rule": {
+      "rule_name": "默认水印规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "@computername": "0",
+        "@datetime": "0",
+        "@hostname": "0",
+        "@ip": "1",
+        "@loginname": "0",
+        "@mac": "0",
+        "@username": "1",
+        "Angle": 60,
+        "CompanyText": "",
+        "Font": "微软雅黑",
+        "Fontcolor": "#000000",
+        "Lrdis": 300,
+        "Opacity": 20,
+        "Size": 40,
+        "Tbdis": 300,
+        "Text": "",
+        "only_running_show": false,
+        "only_running_show_programs": [],
+        "power": false
+      }
+    }
+  },
+  {
+    "product": "EDR,DLP",
+    "defense_type": "system_control",
+    "defense_type_zh": "系统管控",
+    "name": "devmon",
+    "name_zh": "终端外设管理",
+    "default_rule": {
+      "rule_name": "默认终端外设管理规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "disable_bluetooth": false,
+        "disable_cdrom": false,
+        "disable_printer": false,
+        "disable_usb": false,
+        "power": false,
+        "whitelist": []
+      }
+    }
+  },
+  {
+    "product": "EDR,DLP",
+    "defense_type": "system_control",
+    "defense_type_zh": "系统管控",
+    "name": "externalmon",
+    "name_zh": "网络连接监控",
+    "default_rule": {
+      "rule_name": "默认网络连接监控规则",
+      "rule_level": 0,
+      "rule_tags": null,
+      "rule_source": "本级",
+      "content": {
+        "count": 20,
+        "illegal": {
+          "all": {
+            "flag": "0",
+            "text": "您当前同时连接内外网"
+          },
+          "internet": {
+            "flag": "0",
+            "text": "您当前在外网中"
+          }
+        },
+        "internetArr": [],
+        "interval": 5,
+        "local3": {
+          "item": []
+        },
+        "power": false,
+        "whitelist": {
+          "enable": true,
+          "local": {
+            "item": []
+          },
+          "output": {
+            "item": []
+          }
+        }
+      }
+    }
+  }
+]

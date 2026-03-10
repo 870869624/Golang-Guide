@@ -1,0 +1,10 @@
+processor_resources:
+    - label: "processor_resource_offline_client_bloblang"
+      bloblang: |
+          meta catalog = "offline_client"
+          root = this
+          root.id = uuid_v4()
+          root.nats_subject = deleted()
+          root.offline_at = this.offline_at.int64()
+          root.offline_time = this.offline_time.int64()
+          root.logged_at = this.logged_at.int64()

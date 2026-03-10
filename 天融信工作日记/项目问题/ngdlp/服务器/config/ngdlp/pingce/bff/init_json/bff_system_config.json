@@ -1,0 +1,116 @@
+[
+  {
+    "id": "63282f68277834fefd3a66f9",
+    "name": "AuthConfig",
+    "desc": "web访问控制",
+    "data": {
+      "lock_mins": 10,
+      "max_retries": 5,
+      "timeout_mins": 30,
+      "lock_types": [
+        "ip"
+      ]
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66f8",
+    "name": "AuthMode",
+    "desc": "认证模式，三权还是超管",
+    "data": {
+      "auth_mode": "three_power"
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66f5",
+    "name": "ConfigInfo",
+    "desc": "系统名称",
+    "data": {
+      "current_name": {
+        "name": "天融信数据防泄漏系统（主机型）V3",
+        "enName": "Topsec Endpoint DLP System（Host）V3",
+        "homePage_zhName": "",
+        "homePage_enName": "",
+        "company_zhName": "天融信科技集团",
+        "company_enName": "Topsec Technologies Group",
+        "official_address": "www.topsec.com.cn",
+        "consumer_hotline": "400-028-9900",
+        "cloudSecConfZh": "云安全",
+        "cloudSecConfEn": "Cloud security",
+        "themeColor": "red"
+      },
+      "default_name": {
+        "name": "天融信数据防泄漏系统（主机型）V3",
+        "enName": "Topsec Endpoint DLP System（Host）V3",
+        "homePage_zhName": "",
+        "homePage_enName": "",
+        "company_zhName": "天融信科技集团",
+        "company_enName": "Topsec Technologies Group",
+        "official_address": "www.topsec.com.cn",
+        "consumer_hotline": "400-028-9900",
+        "cloudSecConfZh": "云安全",
+        "cloudSecConfEn": "Cloud security",
+        "themeColor": "red"
+      }
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66fa",
+    "name": "IpAccessPower",
+    "desc": "是否开启IP白名单",
+    "data": {
+      "power": "off"
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66f7",
+    "name": "MessageConf",
+    "desc": "消息中心设置",
+    "data": {
+      "alarm_sound_level": 1
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66f4",
+    "name": "PwdPolicy",
+    "desc": "用户登录策略",
+    "data": {
+      "valid_period": 7,
+      "valid_unit": "day",
+      "need_reset_first_login": "enable",
+      "last_modify_time": 0,
+      "online_limit": 100,
+      "pwd_min_length": 8,
+      "pwd_max_length": 32,
+      "remind_before_deadline": 0,
+      "pwd_rule": [
+        "0",
+        "2"
+      ]
+    }
+  },
+  {
+    "id": "63282f68277834fefd3a66f3",
+    "name": "TwoFactorInfo",
+    "desc": "双因子认证设置",
+    "data": {
+      "2fa": "disable",
+      "backup": false,
+      "sms": false,
+      "user_email": "",
+      "tenant_id": "",
+      "proxy": false,
+      "syslog": false,
+      "agent": false,
+      "user_phone": "",
+      "rule": false,
+      "authorization": false,
+      "smtp": false,
+      "address": "",
+      "enable": false,
+      "env": "dev",
+      "captcha": false,
+      "level": 4,
+      "length": 4
+    }
+  }
+]

@@ -1,0 +1,44 @@
+server_name: licensesvc
+ip: 0.0.0.0
+port: 8888
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+rpcserverconf:
+  name: licensesvc.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 30
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/licensesvc
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:7379
+    type: node
+    pass: TopsecCdu_1130
+license_conf:
+  license_active_addr: "https://10.34.4.64"
+  license_proxy_addr: ""
+  license_sync_interval: 30
+  cascade_sync_interval: 60
+  license_debug: false
+  cascade_delay_interval: "7d"
+system_info:
+  system_name:
+    english: "Topsec Data Loss Prevention System"
+    ch_simplified: "天融信数据防泄漏系统"
+    ch_traditional: "天融信數據防泄漏系統"
+  manufacturer_name:
+    english: "Topsec Technologies Group"
+    ch_simplified: "天融信科技集团"
+    ch_traditional: "天融信科技集團"
+  vendor_name: "天融信"
+  system_type: "TopDLP-E"

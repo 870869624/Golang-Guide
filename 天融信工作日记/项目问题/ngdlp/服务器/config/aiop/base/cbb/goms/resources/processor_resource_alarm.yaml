@@ -1,0 +1,183 @@
+# 自定义告警资源配置
+processor_resources:
+  - label: processor_resource_alarm
+    alarm: {
+      alarm_rules: [
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "cpu_usage",
+          ##告警规则名称
+          pname: "CPU使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "cpu_usage"',
+          ##告警内容
+          remark: 'CPU使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime": "600",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "memory_usage",
+          ##告警规则名称
+          pname: "内存使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "memory_usage"',
+          ##告警内容
+          remark: '内存使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime": "600",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "disk_usage",
+          ##告警规则名称
+          pname: "磁盘使用率",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "disk_usage" && this.percent > 80',
+          ##告警内容
+          remark: '磁盘使用率',
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "threshold": "80",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: cycle,
+          ##告警规则ID
+          pid: "login_lock",
+          ##告警规则名称
+          pname: "登录系统锁定",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 2,
+          filter: 'this.type == "bff:access:lock_ip" || this.type == "bff:access:access:lock_user"',
+          ##告警内容
+          remark: '登录系统锁定',
+          ##周期告警时间窗口，单位秒；表示周期告警的统计周期
+          lifetime: 3600,
+          ##周期告警条件；在统计周期内，满足该条件才产生周期告警
+          context: 'count(${{type}}) >= 3',
+          ##触发周期告警后，是否立即开始新的周期
+          cycle_next_immediately: false,
+          ##是否抑制周期告警； cycle_next_immediately 为 false 时生效
+          cycle_suppress: true,
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime":  "3600",
+            "threshold": "3",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: cycle,
+          ##告警规则ID
+          pid: "invalid_ip",
+          ##告警规则名称
+          pname: "非法IP尝试访问系统",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 2,
+          filter: 'this.type == "bff:access:invalid_ip"',
+          ##告警内容
+          remark: '非法IP尝试访问系统',
+          ##周期告警时间窗口，单位秒；表示周期告警的统计周期
+          lifetime: 3600,
+          ##周期告警条件；在统计周期内，满足该条件才产生周期告警
+          context: 'count(${{type}}) >= 10',
+          ##触发周期告警后，是否立即开始新的周期
+          cycle_next_immediately: false,
+          ##是否抑制周期告警； cycle_next_immediately 为 false 时生效
+          cycle_suppress: true,
+          appends: {
+            "product": "DEFAULT",
+            "group": "管理中心",
+            "lifetime":  "3600",
+            "threshold": "10",
+            "message": "false",
+            "email": "false",
+          }
+        },
+        {
+          ##自定义告警类型；single ：单次告警；cycle ：周期告警；
+          ptype: single,
+          ##告警规则ID
+          pid: "client_offline",
+          ##告警规则名称
+          pname: "终端离线",
+          ##是否为内置规则；true 内置，false 非内置
+          builtin: true,
+          ##规则启用状态； true 启用， false 禁用
+          enable: false,
+          ##匹配成功后是否继续匹配下一条规则； true 是， false 否
+          continue: false,
+          ##告警级别； 1-高|2-中|3-低
+          level: 1,
+          filter: 'this.type == "client_offline"',
+          ##告警内容
+          remark: '终端离线',
+          appends: {
+            "product": "DEFAULT",
+            "group": "终端",
+            "threshold": "60",
+            "message": "false",
+            "email": "false",
+          }
+        },
+      ]
+    }

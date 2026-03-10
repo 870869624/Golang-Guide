@@ -1,0 +1,16 @@
+output_resources:
+  - label: "output_resource_alarm_broker"
+    switch:
+      cases:
+        - check: this.exists("alarm_event")
+          output:
+            broker:
+              pattern: fan_out
+              outputs:
+#                - resource: "output_resource_stdout"
+                - resource: "output_resource_clickhouse"
+                - resource: "output_resource_alarm_cloudevents"
+                - resource: "output_resource_alarm_mailout"
+                - resource: "output_resource_nanomsg"
+        - output:
+            resource: "output_resource_clickhouse"

@@ -1,0 +1,428 @@
+# 审计消息处理器资源配置
+processor_resources:
+    - label: "processor_resource_audited"
+      bloblang: |
+       meta catalog   = "audited_log"
+       root           = this
+       root.message_type           = this.message_type.int32()
+       root.id           		   = this.id.string()
+       root.log_type              = match {
+          this.exists("log_type") => this.log_type.string(),
+          _ => "",
+       }
+       root.logged_at              = match {
+          this.exists("logged_at") => this.logged_at.int64(),
+          _ => 0.int64(),
+       }
+       root.logging_at              = match {
+          this.exists("logging_at") => this.logging_at.int64(),
+          _ => 0.int64(),
+       }
+       root.agent_id              = match {
+          this.exists("agent_id") => this.agent_id.string(),
+          _ => "",
+       }
+       root.agent_ip              = match {
+          this.exists("agent_ip") => this.agent_ip.string(),
+          _ => "",
+       }
+       root.agent_version              = match {
+          this.exists("agent_version") => this.agent_version.string(),
+          _ => "",
+       }
+       root.rule_version              = match {
+          this.exists("rule_version") => this.rule_version.string(),
+          _ => "",
+       }
+       root.group_id              = match {
+          this.exists("group_id") => this.group_id.string(),
+          _ => "",
+       }
+       root.group_name              = match {
+          this.exists("group_name") => this.group_name.string(),
+          _ => "",
+       }
+       root.hostname              = match {
+          this.exists("hostname") => this.hostname.string(),
+          _ => "",
+       }
+       root.principal_name              = match {
+          this.exists("principal_name") => this.principal_name.string(),
+          _ => "",
+       }
+       root.related_id              = match {
+          this.exists("related_id") => this.related_id.string(),
+          _ => "",
+       }
+       root.related_type              = match {
+          this.exists("related_type") => this.related_type.string(),
+          _ => "",
+       }
+       root.related_name              = match {
+          this.exists("related_name") => this.related_name.string(),
+          _ => "",
+       }
+       root.tenant_id              = match {
+          this.exists("tenant_id") => this.tenant_id.string(),
+          _ => "",
+       }
+       root.log_class              = match {
+          this.exists("log_class") => this.log_class.int32(),
+          _ => 0.int32(),
+       }
+       root.log_level              = match {
+          this.exists("log_level") => this.log_level.int32(),
+          _ => 0.int32(),
+       }
+       root.description              = match {
+          this.exists("description") => this.description.string(),
+          _ => "",
+       }
+       root.platform              = match {
+          this.exists("platform") => this.platform.string(),
+          _ => "",
+       }
+       root.attach_file_id              = match {
+          this.exists("attach_file_id") => this.attach_file_id.string(),
+          _ => "",
+       }
+       root.tuner_unit              = match {
+          this.exists("tuner_unit") => this.tuner_unit.string(),
+          _ => "",
+       }
+       root.affiliated_unit              = match {
+          this.exists("affiliated_unit") => this.affiliated_unit.string(),
+          _ => "",
+       }
+       root.device_guid              = match {
+          this.exists("device_guid") => this.device_guid.string(),
+          _ => "",
+       }
+       root.asset_guid              = match {
+          this.exists("asset_guid") => this.asset_guid.string(),
+          _ => "",
+       }
+       root.event_tag              = match {
+          this.exists("event_tag") => this.event_tag.string(),
+          _ => "",
+       }
+       root.packet_id              = match {
+          this.exists("packet_id") => this.packet_id.string(),
+          _ => "",
+       }
+       root.packet_ts              = match {
+          this.exists("packet_ts") => this.packet_ts.int64(),
+          _ => 0.int64(),
+       }
+       root.event_val              = match {
+          this.exists("event_val") => this.event_val.string(),
+          _ => "",
+       }
+       root.asset_name              = match {
+          this.exists("asset_name") => this.asset_name.string(),
+          _ => "",
+       }
+       root.defense_type              = match {
+          this.exists("defense_type") => this.defense_type.string(),
+          _ => "",
+       }
+       root.errmsg              = match {
+          this.exists("errmsg") => this.errmsg.string(),
+          _ => "",
+       }
+       root.err              = match {
+          this.exists("err") => this.err.int32(),
+          _ => 0.int32(),
+       }
+       root.auto              = match {
+          this.exists("auto") => this.auto.int32(),
+          _ => 0.int32(),
+       }
+       root.file_num              = match {
+          this.exists("file_num") => this.file_num.int64(),
+          _ => 0.int64(),
+       }
+       root.parent_id              = match {
+          this.exists("parent_id") => this.parent_id.string(),
+          _ => "",
+       }
+       root.url              = match {
+          this.exists("url") => this.url.string(),
+          _ => "",
+       }
+       root.dstfn              = match {
+          this.exists("dstfn") => this.dstfn.string(),
+          _ => "",
+       }
+       root.product              = match {
+          this.exists("product") => this.product.string(),
+          _ => "",
+       }
+       root.new_product              = match {
+          this.exists("new_product") => this.new_product.string(),
+          _ => "",
+       }
+       root.asset_type              = match {
+          this.exists("asset_type") => this.asset_type.string(),
+          _ => "",
+       }
+       root.change_item              = match {
+          this.exists("change_item") => this.change_item.string(),
+          _ => "",
+       }
+       root.change_type              = match {
+          this.exists("change_type") => this.change_type.string(),
+          _ => "",
+       }
+       root.asset_category              = match {
+          this.exists("asset_category") => this.asset_category.string(),
+          _ => "",
+       }
+       root.original_configuration              = match {
+          this.exists("original_configuration") => this.original_configuration.string(),
+          _ => "",
+       }
+       root.new_configuration              = match {
+          this.exists("new_configuration") => this.new_configuration.string(),
+          _ => "",
+       }
+       root.start_at              = match {
+          this.exists("start_at") => this.start_at.int64(),
+          _ => 0.int64(),
+       }
+       root.end_at              = match {
+          this.exists("end_at") => this.end_at.int64(),
+          _ => 0.int64(),
+       }
+       root.duration              = match {
+          this.exists("duration") => this.duration.int64(),
+          _ => 0.int64(),
+       }
+       root.virus_num              = match {
+          this.exists("virus_num") => this.virus_num.int64(),
+          _ => 0.int64(),
+       }
+       root.attack_src_ip              = match {
+          this.exists("attack_src_ip") => this.attack_src_ip.string(),
+          _ => "",
+       }
+       root.attack_dst_ip              = match {
+          this.exists("attack_dst_ip") => this.attack_dst_ip.string(),
+          _ => "",
+       }
+       root.virus_name              = match {
+          this.exists("virus_name") => this.virus_name.string(),
+          _ => "",
+       }
+       root.virus_type              = match {
+          this.exists("virus_type") => this.virus_type.string(),
+          _ => "",
+       }
+       root.file_path              = match {
+          this.exists("file_path") => this.file_path.string(),
+          _ => "",
+       }
+       root.source_detect              = match {
+          this.exists("source_detect") => this.source_detect.string(),
+          _ => "",
+       }
+       root.scan_type              = match {
+          this.exists("scan_type") => this.scan_type.string(),
+          _ => "",
+       }
+       root.md5              = match {
+          this.exists("md5") => this.md5.string(),
+          _ => "",
+       }
+       root.sha1              = match {
+          this.exists("sha1") => this.sha1.string(),
+          _ => "",
+       }
+       root.sha256              = match {
+          this.exists("sha256") => this.sha256.string(),
+          _ => "",
+       }
+       root.risk_level              = match {
+          this.exists("risk_level") => this.risk_level.int64(),
+          _ => 0.int64(),
+       }
+       root.handle              = match {
+          this.exists("handle") => this.handle.string(),
+          _ => "",
+       }
+       root.result              = match {
+          this.exists("result") => this.result.string(),
+          _ => "",
+       }
+       root.reason              = match {
+          this.exists("reason") => this.reason.string(),
+          _ => "",
+       }
+       root.prot_type              = match {
+          this.exists("prot_type") => this.prot_type.string(),
+          _ => "",
+       }
+       root.protection              = match {
+          this.exists("protection") => this.protection.string(),
+          _ => "",
+       }
+       root.mon_type              = match {
+          this.exists("mon_type") => this.mon_type.string(),
+          _ => "",
+       }
+       root.action_type              = match {
+          this.exists("action_type") => this.action_type.string(),
+          _ => "",
+       }
+       root.cmdline              = match {
+          this.exists("cmdline") => this.cmdline.string(),
+          _ => "",
+       }
+       root.exec_cmd              = match {
+          this.exists("exec_cmd") => this.exec_cmd.string(),
+          _ => "",
+       }
+       root.exec_path              = match {
+          this.exists("exec_path") => this.exec_path.string(),
+          _ => "",
+       }
+       root.new_md5              = match {
+          this.exists("new_md5") => this.new_md5.string(),
+          _ => "",
+       }
+       root.login_type              = match {
+          this.exists("login_type") => this.login_type.string(),
+          _ => "",
+       }
+       root.login_src_ip              = match {
+          this.exists("login_src_ip") => this.login_src_ip.string(),
+          _ => "",
+       }
+       root.login_dst_ip              = match {
+          this.exists("login_dst_ip") => this.login_dst_ip.string(),
+          _ => "",
+       }
+       root.login_user              = match {
+          this.exists("login_user") => this.login_user.string(),
+          _ => "",
+       }
+       root.login_password              = match {
+          this.exists("login_password") => this.login_password.string(),
+          _ => "",
+       }
+       root.login_status              = match {
+          this.exists("login_status") => this.login_status.string(),
+          _ => "",
+       }
+       root.login_location              = match {
+          this.exists("login_location") => this.login_location.string(),
+          _ => "",
+       }
+       root.login_at              = match {
+          this.exists("login_at") => this.login_at.int64(),
+          _ => 0.int64(),
+       }
+       root.login_method              = match {
+          this.exists("login_method") => this.login_method.string(),
+          _ => "",
+       }
+       root.probe_type              = match {
+          this.exists("probe_type") => this.probe_type.string(),
+          _ => "",
+       }
+       root.probe_ip              = match {
+          this.exists("probe_ip") => this.probe_ip.string(),
+          _ => "",
+       }
+       root.network_name              = match {
+          this.exists("network_name") => this.network_name.string(),
+          _ => "",
+       }
+       root.network_card_mac              = match {
+          this.exists("network_card_mac") => this.network_card_mac.string(),
+          _ => "",
+       }
+       root.network_card_name              = match {
+          this.exists("network_card_name") => this.network_card_name.string(),
+          _ => "",
+       }
+       root.network_card_type              = match {
+          this.exists("network_card_type") => this.network_card_type.string(),
+          _ => "",
+       }
+       root.network_card_action              = match {
+          this.exists("network_card_action") => this.network_card_action.string(),
+          _ => "",
+       }
+       root.dev_name              = match {
+          this.exists("dev_name") => this.dev_name.string(),
+          _ => "",
+       }
+       root.dev_type              = match {
+          this.exists("dev_type") => this.dev_type.string(),
+          _ => "",
+       }
+       root.dev_id              = match {
+          this.exists("dev_id") => this.dev_id.string(),
+          _ => "",
+       }
+       root.action              = match {
+          this.exists("action") => this.action.string(),
+          _ => "",
+       }
+       root.data_category              = match {
+          this.exists("data_category") => this.data_category.string(),
+          _ => "",
+       }
+       root.data_level              = match {
+          this.exists("data_level") => this.data_level.int64(),
+          _ => 0.int64(),
+       }
+       root.file_name              = match {
+          this.exists("file_name") => this.file_name.string(),
+          _ => "",
+       }
+       root.isolated_at              = match {
+          this.exists("isolated_at") => this.isolated_at.int64(),
+          _ => 0.int64(),
+       }
+       root.file_found_num              = match {
+          this.exists("file_found_num") => this.file_found_num.int64(),
+          _ => 0.int64(),
+       }
+       root.file_size              = match {
+          this.exists("file_size") => this.file_size.int64(),
+          _ => 0.int64(),
+       }
+       root.scan_at              = match {
+          this.exists("scan_at") => this.scan_at.int64(),
+          _ => 0.int64(),
+       }
+       root.rule_tag              = match {
+          this.exists("rule_tag") => this.rule_tag.string(),
+          _ => "",
+       }
+       root.rule_name              = match {
+          this.exists("rule_name") => this.rule_name.string(),
+          _ => "",
+       }
+       root.proc_name              = match {
+          this.exists("proc_name") => this.proc_name.string(),
+          _ => "",
+       }
+       root.sender              = match {
+          this.exists("sender") => this.sender.string(),
+          _ => "",
+       }
+       root.receiver              = match {
+          this.exists("receiver") => this.receiver.string(),
+          _ => "",
+       }
+       root.content              = match {
+          this.exists("content") => this.content.string(),
+          _ => "",
+       }
+       root.content_from              = match {
+          this.exists("content_from") => this.content_from.string(),
+          _ => "",
+       }

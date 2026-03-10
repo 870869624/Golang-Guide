@@ -1,0 +1,31 @@
+server_name: ersvc
+ip: 0.0.0.0
+port: 8888
+## absolute path
+rpc_client_config: /home/topsec/config-map/server/rpc/client.yaml
+max_bytes: 200
+rpcserverconf:
+  name: ersvc.rpc
+  listenon: 0.0.0.0:8080
+  ## timeout seconds
+  timeout: 600
+## pprof server
+dev_server:
+  enable: false
+  listen_on: 0.0.0.0:6470
+logger:
+  level: error
+  ## absolute path
+  path: /home/topsec/data/logs/ersvc
+mongo_db:
+  host: mongodb:27017
+  username: root
+  password: TopsecCdu_1130
+cacheredis:
+  - host: redis:7379
+    type: node
+    pass: TopsecCdu_1130
+environment:
+  nanomsgurl: tcp://goms:15555
+  bffsubscribeurl: tcp://bff:40899
+  alarmsubscribeurl: tcp://goms:40888

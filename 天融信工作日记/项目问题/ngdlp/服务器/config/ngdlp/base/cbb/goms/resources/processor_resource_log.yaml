@@ -1,0 +1,6 @@
+processor_resources:
+  - label: "processor_resource_log"
+    log:
+      level: INFO
+      fields_mapping: |
+        root.data = this
