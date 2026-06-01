@@ -114,7 +114,7 @@ func (pool *HighConcurrencyPool) HcpAlloc(size uintptr) unsafe.Pointer {
 	if chunk != nil {
 		// 将新分配的对象插入本地缓存链表头部
 		// 对应 C: *(void**)(chunk) = tls->free_list[sc];
-		nextField := (*unsafe.Pointer)(chunk)
+		nextField := (*unsafe.Pointer)(chunk)roolo
 		*nextField = tls.freeList[sc]
 
 		// 对应 C: tls->free_list[sc] = chunk;
