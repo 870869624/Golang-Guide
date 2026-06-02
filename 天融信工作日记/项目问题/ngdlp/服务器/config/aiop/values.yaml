@@ -32,4 +32,4 @@ paddleOcr:
 ## @section mg2dm parameters
 mg2dm:
   ## @param mg2dm.enabled Whether to enable mg2dm. Allowed values: true, false [default: true]
-  enabled: true
+  enabled: true 
