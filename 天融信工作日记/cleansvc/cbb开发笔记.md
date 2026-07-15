@@ -26,3 +26,7 @@ F:\gopath\src\cbb\ag\infra\pkg\reportcfgtask\task.go
 我方edr内部日志何告警相关的发送模板在F:\gopath\src\edr\server\src\git.cloud.top\go\ag\internal\logic\reportLog\reportLog_test.go
 
 F:\gopath\src\edr\server\src\git.cloud.top\go\ag\internal\logic\reportLog\reportLog_udp_test.go
+
+# cbb测试
+
+cbb写完后测试程序在F:\gopath\src\cbb\ag\infra\pkg\reportcfgtask\task_test.go添加

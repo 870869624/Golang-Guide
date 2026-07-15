@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天融信工作日记 - 整理版</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg-card: #181b24;
+    --bg-code: #1e2230;
+    --bg-hover: #232838;
+    --text: #e4e6eb;
+    --text-dim: #9aa0ac;
+    --text-muted: #6b7280;
+    --accent: #4fc3f7;
+    --accent-dim: #2196c4;
+    --border: #2a2f3a;
+    --green: #66bb6a;
+    --orange: #ffa726;
+    --red: #ef5350;
+    --purple: #ab47bc;
+    --sidebar-w: 280px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  /* Sidebar */
+  #sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: #14161f;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 0;
+    z-index: 100;
+    transition: transform 0.3s;
+  }
+  #sidebar .logo {
+    padding: 20px 22px 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    background: #14161f;
+    z-index: 2;
+  }
+  #sidebar .logo span { color: var(--text-dim); font-size: 12px; font-weight: 400; display: block; margin-top: 2px; }
+  #sidebar nav { padding: 10px 0; }
+  #sidebar nav .group-title {
+    padding: 10px 22px 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  #sidebar nav a {
+    display: block;
+    padding: 7px 22px 7px 28px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13.5px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  #sidebar nav a:hover { color: var(--accent); background: var(--bg-hover); border-left-color: var(--accent-dim); }
+  #sidebar nav a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(79,195,247,0.06); }
+  #sidebar nav a.sub { padding-left: 40px; font-size: 13px; }
+  /* Main */
+  #main {
+    margin-left: var(--sidebar-w);
+    padding: 40px 56px 80px;
+    max-width: 1100px;
+  }
+  .doc-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-header h1 { font-size: 30px; color: var(--text); margin-bottom: 8px; }
+  .doc-header p { color: var(--text-dim); font-size: 14px; }
+  .doc-header .meta { display: flex; gap: 20px; margin-top: 14px; flex-wrap: wrap; }
+  .doc-header .meta span { background: var(--bg-card); border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px; font-size: 12px; color: var(--text-dim); }
+  section.chapter { margin-bottom: 56px; scroll-margin-top: 20px; }
+  section.chapter > h2 {
+    font-size: 24px;
+    color: var(--accent);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  section.chapter > h2 .ch-num {
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 14px;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+  h3 { font-size: 18px; color: var(--text); margin: 28px 0 14px; padding-left: 12px; border-left: 3px solid var(--accent-dim); }
+  h4 { font-size: 15.5px; color: var(--orange); margin: 20px 0 10px; }
+  p { margin-bottom: 10px; color: var(--text); }
+  ul, ol { margin: 8px 0 14px 22px; }
+  li { margin-bottom: 5px; }
+  /* Code */
+  pre {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  }
+  p code, li code, td code {
+    background: var(--bg-code);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--green);
+  }
+  pre code { color: #c8d3f5; background: none; border: none; padding: 0; }
+  /* Token colors */
+  .tk-c { color: #6b7280; font-style: italic; } /* comment */
+  .tk-k { color: #c792ea; } /* keyword */
+  .tk-s { color: #c3e88d; } /* string */
+  .tk-n { color: #f78c6c; } /* number */
+  .tk-f { color: #82aaff; } /* function */
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 14px; }
+  th, td { border: 1px solid var(--border); padding: 9px 14px; text-align: left; }
+  th { background: var(--bg-card); color: var(--accent); font-weight: 600; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  /* Callout */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-left: 4px solid;
+  }
+  .callout.info { background: rgba(79,195,247,0.07); border-color: var(--accent); }
+  .callout.warn { background: rgba(255,167,38,0.07); border-color: var(--orange); }
+  .callout.danger { background: rgba(239,83,80,0.07); border-color: var(--red); }
+  .callout.tip { background: rgba(102,187,106,0.07); border-color: var(--green); }
+  .callout strong { display: block; margin-bottom: 4px; }
+  .callout.info strong { color: var(--accent); }
+  .callout.warn strong { color: var(--orange); }
+  .callout.danger strong { color: var(--red); }
+  .callout.tip strong { color: var(--green); }
+  /* Merge note */
+  .merge-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: rgba(171,71,188,0.06);
+    border: 1px dashed var(--purple);
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 8px 0 16px;
+  }
+  .merge-note::before { content: " merge "; }
+  /* Tag */
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag-k8s { background: rgba(79,195,247,0.15); color: var(--accent); }
+  .tag-ch { background: rgba(255,167,38,0.15); color: var(--orange); }
+  .tag-mongo { background: rgba(102,187,106,0.15); color: var(--green); }
+  .tag-go { background: rgba(171,71,188,0.15); color: var(--purple); }
+  .tag-nats { background: rgba(239,83,80,0.15); color: var(--red); }
+  /* Foldable */
+  details { margin: 12px 0; }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 8px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    list-style: none;
+    user-select: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: "\25B6\00a0"; font-size: 11px; }
+  details[open] summary::before { content: "\25BC\00a0"; }
+  details[open] summary { border-radius: 8px 8px 0 0; border-bottom: none; }
+  details > div { border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 14px 18px; }
+  /* Back to top */
+  #backtop {
+    position: fixed;
+    right: 30px; bottom: 30px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  #backtop:hover { background: var(--accent-dim); }
+  /* Mobile toggle */
+  #menu-toggle {
+    position: fixed;
+    left: 16px; top: 16px;
+    z-index: 101;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+  }
+  @media (max-width: 900px) {
+    #sidebar { transform: translateX(-100%); }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; padding: 60px 20px 60px; }
+    #menu-toggle { display: flex; align-items: center; justify-content: center; }
+  }
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<button id="menu-toggle">&#9776;</button>
+
+<!-- ============ SIDEBAR ============ -->
+<aside id="sidebar">
+  <div class="logo">天融信工作日记<span>整理版 · 2026-07-15</span></div>
+  <nav id="toc">
+    <div class="group-title">总览</div>
+    <a href="#overview">文档总览</a>
+
+    <div class="group-title">一、环境与账号</div>
+    <a href="#ch1">1 环境与账号信息</a>
+    <a href="#ch1-1" class="sub">1.1 各大测试环境</a>
+    <a href="#ch1-2" class="sub">1.2 账号与密码</a>
+    <a href="#ch1-3" class="sub">1.3 FTP 账号</a>
+
+    <div class="group-title">二、常用命令速查</div>
+    <a href="#ch2">2 常用命令速查</a>
+    <a href="#ch2-1" class="sub">2.1 Go 相关命令</a>
+    <a href="#ch2-2" class="sub">2.2 Kubernetes 命令</a>
+    <a href="#ch2-3" class="sub">2.3 MongoDB 命令</a>
+    <a href="#ch2-4" class="sub">2.4 ClickHouse 命令</a>
+    <a href="#ch2-5" class="sub">2.5 NATS 命令</a>
+    <a href="#ch2-6" class="sub">2.6 cleansvc 常用口诀</a>
+    <a href="#ch2-7" class="sub">2.7 日志分析与容器操作</a>
+
+    <div class="group-title">三、镜像打包与部署</div>
+    <a href="#ch3">3 镜像打包与部署</a>
+    <a href="#ch3-1" class="sub">3.1 标准镜像构建流程</a>
+    <a href="#ch3-2" class="sub">3.2 镜像上传与运行</a>
+    <a href="#ch3-3" class="sub">3.3 备份已有镜像</a>
+    <a href="#ch3-4" class="sub">3.4 离线环境编译部署</a>
+
+    <div class="group-title">四、现场问题排查</div>
+    <a href="#ch4">4 现场问题排查与处理</a>
+    <a href="#ch4-1" class="sub">4.1 采集程序 SFC 部署</a>
+    <a href="#ch4-2" class="sub">4.2 SFC 常见问题</a>
+    <a href="#ch4-3" class="sub">4.3 版本升级与数据迁移</a>
+    <a href="#ch4-4" class="sub">4.4 磁盘扩容重装</a>
+    <a href="#ch4-5" class="sub">4.5 K8s Pod 大面积 Evicted</a>
+    <a href="#ch4-6" class="sub">4.6 ClickHouse Too many parts</a>
+    <a href="#ch4-7" class="sub">4.7 日志排查步骤</a>
+    <a href="#ch4-8" class="sub">4.8 现场数据资产问题</a>
+
+    <div class="group-title">五、项目开发笔记</div>
+    <a href="#ch5">5 项目开发笔记</a>
+    <a href="#ch5-1" class="sub">5.1 cleansvc / cbb 开发</a>
+    <a href="#ch5-2" class="sub">5.2 接口与任务回调定义</a>
+    <a href="#ch5-3" class="sub">5.3 goms resource 配置解析</a>
+    <a href="#ch5-4" class="sub">5.4 代码片段集</a>
+
+    <div class="group-title">六、配置文件与链接</div>
+    <a href="#ch6">6 项目配置文件总览</a>
+    <a href="#ch7">7 常用文档链接</a>
+  </nav>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<div id="main">
+
+<div class="doc-header">
+  <h1>天融信工作日记</h1>
+  <p>NGDLP / cleansvc / EDR 项目工作笔记整理</p>
+  <div class="meta">
+    <span>整理日期：2026-07-15</span>
+    <span>原始文档：31 篇 Markdown + 代码片段</span>
+    <span>合并去重：6 处</span>
+    <span>分类：7 大类</span>
+  </div>
+</div>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="chapter" id="overview">
+  <h2><span class="ch-num">0</span> 文档总览</h2>
+  <p>本文档由 <code>天融信工作日记</code> 目录下的散乱笔记整理而成。原始文件分布在 7 个子目录中，存在多处内容重复。整理后按主题分为 7 大类，重复内容已合并，并标注合并来源。</p>
+
+  <h3>整理说明</h3>
+  <table>
+    <tr><th>操作</th><th>说明</th></tr>
+    <tr><td>合并去重</td><td><code>各大环境.md</code>（命令/配置目录各一份）、<code>密码.md</code>（命令/配置目录各一份）内容重复，已合并为一份</td></tr>
+    <tr><td>版本归并</td><td><code>日常命令.md</code> 是 <code>命令.md</code> 的早期简化版，内容已被后者完整覆盖，已归并</td></tr>
+    <tr><td>主题聚合</td><td>镜像打包三篇（上传运行、备份镜像、离线编译）主题相近，统一归入「镜像打包与部署」章节</td></tr>
+    <tr><td>分类重组</td><td>按「环境账号 → 命令速查 → 镜像部署 → 现场排查 → 开发笔记 → 配置文件 → 文档链接」逻辑排序</td></tr>
+  </table>
+
+  <div class="callout tip">
+    <strong>导航提示</strong>
+    左侧目录可点击跳转至对应章节，支持子章节级定位。页面右下角有返回顶部按钮。
+  </div>
+</section>
+
+<!-- ============ CH1: 环境与账号 ============ -->
+<section class="chapter" id="ch1">
+  <h2><span class="ch-num">1</span> 环境与账号信息</h2>
+
+  <div class="merge-note">合并自：<code>命令/日常命令/各大环境.md</code> + <code>配置/环境/环境.md</code>（两份内容完全一致）</div>
+
+  <h3 id="ch1-1">1.1 各大测试环境</h3>
+  <table>
+    <tr><th>环境名称</th><th>IP 地址</th><th>登录信息</th></tr>
+    <tr><td>Ngdlp 测试环境 - 南网</td><td>10.8.27.151</td><td>root / ngdlp123!@#</td></tr>
+    <tr><td>一体化测试环境</td><td>10.8.227.188</td><td>-</td></tr>
+    <tr><td>科大测试环境</td><td>10.8.19.180</td><td>-</td></tr>
+    <tr><td>ngedr 测试环境 - 标准版</td><td>10.8.227.180</td><td>-</td></tr>
+    <tr><td>南网 ngdlp 标准版</td><td>10.8.227.134</td><td>-</td></tr>
+    <tr><td>ngdlp 定制版 测评 / 56TD</td><td>10.8.27.135</td><td>root / Talent123</td></tr>
+    <tr><td>ngdlp 标准版（新策略环境）</td><td>10.8.227.186</td><td>root / Talent123!@#（最新改为 ngdlp123!@#）</td></tr>
+    <tr><td>上级</td><td>10.8.227.151</td><td>root / Talent123</td></tr>
+  </table>
+
+  <h4>MongoDB 连接信息</h4>
+  <pre><code>username: root
+password: TopsecCdu_1130
+port: 32017</code></pre>
+
+  <h3 id="ch1-2">1.2 账号与密码</h3>
+  <div class="merge-note">合并自：<code>命令/日常命令/密码.md</code> + <code>配置/密码/密码.md</code></div>
+  <table>
+    <tr><th>用途</th><th>账号 / 密码</th></tr>
+    <tr><td>Email</td><td>jinghaijunL! / jinghaijunL!!</td></tr>
+    <tr><td>GitLab（签到平台同密码）</td><td>May#nove</td></tr>
+    <tr><td>ClickHouse</td><td><code>clickhouse-client --user=default --password=TopsecCdu_1130</code></td></tr>
+  </table>
+
+  <h3 id="ch1-3">1.3 FTP 账号</h3>
+  <div class="merge-note">来源：<code>命令/日常命令/ftp账号.md</code></div>
+  <pre><code>地址: https://10.8.22.253/cgi-bin/
+账号: he_taojiang
+密码: Admin@123456
+
+常用存放路径: NAS-cloud/version_cloud/产品名称</code></pre>
+</section>
+
+<!-- ============ CH2: 常用命令 ============ -->
+<section class="chapter" id="ch2">
+  <h2><span class="ch-num">2</span> 常用命令速查</h2>
+  <div class="merge-note">合并自：<code>命令/命令.md</code>（主版本）+ <code>命令/日常命令/日常命令.md</code>（早期简化版，内容已被覆盖）</div>
+
+  <h3 id="ch2-1">2.1 Go 相关命令 <span class="tag tag-go">Go</span></h3>
+
+  <h4>生成 Swagger 文档</h4>
+  <pre><code>goctl api swagger --api rest/ngedr.api --dir . --filename doc/ngedr</code></pre>
+
+  <h4>生成 RPC 接口</h4>
+  <pre><code>goctl.exe rpc protoc ngedr.proto --go_out=. --go-grpc_out=. --zrpc_out=. --style=go_zero -m</code></pre>
+
+  <h4>生成 API 接口</h4>
+  <pre><code>goctl.exe rest go -api ./threat_response.api -dir ../../demo</code></pre>
+
+  <h4>生成带依赖的 RPC 接口</h4>
+  <pre><code>goctl.exe rpc protoc cleansvc.proto `
+  --go_out=. `
+  --go-grpc_out=. `
+  --zrpc_out=. `
+  --style=go_zero `
+  -m `
+  -I=".;F:\protoc\include"</code></pre>
+
+  <h3 id="ch2-2">2.2 Kubernetes 命令 <span class="tag tag-k8s">K8s</span></h3>
+
+  <h4>服务管理</h4>
+  <pre><code><span class="tk-c"># 查看所有服务</span>
+kubectl get svc -A
+kubectl get svc -n sdsp
+
+<span class="tk-c"># 关闭 ngdlp（彻底停止）</span>
+kubectl scale deployment ngdlp --replicas=0 -n topsec-topngdlp
+
+<span class="tk-c"># 重新启动</span>
+kubectl scale deployment ngdlp --replicas=1 -n topsec-topngdlp
+
+<span class="tk-c"># 滚动重启</span>
+kubectl rollout restart deployment ngedr -n sdsp
+
+<span class="tk-c"># 停止命名空间下所有 Deployment</span>
+kubectl scale deployment --all --replicas=0 -n topsec-topngdlp
+
+<span class="tk-c"># 停止所有 StatefulSet</span>
+kubectl scale statefulset --all --replicas=0 -n topsec-topngdlp
+
+<span class="tk-c"># 恢复</span>
+kubectl scale deployment --all --replicas=1 -n topsec-topngdlp</code></pre>
+
+  <div class="callout warn">
+    <strong>注意</strong>
+    不要用 <code>kubectl delete pod --all</code>：删除所有 Pod 会被 Deployment/StatefulSet 立即重建，达不到"彻底关闭"的效果。
+  </div>
+
+  <h4>Pod 管理</h4>
+  <pre><code><span class="tk-c"># 查看指定命名空间的 Pod</span>
+kubectl get pods -n sdsp
+
+<span class="tk-c"># 进入 Pod 内部</span>
+kubectl exec -it cleansvc-7dc5b6d855-rrfzc -n sdsp -c cleansvc -- sh
+
+<span class="tk-c"># 查看 Pod 日志</span>
+kubectl logs -f agcbb-7787c8dcb7-24r82 -n sdsp
+
+<span class="tk-c"># 查看 Pod 监听的端口</span>
+kubectl exec -it node-7b9f8bcd9-4xk6m -n sdsp -- /bin/sh -c "ss -tunlp"
+
+<span class="tk-c"># 查看 Pod 详细信息</span>
+kubectl describe pod cleansvc-7d8cf5c4f4-xq6xl -n sdsp
+
+<span class="tk-c"># 删除非 running 的 pod</span>
+kubectl get pods -n topsec-topaiop -l app=ngdlp | grep -v "Running" | grep -v "NAME" | awk '{print $1}' | xargs kubectl delete pod -n topsec-topaiop</code></pre>
+
+  <h4>部署管理</h4>
+  <pre><code><span class="tk-c"># 查看 Deployment/StatefulSet/DaemonSet 列表</span>
+kubectl get deployments,statefulsets,daemonsets -n topsec-ngdlp
+
+<span class="tk-c"># 查看版本号或打包日期</span>
+kubectl exec -it -n topsec-topngdlp deploy/ngdlp -- bin/ngdlp -v</code></pre>
+
+  <h4>配置管理</h4>
+  <pre><code><span class="tk-c"># 修改 ConfigMap 配置</span>
+kubectl edit cm agcbb-config -n sdsp
+
+<span class="tk-c"># 修改 Deployment 配置</span>
+kubectl edit deploy -n sdsp cleansvc
+
+<span class="tk-c"># 修改环境变量</span>
+kubectl set env deployment/ngdlp \
+  SENSITIVE_FILE_BATCH_SIZE=2000 \
+  SENSITIVE_FILE_FLUSH_TIMEOUT=30 \
+  -n topsec-topngdlp</code></pre>
+
+  <h4>服务暴露</h4>
+  <pre><code><span class="tk-c"># 更改配置，暴露端口</span>
+kubectl patch svc agcbb -n sdsp -p '{"spec":{"ports":[{"name":"nanomsg","port":15555,"targetPort":15555,"protocol":"TCP"}]}}'
+
+<span class="tk-c"># 端口转发</span>
+kubectl port-forward svc/agcbb 15555:15555 -n sdsp
+
+<span class="tk-c"># 新增 Pod 的 NodePort</span>
+kubectl expose pod redis-0 -n topsec-topngdlp --name=redis-0-7379 --type=NodePort --port=7379 --target-port=7379</code></pre>
+
+  <h4>镜像管理</h4>
+  <pre><code><span class="tk-c"># 手动拉取镜像</span>
+k3s ctr image pull docker-hub.cloud.top/aiop/cleansvc-arm64:latest -k -u che_zhilin:Czl@talent123
+
+<span class="tk-c"># 导入镜像后重启 POD</span>
+k3s ctr image import cleanengine.tar
+kubectl rollout restart deploy -n sdsp cleanengine
+
+<span class="tk-c"># 推送镜像到远程仓库</span>
+docker tag docker-hub.cloud.top/ngdlp/ngdlp:latest topsec-epsec.com.cn:33500/ngdlp/ngdlp:latest
+docker push topsec-epsec.com.cn:33500/ngdlp/ngdlp:latest</code></pre>
+
+  <h3 id="ch2-3">2.3 MongoDB 命令 <span class="tag tag-mongo">MongoDB</span></h3>
+
+  <h4>连接与操作</h4>
+  <pre><code><span class="tk-c"># 进入 MongoDB</span>
+mongo -u admin -p 'Cloud@talent123!@#'
+
+<span class="tk-c"># 切换数据库</span>
+use 数据库名
+
+<span class="tk-c"># 查看集合数据</span>
+db.集合名称.find({"_id":ObjectId("68dba608b9215cd46fb12bf4")}).limit(10)
+
+<span class="tk-c"># 统计集合数据</span>
+db.file_record.countDocuments({})
+
+<span class="tk-c"># 根据字段统计</span>
+db.file_record.aggregate([
+  { $group: { _id: { clean_task_id: "$clean_task_id", channel_id: "$channel_id" }, count: { $sum: 1 } } },
+  { $sort: { count: -1 } }
+])</code></pre>
+
+  <h4>索引管理</h4>
+  <pre><code><span class="tk-c"># 查看索引</span>
+kubectl exec -it -n topsec-topngdlp statefulsets/mongodb -- sh -c \
+  'mongo sensitive -uroot -pTopsecCdu_1130 --authenticationDatabase admin --eval "db.file.getIndexes()"'
+
+<span class="tk-c"># 创建索引</span>
+kubectl exec -it -n topsec-topngdlp deploy/mongodb -- mongo sensitive -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval 'db.file.createIndex({tenant_id:1,file_id:-1,platform:-1})'
+
+<span class="tk-c"># 删除索引</span>
+kubectl exec -it -n topsec-topngdlp deploy/mongodb -- mongo sensitive -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval 'db.file.dropIndex({tenant_id:1,file_id:-1,platform:-1})'
+
+<span class="tk-c"># 状态监控</span>
+kubectl exec -it -n topsec-topngdlp statefulsets/mongodb -- sh -c \
+  'mongotop -uroot -pTopsecCdu_1130 --authenticationDatabase admin'</code></pre>
+
+  <h4>数据管理</h4>
+  <pre><code><span class="tk-c"># 删除指定时间段的数据</span>
+kubectl exec -it -n topsec-topngdlp deploy/mongodb -- mongo sensitive -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval 'db.file.deleteMany({created_at:{$lt:1768733424}})'
+
+<span class="tk-c"># 获取索引大小</span>
+kubectl exec -it -n topsec-topngdlp deployments/mongodb -- sh -c 'mongo -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval "
+db.adminCommand({listDatabases:1}).databases.forEach(function(database) {
+    db = db.getSiblingDB(database.name);
+    if(database.name != \"asset\") { return; }
+    db.getCollectionNames().forEach(function(collection) {
+        var stats = db[collection].stats();
+        print(database.name + \".\" + collection +
+              \" - 数据大小: \" + Math.round(stats.storageSize / 1024 / 1024) + \"MB, \" +
+              \"索引大小: \" + Math.round(stats.totalIndexSize / 1024 / 1024) + \"MB\");
+    });
+});"'</code></pre>
+
+  <h3 id="ch2-4">2.4 ClickHouse 命令 <span class="tag tag-ch">ClickHouse</span></h3>
+
+  <h4>查看与查询</h4>
+  <pre><code><span class="tk-c"># 查看 clickhouse 应用位置</span>
+kubectl get all -n topsec-topngdlp | grep -i clickhouse
+
+<span class="tk-c"># 进入 clickhouse 查询数据</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- \
+  clickhouse-client --password TopsecCdu_1130 --query "SELECT * FROM sensitive_file WHERE id = 'xxx';"
+
+<span class="tk-c"># 查看当前表活跃的 parts 数量</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- \
+  clickhouse-client --password TopsecCdu_1130 --query "SELECT count() FROM system.parts WHERE table='sensitive_file' AND active=1"</code></pre>
+
+  <h4>容器外操作（模糊查询）</h4>
+  <pre><code><span class="tk-c"># 方式一：容器外直接执行</span>
+kubectl exec -it -n topsec-topngdlp deployments/clickhouse -- sh -c \
+  "clickhouse-client -d default -u default --password 'TopsecCdu_1130' -q 'SELECT * FROM sensitive_file WHERE filename LIKE \'%告警测试文件%\''"
+
+<span class="tk-c"># 方式二：进入容器交互式执行（排查首选，零引号问题）</span>
+kubectl exec -it -n topsec-topaiop statefulsets/clickhouse -- sh
+clickhouse-client -d default -u default --password 'TopsecCdu_1130'
+SELECT * FROM sensitive_file WHERE filename LIKE '%告警测试文件%';</code></pre>
+
+  <h4>手动合并与配置</h4>
+  <pre><code><span class="tk-c"># 手动触发合并（异步操作）</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- \
+  clickhouse-client --password TopsecCdu_1130 --query "OPTIMIZE TABLE sensitive_file FINAL;"
+
+<span class="tk-c"># 查看容器内磁盘挂载情况</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- df -h
+
+<span class="tk-c"># 查看块限制数</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- \
+  clickhouse-client --password TopsecCdu_1130 --query "SHOW CONFIG LIKE 'max_parts_in_total';"
+
+<span class="tk-c"># 重载配置</span>
+kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- \
+  clickhouse-client --password TopsecCdu_1130 --query "SYSTEM RELOAD CONFIG"
+
+<span class="tk-c"># 修改配置</span>
+kubectl edit configmap -n topsec-topngdlp clickhouse-config</code></pre>
+
+  <h3 id="ch2-5">2.5 NATS 命令 <span class="tag tag-nats">NATS</span></h3>
+  <pre><code><span class="tk-c"># 订阅所有主题（通配符 > 匹配所有层级）</span>
+nats sub ">" --server nats://10.8.27.151:30422
+
+<span class="tk-c"># 订阅队列组（负载均衡）</span>
+nats sub queue.ngdlp.sensitivefileupdatetopic --server nats://10.8.27.151:30422
+
+<span class="tk-c"># 列出所有 JetStream 流</span>
+nats stream list --server nats://10.8.227.180:30422
+
+<span class="tk-c"># 列出 aiop 流下的所有消费者</span>
+nats consumer list aiop --server nats://10.8.27.151:30422
+
+<span class="tk-c"># 订阅指定主题</span>
+nats sub aiop.ngdlp.sensitivefileupdatetopic --server nats://10.8.227.180:30422
+nats sub ngdlp.sensitivefileupdatetopic --server nats://10.8.27.151:30422
+
+<span class="tk-c"># 查看账户信息</span>
+nats account info --server nats://10.8.227.180:30422
+
+<span class="tk-c"># 发布消息</span>
+nats pub test "hello" --server nats://10.8.227.180:30422
+
+<span class="tk-c"># 查看流中特定主题的消息</span>
+nats stream view aiop --subject ngdlp.sensitivefileupdatetopic --server nats://10.8.27.151:30422
+
+<span class="tk-c"># 查看流详细信息</span>
+nats stream info aiop --server nats://10.8.227.180:30422</code></pre>
+
+  <h3 id="ch2-6">2.6 cleansvc 常用命令口诀</h3>
+  <div class="merge-note">来源：<code>命令/k8s命令.md</code></div>
+  <p>把 sdsp 命名空间下 cleansvc 服务最常用的命令做成口诀，覆盖 90% 日常排查与变更场景：</p>
+  <pre><code>口诀：
+1 看  2 进  3 志  4 重启
+5 扩  6 缩  7 灰  8 镜
+9 配  0 密  d 删  s 选</code></pre>
+
+  <table>
+    <tr><th>口诀</th><th>含义</th><th>命令（%% 替换为 cleansvc）</th></tr>
+    <tr><td>1 看</td><td>看现状</td><td><code>kubectl get deploy %% -n sdsp</code></td></tr>
+    <tr><td>2 进</td><td>进容器</td><td><code>kubectl exec -it deploy/%% -n sdsp -- bash</code></td></tr>
+    <tr><td>3 志</td><td>看日志</td><td><code>kubectl logs -f deploy/%% -n sdsp --tail=200</code></td></tr>
+    <tr><td>4 重启</td><td>滚动重启</td><td><code>kubectl rollout restart deploy %% -n sdsp</code></td></tr>
+    <tr><td>5 扩</td><td>扩容副本</td><td><code>kubectl scale deploy %% --replicas=5 -n sdsp</code></td></tr>
+    <tr><td>6 缩</td><td>缩容副本</td><td><code>kubectl scale deploy %% --replicas=1 -n sdsp</code></td></tr>
+    <tr><td>7 灰</td><td>灰度镜像</td><td><code>kubectl set image deploy %% *=registry.example.com/cleansvc:v2.1.3 -n sdsp</code></td></tr>
+    <tr><td>8 镜</td><td>查镜像</td><td><code>kubectl get deploy %% -n sdsp -o jsonpath='{.spec.template.spec.containers[0].image}'</code></td></tr>
+    <tr><td>9 配</td><td>改 ConfigMap</td><td><code>kubectl edit cm %% -n sdsp</code></td></tr>
+    <tr><td>0 密</td><td>改 Secret</td><td><code>kubectl edit secret %% -n sdsp</code></td></tr>
+    <tr><td>d 删</td><td>删服务</td><td><code>kubectl delete deploy %% -n sdsp</code></td></tr>
+    <tr><td>s 选</td><td>设置别名</td><td><code>alias k='kubectl -n sdsp'</code></td></tr>
+  </table>
+  <div class="callout tip">
+    <strong>记忆技巧</strong>
+    第一行"看进志重启"是排查四板斧；第二行"扩缩灰镜像"是变更四板斧；第三行"配密删选"是高级/危险操作。所有命令统一带 <code>-n sdsp</code>。
+  </div>
+
+  <h3 id="ch2-7">2.7 日志分析与容器操作</h3>
+  <pre><code><span class="tk-c"># 查找接口流的处理时间</span>
+more ngdlp-info.log | grep 'STREAM-END'
+
+<span class="tk-c"># 找某一条 trace</span>
+more ngdlp-info.log | grep 'd4b545d1b0455989890d514a0793f5e6'
+
+<span class="tk-c"># 进入容器后本地调取链接</span>
+kubectl exec -it cleansvc-784d4d9448-n2pzs -n sdsp -c cleansvc -- sh
+/home/topsec # curl http://0.0.0.0:8888/api/v2/cleansvc/report/systemStatusView
+
+<span class="tk-c"># 或使用 wget</span>
+/home/topsec # wget -qO- http://0.0.0.0:8888/api/v2/cleansvc/report/systemStatusView</code></pre>
+</section>
+
+<!-- ============ CH3: 镜像打包与部署 ============ -->
+<section class="chapter" id="ch3">
+  <h2><span class="ch-num">3</span> 镜像打包与部署</h2>
+  <div class="merge-note">聚合自：<code>命令/标准镜像构建流程.md</code> + <code>命令/上传运行.md</code> + <code>命令/备份已有镜像.md</code> + <code>命令/离线环境编译镜像上传运行.md</code></div>
+
+  <h3 id="ch3-1">3.1 标准镜像构建流程</h3>
+  <p>将一个 Golang 项目打包成镜像并在 Kubernetes 上运行，主要分为两大步骤：使用 Docker 将 Go 应用打包成镜像，然后在 K8s 集群中部署。</p>
+
+  <h4>编写 Dockerfile（多阶段构建）</h4>
+  <pre><code><span class="tk-c"># 第一阶段：构建阶段</span>
+FROM golang:1.19-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+
+<span class="tk-c"># 第二阶段：运行阶段（极简镜像）</span>
+FROM scratch
+COPY --from=builder /app/main .
+EXPOSE 8080
+CMD ["./main"]</code></pre>
+  <div class="callout info">
+    <strong>关键点</strong>
+    多阶段构建使最终镜像极小。<code>CGO_ENABLED=0</code> 编译纯静态二进制。<code>scratch</code> 是最小基础镜像，需要 Shell 可换用 <code>alpine</code>（约 5MB）。
+  </div>
+
+  <h4>构建与推送</h4>
+  <pre><code>docker build -t your-username/your-go-app:latest .
+docker login
+docker push your-username/your-go-app:latest</code></pre>
+
+  <h4>编写 K8s 配置文件</h4>
+  <details><summary>Deployment (deployment.yaml)</summary>
+  <div>
+  <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: your-go-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: your-go-app
+  template:
+    metadata:
+      labels:
+        app: your-go-app
+    spec:
+      containers:
+      - name: your-go-app
+        image: your-username/your-go-app:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests: { memory: "64Mi", cpu: "250m" }
+          limits:   { memory: "128Mi", cpu: "500m" }
+        livenessProbe:
+          httpGet: { path: /healthz, port: 8080 }
+          initialDelaySeconds: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet: { path: /ready, port: 8080 }
+          initialDelaySeconds: 5
+          periodSeconds: 10</code></pre>
+  </div></details>
+
+  <details><summary>Service (service.yaml)</summary>
+  <div>
+  <pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: your-go-app-service
+spec:
+  selector:
+    app: your-go-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer</code></pre>
+  </div></details>
+
+  <h4>部署到集群</h4>
+  <pre><code>kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get deployments
+kubectl get pods
+kubectl get services</code></pre>
+
+  <h3 id="ch3-2">3.2 镜像上传与运行</h3>
+  <p>在本机打包完成镜像后，有几种方法将镜像放到客户机上替换服务。</p>
+
+  <h4>方法 1：Docker Save/Load（推荐，离线环境首选）</h4>
+  <pre><code><span class="tk-c"># 步骤1：保存镜像为 tar 文件</span>
+docker save -o cleansvc-new.tar cleansvc:latest
+
+<span class="tk-c"># 步骤2：传输到客户机</span>
+scp cleansvc-new.tar user@customer-machine:/tmp/
+
+<span class="tk-c"># 步骤3：在客户机加载镜像</span>
+docker load -i /tmp/cleansvc-new.tar
+docker images | grep cleansvc
+
+<span class="tk-c"># 步骤4：替换 K8s 服务</span>
+kubectl rollout restart deployment cleansvc -n sdsp
+<span class="tk-c"># 或直接更新镜像</span>
+kubectl set image deployment/cleansvc cleansvc=cleansvc:latest -n sdsp</code></pre>
+
+  <h4>方法 2：使用私有 Docker Registry</h4>
+  <pre><code>docker login internal-registry.company.com
+docker tag cleansvc:latest internal-registry.company.com/sdsp/cleansvc:latest
+docker push internal-registry.company.com/sdsp/cleansvc:latest
+kubectl set image deployment/cleansvc cleansvc=internal-registry.company.com/sdsp/cleansvc:latest -n sdsp</code></pre>
+
+  <h4>验证部署</h4>
+  <pre><code>kubectl rollout status deployment/cleansvc -n sdsp
+kubectl get pods -n sdsp -l app=cleansvc
+kubectl logs -f deployment/cleansvc -n sdsp</code></pre>
+
+  <h3 id="ch3-3">3.3 备份已有镜像</h3>
+
+  <h4>从运行中的 Pod 导出镜像</h4>
+  <pre><code><span class="tk-c"># 查看当前 cleansvc 使用的镜像</span>
+kubectl get deployment cleansvc -n sdsp -o yaml | grep image:
+
+<span class="tk-c"># 找到 Pod 运行在哪个节点</span>
+kubectl get pod cleansvc-59978d465c-mssxk -n sdsp -o wide
+
+<span class="tk-c"># 在该节点保存当前镜像</span>
+docker save -o cleansvc-backup.tar docker-hub.cloud.top/aiop/cleansvc-arm64:latest</code></pre>
+
+  <h4>完整备份方案（K8s 资源 + 镜像）</h4>
+  <pre><code>mkdir -p cleansvc-backup-$(date +%Y%m%d) && cd cleansvc-backup-$(date +%Y%m%d)
+
+<span class="tk-c"># 1. 备份 Deployment 配置</span>
+kubectl get deployment cleansvc -n sdsp -o yaml > deployment-backup.yaml
+
+<span class="tk-c"># 2. 备份 Service</span>
+kubectl get service cleansvc -n sdsp -o yaml > service-backup.yaml
+
+<span class="tk-c"># 3. 备份镜像</span>
+CURRENT_IMAGE=$(kubectl get deployment cleansvc -n sdsp -o jsonpath='{.spec.template.spec.containers[0].image}')
+docker save -o cleansvc-image-backup.tar $CURRENT_IMAGE</code></pre>
+
+  <h4>回滚方案</h4>
+  <pre><code><span class="tk-c"># 停止当前部署</span>
+kubectl scale deployment cleansvc -n sdsp --replicas=0
+
+<span class="tk-c"># 加载备份镜像</span>
+docker load -i cleansvc-backup.tar
+
+<span class="tk-c"># 恢复 Deployment 配置</span>
+kubectl apply -f deployment.yaml
+
+<span class="tk-c"># 等待部署完成</span>
+kubectl rollout status deployment/cleansvc -n sdsp --timeout=300s</code></pre>
+
+  <h3 id="ch3-4">3.4 离线环境编译部署</h3>
+
+  <h4>Makefile 可用部分</h4>
+  <pre><code>buildi:
+	@echo "Start building docker image......"
+ifneq ($(ARCH),sw64)
+	@go mod tidy
+	@go mod vendor
+endif
+	@docker build \
+		--build-arg BUILDER_IMAGE=$(builderImage) \
+		--build-arg BASIC_IMAGE=$(basicImage) \
+		--build-arg BUILD_CGO=$(CGO_ENABLED) \
+		--build-arg BUILD_ARCH=$(ARCH) \
+		--build-arg LDFLAGS=$(ldFlags) \
+		-t $(targetImage):$(VERSION) -f ./docker/Dockerfile ./
+	@docker tag $(targetImage):$(VERSION) $(targetImage):latest</code></pre>
+
+  <h4>离线环境操作步骤</h4>
+  <pre><code><span class="tk-c"># 1. 设置环境变量</span>
+export ARCH=amd64
+export VERSION=v1.0.0
+export targetImage=cleansvc
+
+<span class="tk-c"># 2. 构建镜像（跳过 go mod，直接使用 vendor）</span>
+make buildi
+
+<span class="tk-c"># 3. 保存镜像为 tar</span>
+docker save -o ngdlp-new.tar docker-hub.cloud.top/ngdlp/ngdlp:latest
+tar cvzf ag-arm.tar.gz ag-arm.tar  <span class="tk-c"># 打包</span>
+tar -zvxf ag-arm.tar.gz             <span class="tk-c"># 解压</span>
+
+<span class="tk-c"># 4. 在目标机器加载镜像</span>
+docker load -i ngdlp_1.0.30-hotfix-20260317.tar
+k3s ctr images import ngdlp_1.0.30-hotfix-20260317.tar
+<span class="tk-c"># 或</span>
+ctr -n k8s.io images import ngdlp-new.tar</code></pre>
+
+  <h4>补丁镜像更新流程（现场常用）</h4>
+  <pre><code><span class="tk-c"># 1. 上传补丁镜像文件到任一目录</span>
+<span class="tk-c"># 2. 加载镜像</span>
+/home/topsec/cache/gcrpi -f ngdlp_1.0.30-hotfix-20260317.tar
+
+<span class="tk-c"># 3. 修改镜像 tag</span>
+kubectl edit deploy -n topsec-topngdlp ngdlp
+<span class="tk-c"># 将 topsec-epsec.com.cn:33500/ngdlp/ngdlp:1.0.30
+# 修改为 topsec-epsec.com.cn:33500/ngdlp/ngdlp:1.0.30-hotfix-20260317，保存
+# 等待 ngdlp POD 重启完成即可</span>
+
+<span class="tk-c"># 再次上传同标签镜像只需要重启 pod 就可以</span></code></pre>
+
+  <div class="callout warn">
+    <strong>注意事项</strong>
+    确认构建架构与目标环境一致；离线环境确保镜像能正确传输到 K8s 节点；Dockerfile 中的基础镜像在离线环境可用；更新前备份原镜像以便回滚。
+  </div>
+</section>
+
+<!-- ============ CH4: 现场问题排查与处理 ============ -->
+<section class="chapter" id="ch4">
+  <h2><span class="ch-num">4</span> 现场问题排查与处理</h2>
+
+  <h3 id="ch4-1">4.1 采集程序 SFC 部署</h3>
+  <div class="merge-note">来源：<code>天融信现场问题/ngdlp/NGDLP采集程序部署文档.md</code></div>
+
+  <h4>安装部署采集程序 sfc</h4>
+  <pre><code><span class="tk-c"># 1. 解压采集程序包</span>
+tar -zxvf ngdlp-sfc-amd64.tar.gz
+cd ngdlp-sfc-amd64
+
+<span class="tk-c"># 2. 加载 sfc 镜像</span>
+/home/topsec/cache/gcrpi -f ngdlp-sfc-1.0.26-sfc.tar
+
+<span class="tk-c"># 3. 修改 ./chart/values.yaml（sfc 的 nfs、部署节点等配置）</span>
+<span class="tk-c"># 4. 修改采集程序配置 ./chart/templates/configmap.yaml</span>
+
+<span class="tk-c"># 5. 安装采集程序 sfc（默认启动即下发采集任务，每小时执行一次）</span>
+helm install -n topsec-topngdlp sfc ./chart/</code></pre>
+
+  <details><summary>values.yaml 关键配置</summary>
+  <div>
+  <pre><code>storage:
+  create: enable
+  pvName: topsec-cloud-sfc
+  pvcName: topsec-cloud-sfc
+  storage: 4T
+  storageClass: local-path
+  nfsServer: ""
+  nfsPath: ""
+  localPath: /home/topsec/data/
+  localPathNode: master
+  ngdlpPVCName: topsec-cloud
+sfc:
+  nodeName: ""
+  image: ngdlp/ngdlp
+  tag: "1.0.26-sfc"
+  resources:
+    requests: { cpu: "0.2", memory: "200Mi" }
+    limits:   { cpu: "2",   memory: "2Gi" }</code></pre>
+  </div></details>
+
+  <details><summary>configmap.yaml 采集配置</summary>
+  <div>
+  <pre><code>extract:
+  enable: true          <span class="tk-c"># 启用停用</span>
+  bootrun: true         <span class="tk-c"># 启动时运行一次采集</span>
+  cron_spec: "@every 1h" <span class="tk-c"># 每小时执行</span>
+  force_extract: false
+  extract_task_interval: "5s"
+  file_suffix: ""
+  max_file_size: ""
+  min_file_size: ""
+  start_at: ""
+  end_at: ""
+  since: "3h"           <span class="tk-c"># 提取3小时前到现在的文件</span>
+archive:
+  hash_file: "/home/topsec/data/sfc_archive/workspace/hash.txt"</code></pre>
+  </div></details>
+
+  <h4>升级采集程序</h4>
+  <pre><code><span class="tk-c"># 1. 修改 values.yaml 配置（同第一次安装）</span>
+<span class="tk-c"># 2. 加载 sfc 镜像</span>
+/home/topsec/cache/gcrpi -f ngdlp-sfc-1.0.26-sfc.tar
+
+<span class="tk-c"># 3. 升级程序</span>
+helm upgrade -n topsec-topngdlp sfc ./chart/
+
+<span class="tk-c"># 查看是否重启，未重启需手动重启</span>
+kubectl rollout restart -n topsec-topngdlp deployment sfc
+kubectl get pod -n topsec-topngdlp | grep sfc</code></pre>
+
+  <h4>卸载采集程序</h4>
+  <pre><code>helm uninstall -n topsec-topngdlp sfc
+kubectl delete -n topsec-topngdlp pvc topsec-cloud-sfc
+kubectl delete pv topsec-cloud-sfc</code></pre>
+
+  <h4>采集程序常用命令</h4>
+  <pre><code><span class="tk-c"># 查看采集程序日志</span>
+kubectl logs -f -n topsec-topngdlp -l app=sfc
+
+<span class="tk-c"># 打印提取任务进度</span>
+kubectl exec -it -n topsec-topngdlp deployments/sfc -- bin/ngdlp --sp
+
+<span class="tk-c"># 归档数据（数据多时推荐后台运行）</span>
+nohup kubectl exec -it -n topsec-topngdlp deployments/sfc -- bin/ngdlp --sa > archive.log 2>&1 &
+
+<span class="tk-c"># 修改配置（不执行 helm upgrade 则一直生效）</span>
+kubectl edit cm -n topsec-topngdlp ngdlp-sfc-config
+
+<span class="tk-c"># 修改日志级别</span>
+kubectl edit -n topsec-topngdlp deploy sfc
+<span class="tk-c"># => - name: LOGGER_LEVEL  value: info</span></code></pre>
+
+  <h3 id="ch4-2">4.2 SFC 常见问题</h3>
+  <div class="merge-note">来源：<code>天融信现场问题/南网ngdlp/26升级30/sfc问题.md</code></div>
+
+  <h4>问题一：mongo 超时，敏感文件提取超时</h4>
+  <p>如果是敏感文件超时的问题，就查看索引：</p>
+  <pre><code><span class="tk-c"># 查看索引</span>
+kubectl exec -it -n topsec-topngdlp statefulsets/mongodb -- sh -c \
+  'mongo sensitive -uroot -pTopsecCdu_1130 --authenticationDatabase admin --eval "db.file.getIndexes()"'
+
+<span class="tk-c"># 查看版本</span>
+kubectl exec -it -n topsec-topngdlp deploy/ngdlp -- bin/ngdlp -v
+
+<span class="tk-c"># 增加索引</span>
+kubectl exec -it -n topsec-topngdlp statefulsets/mongodb -- mongo sensitive -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval 'db.file.createIndex({tenant_id:1,file_id:1,platform:1})'
+
+<span class="tk-c"># 查看索引是否生效</span>
+kubectl exec -it -n topsec-topngdlp sts/mongodb -- mongo sensitive -uroot -pTopsecCdu_1130 \
+  --authenticationDatabase admin --eval "db.file.explain('executionStats').find({tenant_id:'6463251914242fcfcb345c4b',md5:'2eac4b6e208efbbf631ef7f4fc74fc2c',platform:'locality'})"</code></pre>
+
+  <h4>问题二：数据太多导致 sfc 异常</h4>
+  <pre><code><span class="tk-c"># 进入 mongo</span>
+kubectl exec -it -n topsec-topngdlp statefulsets/mongodb -- sh -c \
+  'mongo progress -uroot -pTopsecCdu_1130 --authenticationDatabase admin'
+
+<span class="tk-c"># 查看提取总数</span>
+db.extract_progress.count()
+
+<span class="tk-c"># 删除一个月之前的记录</span>
+db.extract_progress.deleteMany({created_at: {$lt: Math.floor((Date.now() - 30 * 24 * 60 * 60 * 1000) / 1000)}})</code></pre>
+
+  <h3 id="ch4-3">4.3 版本升级与数据迁移</h3>
+
+  <h4>26 升级 30 版本说明</h4>
+  <div class="merge-note">来源：<code>天融信现场问题/南网ngdlp/26升级30/30版本升级说明.md</code></div>
+  <div class="callout warn">
+    <strong>前置条件</strong>
+    0.28 版本之前升级 30 会报错升级失败，需先删除 <code>/home/topsec/cache/</code> 里面的 chart 和 charts 目录，再解压安装包升级。
+  </div>
+  <pre><code><span class="tk-c"># 1. 正常升级管理中心，确保所有服务正常，可登录管理中心</span>
+
+<span class="tk-c"># 2. 停止所有服务</span>
+kubectl scale deploy -n topsec-topngdlp --all --replicas=0
+<span class="tk-c"># metrics-node 和 pre-install 不停止无影响</span>
+
+<span class="tk-c"># 3. 压缩备份 clickhouse 数据</span>
+<span class="tk-c"># 根据 pv 找到数据根目录，clickhouse 数据目录为数据根目录下的 ./clickhouse/data/</span>
+tar -zcvf data_20260202.tar.gz ./data/
+
+<span class="tk-c"># 4. 清理 clickhouse 历史突变文件</span>
+find ./ -name mutation_*.txt | wc -l           <span class="tk-c"># 查看数量</span>
+find ./ -name mutation_*.txt | xargs rm -rf    <span class="tk-c"># 清理，确保数量为 0</span>
+
+<span class="tk-c"># 5. 只启动 clickhouse</span>
+kubectl scale deploy -n topsec-topngdlp --replicas=1 clickhouse
+
+<span class="tk-c"># 6. 执行数据迁移脚本（可能较长，中途不能中断）</span>
+./scripts/rebuild_ch.sh
+
+<span class="tk-c"># 7. 确认无 WARNING 和 ERROR 后，执行表重命名</span>
+./scripts/rebuild_ch.sh --rename
+
+<span class="tk-c"># 8. 启动管理中心</span>
+kubectl scale deploy -n topsec-topngdlp --all --replicas=1</code></pre>
+
+  <h4>单节点升级集群</h4>
+  <div class="merge-note">来源：<code>天融信现场问题/南网ngdlp/26升级30/单节点升级集群.md</code></div>
+  <pre><code><span class="tk-c"># 确定存储方式，数据库组件是否固定到指定节点</span>
+kubectl describe pv topsec-cloud
+
+<span class="tk-c"># 如果以前存储就是 nfs，直接把新节点加入即可</span>
+<span class="tk-c"># nfs 共享目录可以不做到 master 节点</span></code></pre>
+  <div class="callout info">
+    <strong>要点</strong>
+    需要确保根目录 200G、数据存储目录足够可用。更改数据存储目录需要提前做好数据备份和迁移。如果数据不多则无所谓。
+  </div>
+
+  <h4>数据迁移（更改存储路径）</h4>
+  <div class="merge-note">来源：<code>天融信现场问题/南网ngdlp/数据迁移.md</code></div>
+  <pre><code><span class="tk-c"># 例如原本所有数据在 /home/topsec/data，复制到 /data/（服务停止后再迁移）</span>
+<span class="tk-c"># 主要修改 custom-values.yaml 中的路径指向新路径</span>
+localPath: /home/topsec/data/</code></pre>
+
+  <h3 id="ch4-4">4.4 磁盘扩容重装</h3>
+  <div class="merge-note">来源：<code>天融信现场问题/ngdlp/磁盘扩容重装.md</code></div>
+
+  <h4>第一步：备份数据目录</h4>
+  <pre><code><span class="tk-c"># 停止服务</span>
+kubectl scale deploy -n topsec-topngdlp --all --replicas=0
+
+<span class="tk-c"># 可选择性清空日志</span>
+cat /dev/null > /var/log/messages
+
+<span class="tk-c"># 拷贝数据目录到新目录</span>
+cp /home/topsec/data /data_new/data -rf</code></pre>
+
+  <h4>第二步：修改 NFS 配置</h4>
+  <pre><code><span class="tk-c"># 修改 /etc/exports 中的目录和 IP</span>
+/data_new/data     10.115.164.118(rw,async,no_wdelay,no_root_squash,insecure,no_subtree_check)
+
+<span class="tk-c"># 重载 NFS</span>
+exportfs -rv && systemctl restart nfs-server</code></pre>
+
+  <h4>第三步：安装前检查</h4>
+  <pre><code><span class="tk-c"># 检查新目录是否有数据</span>
+ll /data_new/data
+
+<span class="tk-c"># 检查新加磁盘大小</span>
+df -h
+
+<span class="tk-c"># 删除旧 pv</span>
+kubectl delete ns topsec-topngdlp && kubectl delete pv topsec-cloud</code></pre>
+
+  <h4>第四步：安装管理中心</h4>
+  <pre><code>PV_NFS_HOST=10.115.164.118 PV_NFS_PATH=/data_new/data ./install.sh install -f
+<span class="tk-c"># PV_NFS_HOST 是主节点 IP
+# PV_NFS_PATH 是迁移后的路径
+# 安装过程中需要忽略资源检测</span></code></pre>
+
+  <div class="callout danger">
+    <strong>重要</strong>
+    涉及到数据目录的所有操作都需要完全停止管理中心服务。
+  </div>
+
+  <h4>精简版流程</h4>
+  <pre><code>1. 停止管理中心：kubectl scale deploy,sts -n <namespace> --all --replicas=0
+2. 压缩备份现有数据目录
+3. 扩容
+4. 卸载重装管理中心</code></pre>
+
+  <h3 id="ch4-5">4.5 K8s Pod 大面积 Evicted</h3>
+  <div class="merge-note">来源：<code>NGDLP/k8s/出现大面积Evicted状态的Pod.md</code></div>
+  <p>当出现大量 Pod 处于 Evicted、Pending、Error 状态时，按以下步骤排查。</p>
+
+  <h4>一、快速定位根本原因</h4>
+  <pre><code><span class="tk-c"># 1. 检查节点状态与资源压力</span>
+kubectl get nodes -o wide
+kubectl top nodes
+kubectl describe node <node-name> | grep -A 10 "Conditions"
+<span class="tk-c"># 重点关注 MemoryPressure、DiskPressure、PIDPressure 是否为 True</span>
+
+<span class="tk-c"># 2. 查看被驱逐 Pod 的原因</span>
+kubectl describe pod ersvc-6d7d98598d-2tpnk -n topsec-topngdlp
+<span class="tk-c"># Events 中会看到：The node was low on resource: memory.</span>
+
+<span class="tk-c"># 3. 查看 Pending Pod 调度失败原因</span>
+kubectl describe pod agentserver-5b959445cd-tkh2b -n topsec-topngdlp
+<span class="tk-c"># 常见：Insufficient memory / unbound PVC / untolerated taint</span>
+
+<span class="tk-c"># 4. 检查 PVC</span>
+kubectl get pvc -n topsec-topngdlp
+
+<span class="tk-c"># 5. 查看集群整体资源分配</span>
+kubectl describe nodes | grep -E "Allocated|Capacity" -A 5</code></pre>
+
+  <h4>二、紧急恢复</h4>
+  <pre><code><span class="tk-c"># 1. 清理被驱逐的 Pod</span>
+kubectl delete pod -n topsec-topngdlp --field-selector=status.phase=Failed
+kubectl get pod -n topsec-topngdlp | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n topsec-topngdlp
+
+<span class="tk-c"># 2. 临时降低有问题的 Deployment 副本数</span>
+kubectl scale deployment ersvc -n topsec-topngdlp --replicas=0
+
+<span class="tk-c"># 3. 一键清理 Docker 无用数据（最有效）</span>
+docker system prune -a -f --volumes
+
+<span class="tk-c"># 4. 清理 K3s 陈旧镜像和缓存</span>
+docker rm $(docker ps -aq --filter status=exited) 2>/dev/null
+docker image prune -a -f
+docker volume prune -f</code></pre>
+
+  <h3 id="ch4-6">4.6 ClickHouse Too many parts</h3>
+  <div class="merge-note">来源：<code>NGDLP/clickhouse/现场问题.md</code> + <code>NGDLP/clickhouse/基本操作.md</code>（合并 ClickHouse 操作与问题）</div>
+
+  <div class="callout danger">
+    <strong>错误信息</strong>
+    <code>Too many parts (300). Merges are processing significantly slower than inserts</code>
+  </div>
+  <p>核心原因：数据插入频率太高，每次插入数据量太小，导致 Part 生成速度远大于后台 Merge 线程处理速度，Part 数量超过默认阈值（300）。</p>
+
+  <h4>紧急处理</h4>
+  <pre><code><span class="tk-c"># 1. 停止或大幅降低写入频率（5-10 分钟让后台 Merge 线程处理）</span>
+
+<span class="tk-c"># 2. 查看当前表活跃 Parts 数量</span>
+SELECT count() FROM system.parts WHERE table = 'sensitive_file' AND active = 1;
+
+<span class="tk-c"># 3. 手动触发合并（异步操作，建议业务低峰期执行）</span>
+OPTIMIZE TABLE sensitive_file FINAL;
+
+<span class="tk-c"># 4. 临时放宽阈值（治标不治本，谨慎使用）</span>
+SET max_parts_in_total = 500;</code></pre>
+
+  <h4>可能遇到的错误</h4>
+  <div class="callout warn">
+    <strong>OPTIMIZE TABLE 报错：CANNOT_STATVFS</strong>
+    <code>Could not calculate available disk space (statvfs), errno: 2, strerror: No such file or directory</code><br>
+    原因：ClickHouse 数据目录或临时目录的 PVC 未正确挂载。解决：<code>kubectl exec -it -n topsec-topngdlp statefulset.apps/clickhouse -- df -h</code> 检查挂载情况。
+  </div>
+
+  <h4>根本原因排查</h4>
+  <ul>
+    <li><strong>单条插入</strong>：循环执行 <code>INSERT INTO table VALUES</code>，每次生成新 Part</li>
+    <li><strong>表引擎</strong>：非 MergeTree 引擎（Log、Memory、Buffer）没有 Merge 机制</li>
+    <li><strong>系统资源</strong>：CPU 打满或磁盘 I/O 延迟过高导致 Merge 变慢</li>
+    <li><strong>并发数</strong>：<code>background_pool_size</code> 配置过小</li>
+  </ul>
+
+  <h3 id="ch4-7">4.7 日志排查步骤</h3>
+  <div class="merge-note">来源：<code>排查步骤/1.md</code></div>
+
+  <pre><code><span class="tk-c"># 查看包的版本</span>
+kubectl get nodes -owide
+
+<span class="tk-c"># 查看日志是否持久化（false 为未持久化）</span>
+helm get values --all -n topsec-topaiop topsec-topaiop | grep loggerPersistent
+
+<span class="tk-c"># 查看 PV 找到数据根目录（日志位置）</span>
+kubectl describe pv topsec-cloud
+<span class="tk-c"># Path: /home/topsec/data （日志位置）</span>
+
+<span class="tk-c"># 进入日志目录查看</span>
+cd /home/topsec/data/logs/agentsvc/
+tail -200 agentsvc-error.log
+cat agentsvc-error.log | grep '2026-01-29'
+
+<span class="tk-c"># 查看 nginx 日志（可查看到接口流向信息）</span>
+kubectl logs -f -n topsec-topngdlp -l app=agent-nginx
+
+<span class="tk-c"># 查看 nginx 日志特定信息</span>
+kubectl logs -f -n topsec-topngdlp -l app=agent-nginx | grep '672C2B42863EE193E04CB37D2AD9A9E3005056AB868F'
+
+<span class="tk-c"># 修改 Pod 配置参数可更改日志等级</span>
+kubectl edit -n topsec-topngdlp deploy agentsvc</code></pre>
+
+  <h3 id="ch4-8">4.8 现场数据资产问题</h3>
+  <div class="merge-note">来源：<code>天融信现场问题/南网ngdlp/26升级30/现场数据资产问题.md</code></div>
+  <div class="callout warn">
+    <strong>问题描述</strong>
+    触发外发后没有上报数据资产，并且在外发无法提取。<br>
+    原因：客户端拷贝操作时临时生成文件（不是电脑本来就有的），复制粘贴不一定是文件也可能是文本，客户端会生成临时文件，管理中心下发提取任务提不上来。
+  </div>
+</section>
+ 
+<!-- ============ CH5: 项目开发笔记 ============ -->
+<section class="chapter" id="ch5">
+  <h2><span class="ch-num">5</span> 项目开发笔记</h2>
+
+  <h3 id="ch5-1">5.1 cleansvc / cbb 开发</h3>
+  <div class="merge-note">合并自：<code>cleansvc/10.21日.md</code> + <code>cleansvc/10.30.md</code></div>
+
+  <h4>cbb 相关代码路径</h4>
+  <ul>
+    <li>所有配置文件和外部接口路径：<code>F:\gopath\src\cbb\ag\products\edr\app.yaml</code></li>
+    <li>注册和地理位置获取：<code>F:\gopath\src\cbb\ag\services\agah\server\internal\handler\routes.go</code></li>
+    <li>ag_cbb 调用我方上报安全配置的位置：<code>F:\gopath\src\cbb\ag\infra\pkg\reportcfgtask\task.go</code></li>
+    <li>cbb 写完后测试程序：<code>F:\gopath\src\cbb\ag\infra\pkg\reportcfgtask\task_test.go</code></li>
+  </ul>
+
+  <h4>edr 可借鉴的接口</h4>
+  <ul>
+    <li>edr 接口路由：<code>F:\gopath\src\edr\server\src\git.cloud.top\go\ag\internal\handler\routes.go</code></li>
+    <li>告警日志相关：<code>F:\gopath\src\edr\server\src\git.cloud.top\go\go-soap\api\alarmlog\alarm.go</code>（进程名等直接手写）</li>
+    <li>edr 内部日志和告警发送模板：<code>F:\gopath\src\edr\server\src\git.cloud.top\go\ag\internal\logic\reportLog\reportLog_test.go</code> / <code>reportLog_udp_test.go</code></li>
+  </ul>
+
+  <div class="callout info">
+    <strong>安管升级日志上报</strong>
+    可以报 cleansvc 的规则库升级。
+  </div>
+
+  <h3 id="ch5-2">5.2 接口与任务回调定义</h3>
+  <div class="merge-note">来源：<code>任务回调定义/任务.md</code> + <code>cleansvc/url.yml</code></div>
+
+  <h4>杀毒结果同步接口</h4>
+  <p>杀毒结果需要同步给管理端，目前没有合适的任务上报接口，需要单开一个接口：</p>
+  <pre><code>{
+    "agent_id": "string",
+    "result": "string",
+    "md5": "string"
+}</code></pre>
+
+  <h4>客户端请求配置（url.yml）</h4>
+  <details><summary>查看完整接口路径定义</summary>
+  <div>
+  <pre><code>ClientReqConf:
+  task: 3.1-3.9
+  protocol: http
+  host: 0.0.0.0
+  port: 8888
+  sdmiCfgUrl: /api/v1/agclient/fillConfig/sdmi
+  systemViewUrl: /api/v1/agclient/report/systemInfoView
+  systemStatusViewUrl: /api/v1/agclient/report/systemStatusView
+  topologyViewUrl: /api/v1/agclient/report/topologyView
+  operationCmdUrl: /api/v1/agclient/fillCommand/operation
+  updateCmdUrl: /api/v1/agclient/fillCommand/update
+  operationLogNotifyUrl: /api/v1/agclient/report/operationLogNotify
+  errorLogNotifyUrl: /api/v1/agclient/report/errorLogNotify
+  updateLogNotifyUrl: /api/v1/agclient/report/updateLogNotify
+  eventNotifyUrl: /api/v1/agclient/report/event
+  getLoginTokenByUserUrl: /api/v1/agclient/getLoginTokenByUser
+  restoreConfigUrl: /api/v1/agclient/restoreConfig
+  restorePolicyUrl: /api/v1/agclient/restorePolicy
+  edr:
+    version: v1
+    queryPolicyParamUrl: /api/v1/agclient/queryPolicyParam
+    edrAssetsUrl: /api/v1/agclient/report/edrAssets
+    scanPolicyUrl: /api/v1/agclient/fillPolicy/scan
+    filemonPolicyUrl: /api/v1/agclient/fillPolicy/filemon
+    behaviorPolicyUrl: /api/v1/agclient/fillPolicy/behavior
+    browserprotPolicyUrl: /api/v1/agclient/fillPolicy/browserprot
+    dlmonPolicyUrl: /api/v1/agclient/fillPolicy/dlmon
+    instmonPolicyUrl: /api/v1/agclient/fillPolicy/instmon
+    instrusionPolicyUrl: /api/v1/agclient/fillPolicy/instrusion
+    ipaclPolicyUrl: /api/v1/agclient/fillPolicy/ipacl
+    ipattackPolicyUrl: /api/v1/agclient/fillPolicy/ipattack
+    ipblacklistPolicyUrl: /api/v1/agclient/fillPolicy/ipblacklist
+    ipprotoPolicyUrl: /api/v1/agclient/fillPolicy/ipproto
+    mailPolicyUrl: /api/v1/agclient/fillPolicy/mail
+    malsitePolicyUrl: /api/v1/agclient/fillPolicy/malsite
+    udiskmonPolicyUrl: /api/v1/agclient/fillPolicy/udiskmon
+    idsPolicyUrl: /api/v1/agclient/fillPolicy/ids
+    virusEventUrl: /api/v1/agclient/event/virus
+    singleLoginUrl: /api/v1/agclient/singleLogin</code></pre>
+  </div></details>
+
+  <h3 id="ch5-3">5.3 goms resource 配置解析</h3>
+  <div class="merge-note">来源：<code>项目问题/.../resource解析.md</code></div>
+
+  <p>goms 的 resource 配置使用 YAML 格式定义处理器，通过 Bloblang 脚本指定数据路由（meta catalog）和转换规则（root）。每个资源类型对应一个独立配置文件。</p>
+
+  <h4>配置文件结构</h4>
+  <pre><code>processor_resources:
+    - label: "processor_resource_sensitive_category_level"
+      bloblang: |
+       meta catalog   = "sensitive_category_level"
+       root           = this
+       root.message_type = deleted()</code></pre>
+
+  <h4>字段说明</h4>
+  <table>
+    <tr><th>字段</th><th>说明</th></tr>
+    <tr><td><code>label</code></td><td>处理器唯一标识，命名规范 <code>processor_resource_{资源类型}</code></td></tr>
+    <tr><td><code>bloblang</code></td><td>数据转换和路由脚本，使用 Bloblang 语言</td></tr>
+    <tr><td><code>meta catalog</code></td><td>设置元数据，标识资源类型</td></tr>
+    <tr><td><code>root</code></td><td>消息主体赋值</td></tr>
+  </table>
+
+  <h4>四种资源类型配置</h4>
+  <table>
+    <tr><th>Go 代码 key</th><th>配置文件</th><th>meta catalog</th></tr>
+    <tr><td>files</td><td>processor_resource_sensitive_file.yaml</td><td>sensitive_file</td></tr>
+    <tr><td>categories</td><td>processor_resource_sensitive_file_category.yaml</td><td>sensitive_file_category</td></tr>
+    <tr><td>levels</td><td>processor_resource_sensitive_file_level.yaml</td><td>sensitive_file_level</td></tr>
+    <tr><td>category_levels</td><td>processor_resource_sensitive_category_level.yaml</td><td>sensitive_category_level</td></tr>
+  </table>
+
+  <h4>文件位置规范</h4>
+  <pre><code>F:\gopath\src\aiop\deploy\config\aiop\base\cbb\goms\resources\
+├── processor_resource_sensitive_file.yaml
+├── processor_resource_sensitive_file_category.yaml
+├── processor_resource_sensitive_file_level.yaml
+└── processor_resource_sensitive_category_level.yaml</code></pre>
+
+  <h3 id="ch5-4">5.4 代码片段集</h3>
+
+  <h4>时间转换工具 ConvertToSpec</h4>
+  <div class="merge-note">来源：<code>NGDLP/算法工具/时间转换工具/ConvertToSpec.md</code> + <code>ConvertToSpec.go</code></div>
+  <p>将时间类型和内容转换为 cron 表达式，用于定时任务配置。</p>
+  <table>
+    <tr><th>timeType</th><th>timeContent 格式</th><th>示例</th><th>返回值</th></tr>
+    <tr><td>second</td><td>数字（秒数）</td><td>"30"</td><td>["@every 30s"]</td></tr>
+    <tr><td>minute</td><td>数字（分钟数）</td><td>"15"</td><td>["@every 15m"]</td></tr>
+    <tr><td>hour</td><td>数字（小时数）</td><td>"2"</td><td>["@every 2h"]</td></tr>
+    <tr><td>day</td><td>数字（天数）</td><td>"3"</td><td>["@every 72h"]</td></tr>
+    <tr><td>week</td><td>数字（周数）</td><td>"2"</td><td>["@every 336h"]</td></tr>
+    <tr><td>everyday</td><td>时:分 [, 时:分...]</td><td>"09:30,14:00"</td><td>["0 30 9 * * *", "0 0 14 * * *"]</td></tr>
+    <tr><td>everyweek</td><td>周几;时:分</td><td>"1,3,5;10:00"</td><td>["0 0 10 * * 1,3,5"]</td></tr>
+    <tr><td>everymonth</td><td>日期;时:分</td><td>"15;09:00"</td><td>["0 0 9 15 * *"]</td></tr>
+  </table>
+
+  <h4>批量数据处理 demo</h4>
+  <div class="merge-note">来源：<code>NGDLP/demo.go</code></div>
+  <pre><code><span class="tk-k">const</span> batchSize = <span class="tk-n">50</span>
+<span class="tk-k">for</span> i := <span class="tk-n">0</span>; i < <span class="tk-f">len</span>(bulkData); i += batchSize {
+    end := i + batchSize
+    <span class="tk-k">if</span> end > <span class="tk-f">len</span>(bulkData) {
+        end = <span class="tk-f">len</span>(bulkData)
+    }
+    ctx, cancel := context.<span class="tk-f">WithTimeout</span>(context.<span class="tk-f">Background</span>(), <span class="tk-n">30</span>*time.Second)
+    err := l.svcCtx.Model.SensitiveFile.<span class="tk-f">BulkMergeByFileIds</span>(ctx, bulkData[i:end])
+    <span class="tk-f">cancel</span>()
+    <span class="tk-k">if</span> err != <span class="tk-k">nil</span> {
+        l.<span class="tk-f">Errorf</span>(<span class="tk-s">"batch %d-%d failed: %v"</span>, i, end, err)
+        <span class="tk-k">continue</span>
+    }
+}</code></pre>
+
+  <h4>流式调用日志拦截器</h4>
+  <div class="merge-note">来源：<code>main.go</code>（根目录）</div>
+  <p>gRPC 流式调用的日志拦截器，记录 STREAM-START 和 STREAM-END 的耗时与错误信息。</p>
+  <pre><code><span class="tk-k">func</span> <span class="tk-f">StreamLoggingInterceptor</span>(srv <span class="tk-k">interface</span>{}, ss grpc.ServerStream,
+    info *grpc.StreamServerInfo, handler grpc.StreamHandler) <span class="tk-k">error</span> {
+    startTime := time.<span class="tk-f">Now</span>()
+    ctx := ss.<span class="tk-f">Context</span>()
+    <span class="tk-k">var</span> addr <span class="tk-k">string</span>
+    <span class="tk-k">if</span> client, ok := peer.<span class="tk-f">FromContext</span>(ctx); ok {
+        addr = client.Addr.<span class="tk-f">String</span>()
+    }
+    logx.<span class="tk-f">WithContext</span>(ctx).<span class="tk-f">Infof</span>(<span class="tk-s">"[RPC] [STREAM-START] %s - %s"</span>, addr, info.FullMethod)
+    err := <span class="tk-f">handler</span>(srv, ss)
+    duration := time.<span class="tk-f">Since</span>(startTime)
+    <span class="tk-k">if</span> err != <span class="tk-k">nil</span> {
+        logx.<span class="tk-f">WithContext</span>(ctx).<span class="tk-f">Errorf</span>(<span class="tk-s">"[RPC] [STREAM-END] %s - %s, duration: %v, error: %v"</span>,
+            addr, info.FullMethod, duration, err)
+    } <span class="tk-k">else</span> {
+        logx.<span class="tk-f">WithContext</span>(ctx).<span class="tk-f">Infof</span>(<span class="tk-s">"[RPC] [STREAM-END] %s - %s, duration: %v"</span>,
+            addr, info.FullMethod, duration)
+    }
+    <span class="tk-k">return</span> err
+}</code></pre>
+
+  <h4>go:embed 绑定配置文件</h4>
+  <div class="merge-note">来源：<code>配置文件处理/1.md</code></div>
+  <pre><code><span class="tk-c">//go:embed ./soap_config.conf</span>
+<span class="tk-k">var</span> soapConfFile []<span class="tk-k">byte</span>
+
+<span class="tk-k">func</span> (m *customSoapConfModel) <span class="tk-f">InitSoapConfInfo</span>() (*SoapConf, <span class="tk-k">error</span>) {
+    <span class="tk-k">var</span> result SoapConf
+    err := json.<span class="tk-f">Unmarshal</span>(soapConfFile, &result)
+    <span class="tk-k">if</span> err != <span class="tk-k">nil</span> {
+        logx.<span class="tk-f">Errorf</span>(<span class="tk-s">"json unmarshal failed.check ag! err=%s\r\n"</span>, err)
+        <span class="tk-k">return</span> <span class="tk-k">nil</span>, err
+    }
+    <span class="tk-k">return</span> &result, <span class="tk-k">nil</span>
+}
+<span class="tk-c">// 可以用这种方式绑定文件</span></code></pre>
+</section>
+
+<!-- ============ CH6: 项目配置文件总览 ============ -->
+<section class="chapter" id="ch6">
+  <h2><span class="ch-num">6</span> 项目配置文件总览</h2>
+  <div class="merge-note">来源：<code>项目问题/ngdlp/服务器/config/</code> 目录 + <code>配置/各大环境配置/</code> 目录</div>
+
+  <p>项目配置文件按环境类型组织，主要分为 <code>aiop</code>、<code>ngedr</code>、<code>ngdlp</code> 三大类，每类下有 <code>base</code>（基础）和各定制环境版本（南网 <code>nw</code>、科大 <code>keda</code>、广西 <code>guangxi</code>、测评 <code>pingce</code>、56td、新策略 <code>newpolicy</code>）。</p>
+
+  <h3>配置目录结构</h3>
+  <pre><code>项目问题/ngdlp/服务器/config/
+├── aiop/                    <span class="tk-c"># AIO 平台配置</span>
+│   └── base/
+│       ├── bff/             <span class="tk-c"># 前端配置（init_json、menu、proxy）</span>
+│       ├── cbb/             <span class="tk-c"># 公共组件（agentserver、goms、logminer）</span>
+│       ├── server/          <span class="tk-c"># 服务端（agentsvc、ersvc、ngdlp、ngedr 等）</span>
+│       ├── clickhouse/      <span class="tk-c"># ClickHouse 配置</span>
+│       ├── mongo/           <span class="tk-c"># MongoDB 配置</span>
+│       ├── nats/            <span class="tk-c"># NATS 配置</span>
+│       ├── nginx/           <span class="tk-c"># Nginx 配置（含 CA 证书）</span>
+│       ├── redis/           <span class="tk-c"># Redis 配置</span>
+│       ├── registry/        <span class="tk-c"># 镜像仓库配置</span>
+│       └── paddleocr/       <span class="tk-c"># OCR 引擎配置</span>
+├── ngedr/                   <span class="tk-c"># NGEDR 配置</span>
+│   └── base/                <span class="tk-c"># 同 aiop 结构</span>
+└── ngdlp/                   <span class="tk-c"># NGDLP 配置</span>
+    ├── base/                <span class="tk-c"># 基础版</span>
+    ├── nw/                  <span class="tk-c"># 南网定制版</span>
+    ├── keda/                <span class="tk-c"># 科大定制版</span>
+    ├── guangxi/             <span class="tk-c"># 广西定制版</span>
+    ├── pingce/              <span class="tk-c"># 测评版</span>
+    ├── 56td/                <span class="tk-c"># 56TD 版</span>
+    └── newpolicy/           <span class="tk-c"># 新策略版</span></code></pre>
+
+  <h3>核心服务配置说明</h3>
+  <table>
+    <tr><th>服务</th><th>配置文件</th><th>说明</th></tr>
+    <tr><td>agentsvc</td><td>agentsvc.yaml</td><td>代理服务配置</td></tr>
+    <tr><td>ersvc</td><td>ersvc.yaml + policy/</td><td>引擎服务，含策略配置（audit_schema、policy、policy_category、policy_product）</td></tr>
+    <tr><td>ngdlp</td><td>ngdlp.yaml + config/</td><td>NGDLP 主服务，含预设配置（preset_group、keyword、program、regexp、url）</td></tr>
+    <tr><td>ngedr</td><td>ngedr.yaml</td><td>NGEDR 服务配置</td></tr>
+    <tr><td>managersvc</td><td>managersvc.yaml</td><td>管理服务配置</td></tr>
+    <tr><td>upgradesvc</td><td>upgradesvc.yaml</td><td>升级服务配置</td></tr>
+    <tr><td>licensesvc</td><td>licensesvc.yaml</td><td>授权服务配置</td></tr>
+    <tr><td>goms</td><td>config.yaml + resources/ + streams/</td><td>消息处理服务，含资源处理器和流配置</td></tr>
+    <tr><td>bff</td><td>config.yaml + init_json/ + menu.json</td><td>前端聚合层配置</td></tr>
+  </table>
+
+  <h3>各大环境配置文件</h3>
+  <p>另在 <code>配置/各大环境配置/</code> 目录下有独立的环境配置文件：</p>
+  <ul>
+    <li><code>agentsvc/agentsvc.yaml</code> / <code>client.yaml</code> - 代理服务配置</li>
+    <li><code>cmd/main.go</code> / <code>app/ngedr.go</code> - 命令行入口</li>
+    <li><code>client-227.134.yaml</code> - 南网标准版客户端配置</li>
+  </ul>
+</section>
+
+<!-- ============ CH7: 常用文档链接 ============ -->
+<section class="chapter" id="ch7">
+  <h2><span class="ch-num">7</span> 常用文档链接</h2>
+  <div class="merge-note">来源：<code>天融信现场问题/ngdlp/问题排查.md</code></div>
+
+  <p>以下为群公告中的常用腾讯文档链接汇总：</p>
+  <table>
+    <tr><th>文档名称</th><th>链接</th></tr>
+    <tr><td>现场故障清单</td><td><a href="https://docs.qq.com/sheet/DZGdPamdDQmpqUWZP" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>常见问题排查 (PDF)</td><td><a href="https://docs.qq.com/pdf/DZG1UTmpQQVN6TGtH" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>常见问题排查 (Word)</td><td><a href="https://docs.qq.com/doc/DZGttZnF4eVJDbGRx" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>用户手册</td><td><a href="https://docs.qq.com/pdf/DZFhjUHhrakdGUkpk" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>管理中心安装部署 (20260306)</td><td><a href="https://docs.qq.com/doc/DZHBieUxrcGVJS0NK" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>AIO 客户端安装器使用文档</td><td><a href="https://docs.qq.com/doc/DZENNdWxad2JiQXhU" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>syslog (by 丁旭)</td><td><a href="https://docs.qq.com/pdf/DZFdoa210ck5NWGpQ" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>客户端排查文件打开卡顿</td><td><a href="https://docs.qq.com/doc/DZGhMY0hXZEdQSXpT" target="_blank">腾讯文档</a></td></tr>
+    <tr><td>sfc 安装升级文档</td><td><a href="https://docs.qq.com/pdf/DRWhyekp3d2FHeHRs" target="_blank">腾讯文档</a></td></tr>
+  </table>
+
+  <hr>
+  <div class="callout tip">
+    <strong>文档整理完成</strong>
+    本文档由天融信工作日记目录下 31 篇 Markdown 笔记整理而成，共 7 大类，6 处合并去重。如需查阅原始文件，可在 <code>天融信工作日记/</code> 目录中找到对应文件。
+  </div>
+</section>
+
+</div>
+ 
+<script>
+// Sidebar toggle
+document.getElementById('menu-toggle').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Back to top
+var backtop = document.createElement('button');
+backtop.id = 'backtop';
+backtop.innerHTML = '&uarr;';
+backtop.onclick = function() { window.scrollTo({top:0, behavior:'smooth'}); };
+document.body.appendChild(backtop);
+
+window.addEventListener('scroll', function() {
+  backtop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  // Active link
+  var sections = document.querySelectorAll('section.chapter, #overview');
+  var links = document.querySelectorAll('#sidebar nav a');
+  var current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  links.forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Close sidebar on nav click (mobile)
+document.querySelectorAll('#sidebar nav a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
