@@ -2,13 +2,21 @@
 
 ## 📋 使用场景
 
-在以下场景中，需要将Service调度到特定的K8s节点：
+在以下场景中，需要将Service调度到特定的K8s节点或调整副本数：
 
+### 🎯 节点调度场景
 - **资源隔离**：某些服务需要运行在高性能节点或专用节点上
 - **故障排查**：某个节点出现问题，需要将服务迁移到健康节点
 - **硬件依赖**：服务需要特定硬件（如GPU、特定CPU架构）
 - **网络要求**：服务需要访问节点本地资源或特定网络环境
 - **性能优化**：将服务调度到负载较低的节点
+
+### 📈 副本数调整场景
+- **突发流量**：促销活动、业务高峰期需要快速增加处理能力
+- **节省资源**：业务低峰期减少实例数，降低资源占用
+- **紧急故障**：服务异常需要快速重启所有实例
+- **灰度发布**：控制新版本部署到特定节点
+- **自动化运维**：根据负载自动扩缩容（HPA）
 
 ---
 
@@ -142,6 +150,208 @@ kubectl taint nodes <node-name> special-node=true:NoSchedule
 # 删除污点
 kubectl taint nodes <node-name> special-node:NoSchedule-
 ```
+
+---
+
+## 🔢 Scale副本数调整
+
+调整Pod副本数量是日常运维中最常用的操作之一，通常与节点调度配合使用。
+
+### 场景1：快速扩容（应对突发流量）
+
+**适用场景**：
+- 🎯 促销活动、业务高峰期需要快速增加处理能力
+- 🎯 某个服务CPU/内存使用率持续高于80%
+- 🎯 压测时需要临时增加实例数量
+
+```bash
+# 将agentsvc扩容到5个副本
+kubectl scale deploy agentsvc --replicas=5 -n topsec-topaiop
+
+# 查看扩容状态
+kubectl get deploy agentsvc -n topsec-topaiop
+kubectl get pods -n topsec-topaiop -o wide | grep agentsvc
+```
+
+**注意事项**：
+- 扩容后新Pod会根据调度策略分配到不同节点
+- 确保集群有足够的资源（CPU/内存）
+- 观察Service的Endpoints是否自动更新
+
+---
+
+### 场景2：快速缩容（节省资源）
+
+**适用场景**：
+- 🎯 业务低峰期，减少资源占用
+- 🎯 夜间或非工作时间降低服务实例数
+- 🎯 下线测试环境或临时服务
+
+```bash
+# 将agentsvc缩容到1个副本
+kubectl scale deploy agentsvc --replicas=1 -n topsec-topaiop
+
+# 验证缩容结果
+kubectl get pods -n topsec-topaiop -o wide | grep agentsvc
+```
+
+**注意事项**：
+- 缩容会随机终止Pod，确保应用能优雅关闭
+- 至少保留1个副本，避免服务完全不可用
+- 如果有状态服务，注意数据持久化问题
+
+---
+
+### 场景3：紧急故障处理（快速重启）
+
+**适用场景**：
+- 🎯 服务出现异常，需要快速重启所有实例
+- 🎯 配置更新后需要重新加载
+- 🎯 Pod出现死锁或内存泄漏
+
+```bash
+# 方法1：缩容到0再扩容到目标数量（彻底重启）
+kubectl scale deploy agentsvc --replicas=0 -n topsec-topaiop
+sleep 5  # 等待5秒确保所有Pod终止
+kubectl scale deploy agentsvc --replicas=3 -n topsec-topaiop
+
+# 方法2：使用rollout restart（推荐，滚动重启）
+kubectl rollout restart deploy agentsvc -n topsec-topaiop
+
+# 查看重启进度
+kubectl rollout status deploy agentsvc -n topsec-topaiop
+```
+
+**两种方法的区别**：
+- `scale 0 → N`：所有Pod同时终止再创建，会有短暂服务中断
+- `rollout restart`：逐个替换Pod，保证服务不中断
+
+---
+
+### 场景4：配合节点调度（指定节点扩容）
+
+**适用场景**：
+- 🎯 新节点上线后，需要将服务调度到新节点
+- 🎯 某个节点负载过高，需要迁移部分副本到其他节点
+- 🎯 灰度发布时，控制新版本部署到特定节点
+
+```bash
+# 步骤1：先修改调度策略
+kubectl edit deploy agentsvc -n topsec-topaiop
+
+# 添加节点亲和性或nodeSelector
+spec:
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+
+# 步骤2：保存后，通过scale触发重新调度
+kubectl scale deploy agentsvc --replicas=0 -n topsec-topaiop
+sleep 3
+kubectl scale deploy agentsvc --replicas=3 -n topsec-topaiop
+
+# 步骤3：验证Pod是否调度到目标节点
+kubectl get pods -n topsec-topaiop -o wide | grep agentsvc
+```
+
+---
+
+### 场景5：HPA自动扩缩容（生产推荐）
+
+**适用场景**：
+- 🎯 根据CPU/内存使用率自动调整副本数
+- 🎯 应对周期性流量波动（如白天高峰、夜间低谷）
+- 🎯 实现自动化运维，减少人工干预
+
+```bash
+# 创建HPA（Horizontal Pod Autoscaler）
+# 当CPU使用率超过70%时自动扩容，最多10个副本，最少2个副本
+kubectl autoscale deploy agentsvc \
+  --cpu-percent=70 \
+  --min=2 \
+  --max=10 \
+  -n topsec-topaiop
+
+# 查看HPA状态
+kubectl get hpa -n topsec-topaiop
+
+# 查看HPA详细信息
+kubectl describe hpa agentsvc -n topsec-topaiop
+
+# 删除HPA（恢复手动控制）
+kubectl delete hpa agentsvc -n topsec-topaiop
+```
+
+**HPA工作原理**：
+- 默认每15秒检查一次指标
+- 根据当前指标与目标值的比例计算期望副本数
+- 扩容有延迟（通常3分钟），避免频繁波动
+
+**查看自动扩缩容事件**：
+```bash
+kubectl get events -n topsec-topaiop | grep -i "horizontal"
+```
+
+---
+
+### 场景6：查看当前副本状态
+
+```bash
+# 查看Deployment副本数配置
+kubectl get deploy agentsvc -n topsec-topaiop
+
+# 输出示例：
+# NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+# agentsvc  3/3     3            3           10d
+# READY: 当前就绪副本数/期望副本数
+# UP-TO-DATE: 已完成更新的副本数
+# AVAILABLE: 可用副本数
+
+# 查看Pod详细信息（包含节点分布）
+kubectl get pods -n topsec-topaiop -o wide | grep agentsvc
+
+# 查看Pod所在节点分布
+kubectl get pods -n topsec-topaiop -o custom-columns=NAME:.metadata.name,NODE:.spec.nodeName | grep agentsvc
+
+# 统计每个节点的Pod数量
+kubectl get pods -n topsec-topaiop -o custom-columns=NODE:.spec.nodeName | sort | uniq -c | sort -rn
+```
+
+---
+
+### 场景7：结合节点资源进行扩缩容
+
+```bash
+# 1. 查看节点资源使用情况
+kubectl top nodes
+
+# 2. 查看Pod资源使用情况
+kubectl top pods -n topsec-topaiop | grep agentsvc
+
+# 3. 根据资源情况决定副本数
+# 如果节点资源充足，可以扩容
+kubectl scale deploy agentsvc --replicas=5 -n topsec-topaiop
+
+# 如果节点资源紧张，需要迁移到其他节点
+kubectl edit deploy agentsvc -n topsec-topaiop
+# 添加nodeSelector或affinity指向资源充足的节点
+```
+
+---
+
+### Scale vs Edit 对比
+
+| 操作方式 | 适用场景 | 优点 | 缺点 |
+|---------|---------|------|------|
+| `kubectl scale` | 快速调整副本数 | 简单快速，一行命令 | 只能改副本数，不能改其他配置 |
+| `kubectl edit` | 修改调度策略+副本数 | 可以修改所有配置 | 需要熟悉YAML格式 |
+| `kubectl autoscale` | 自动化扩缩容 | 自动响应负载变化 | 需要配置metrics-server |
+
+**推荐使用策略**：
+- 临时调整副本数 → `kubectl scale`
+- 修改调度策略 → `kubectl edit` + `kubectl scale` 触发重新调度
+- 长期自动化 → `kubectl autoscale` (HPA)
 
 ---
 
@@ -369,10 +579,13 @@ kubectl exec -it <pod-name> -n <namespace> -- curl <service-ip>:<port>
 
 ## 📚 相关命令速查
 
+### 节点管理
+
 ```bash
 # 查看节点信息
 kubectl get nodes -o wide
 kubectl describe node <node-name>
+kubectl top nodes
 
 # 节点标签管理
 kubectl get nodes --show-labels
@@ -382,14 +595,61 @@ kubectl label nodes <node-name> key-
 # 节点污点管理
 kubectl taint nodes <node-name> key=value:effect
 kubectl taint nodes <node-name> key:effect-
+```
 
-# Pod调度查看
+### Pod调度查看
+
+```bash
+# 查看Pod调度情况
 kubectl get pods -o wide
+kubectl get pods -n <namespace> -o custom-columns=NAME:.metadata.name,NODE:.spec.nodeName
 kubectl describe pod <pod-name> | grep Node:
 
-# Deployment管理
+# 查看Pod资源使用
+kubectl top pods -n <namespace>
+```
+
+### Deployment管理
+
+```bash
+# 编辑Deployment
 kubectl edit deploy <name> -n <namespace>
+
+# 查看状态和历史
 kubectl rollout status deploy <name> -n <namespace>
 kubectl rollout history deploy <name> -n <namespace>
 kubectl rollout undo deploy <name> -n <namespace>
+kubectl rollout undo deploy <name> -n <namespace> --to-revision=<version>
+```
+
+### Scale副本数调整
+
+```bash
+# 快速扩缩容
+kubectl scale deploy <name> --replicas=<number> -n <namespace>
+
+# 滚动重启
+kubectl rollout restart deploy <name> -n <namespace>
+
+# 自动扩缩容（HPA）
+kubectl autoscale deploy <name> --cpu-percent=70 --min=2 --max=10 -n <namespace>
+kubectl get hpa -n <namespace>
+kubectl delete hpa <name> -n <namespace>
+```
+
+### 验证和排查
+
+```bash
+# 查看Endpoints
+kubectl get endpoints <service-name> -n <namespace>
+
+# 查看事件
+kubectl get events -n <namespace> --sort-by='.lastTimestamp'
+
+# 查看日志
+kubectl logs -f deploy/<name> -n <namespace>
+kubectl logs <pod-name> -n <namespace>
+
+# 进入Pod
+kubectl exec -it <pod-name> -n <namespace> -- bash
 ```
