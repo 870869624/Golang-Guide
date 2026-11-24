@@ -1,0 +1,130 @@
+技术资产速查表（面试追问时查这一份）
+
+数据来源：F:/gopath/src/aiop 各服务 README / design.md / docs、工作日记《技术栈整理.md》、实际代码片段。
+用途：面试官追问细节时快速回忆。只写有据可查的内容，不确定就说不知道。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 平台服务清单（aiop 大仓）
+
+服务 / 目录    一句话职责    关键依赖 / 特征
+`systemsvc`    登录认证、日志中心、系统管理、租户/用户/角色、运维监控    BFF 登录；角色→部门 RPC；租户事件 topic `systemsvc.tenant`；metrics RPC 独立进程
+`agentsvc`    终端上线/心跳、文件管理、策略/任务/资产/组件状态、License    REST + gRPC 双服务；10 个功能模块
+`ersvc`    事件路由：策略、任务、事件日志（审计）、告警    Builder 模式策略构建链；Schema 驱动审计日志；多项目适配
+`licensesvc`    在线/离线激活、租户授权分配回收、级联授权    授权变更同步 AgentSvc；对外 5 个 RPC
+`managersvc`    终端管理、漏洞修复、软件管理、移动存储、资产变更、终端发现    依赖 CBB / SystemSvc / ERSvc；ping/arp/nmap 扫描
+`consumersvc`    告警规则配置、联动日志、审计日志推送、终端离线消息    对接 GOMS / BFF / ErSvc / CBB
+`upgradesvc`    安装包/升级包/病毒库同步，灰度验证，定时同步    支持 http/https/ftp、默认/级联/租户升级；包格式规范 3.0
+`cleanengine`    文件收发、检测、清洗    MQ 消费任务；DaemonSet 多副本；Redis/MongoDB/队列
+`cleansvc`    清洗服务主体 + 规则库升级、系统监控日志外发    日志外发频率可配（默认 10m）
+`cwpp`    云工作负载保护：manager + topav 双进程    Go 1.18；86 个业务模块；Casbin RBAC；ES 6/8 + InfluxDB；多架构（ARM/MIPS/龙芯）
+`charts`    Helm Chart（v3.16+）    `helm install --dry-run --debug` 调试
+`deploy`    全部部署/配置/打包脚本    产物 `topaiop-version-arch-project.tar.gz`；含 k3s 离线安装
+`ag`    事件配置、位置字典、SOAP 配置    配置模型代码生成
+`config-map` / `etc`    配置映射 / 运行配置    `cleansvc.yaml` 等
+`common` / `aiop/deploy`    公共库 / 部署配置    —
+`vsp`    vsp-bff 镜像    —
+NGDLP / NGEDR（产品侧）    数据防泄漏 / 终端检测响应    你的主要战场，见面试材料包 §3
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. 技术栈与版本（有据可查）
+
+分类    技术    版本 / 说明
+语言    Go    天融信侧 1.22，城汇玩侧 1.24，cwpp 1.18
+Web 框架    go-zero（fork）/ Gin    go-zero v1.8.0；Gin v1.10.0
+RPC    gRPC / Protobuf    grpc v1.67.3；protobuf v1.36.5
+MongoDB    mongo-driver v1.17.x    go-zero `mon.MongoModel`；cwpp 另有遗留 `mgo.v2` 并存
+ClickHouse    clickhouse-go/v2 v2.2.0    通过 LogMiner gRPC 代理访问
+MySQL    GORM v1.25.5 + go-sql-driver v1.7.0    城汇玩；golang-migrate 65 个迁移版本
+Redis    go-redis v8.11.5 / v9.7.3    另有 fastcache、k8s LRU 做本地缓存
+MQ    NATS v1.31.0（JetStream）/ RabbitMQ（streadway/amqp v1.1.0）/ Kafka（IBM sarama v1.43.1）    queue 抽象层可切换
+支付    wechatpay-go v0.2.18    decimal 高精度金额；双商户实例
+区块链    go-conflux-sdk v1.5.9、go-ethereum v1.10.15    3 个合约 ABI；IPFS（Pinata）
+加密    AES-256-GCM、mTLS、AK/SK、国密 SM2/SM3/SM4、JWT    Nonce 12 字节，块索引作 AAD
+任务    robfig/cron v3    城汇玩 13 个定时任务
+可观测    Prometheus v1.21.x、OpenTelemetry v1.29.0、zap、lumberjack    go-zero 内置 Trace / Breaker / Timeout
+配置    viper v1.20.1 + fsnotify    YAML 热更新；cwpp 用 INI + `TOPAS_ROOT_DIR`
+服务发现    etcd client/v3 v3.5.15、K8s client-go v0.29.x    —
+测试    testify、gomonkey、goconvey、miniredis、pprof    —
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. 关键实现细节速查
+
+3.1 gRPC 使用模式
+· 客户端流：UploadFileSensitive(stream UploadSensitiveFileReq) returns (Response)，Recv() 到 EOF
+· 服务端流：DownloadSensitiveFile(stream ...Req) returns (stream ...Resp)
+· 一元 RPC：任务下发、资产查询等
+· 客户端配置：Trace / Duration / Breaker / Timeout 全开，nonblock: true，mTLS 双向证书，MaxRecvMsgSize 限 10MB
+· NGEDR 注入 16 个 gRPC 客户端（Agent、Asset、Rolesvc、Usersvc、Systemsvc、Syslogsvc、BFF、Logminer、Ersvc、License、Manager，以及威胁文件/软件/补丁/动态认证/移动存储等自服务）
+
+3.2 AES-GCM 文件格式
+[Nonce 12字节] [分块数 4字节 BigEndian] [密文长度1 4字节] [密文1] [密文长度2 4字节] [密文2] ...
+· 密钥：文件 MD5（主）或 FileID（兼容旧版）
+· Nonce 明文写文件头；每分块用块索引作 AAD，保证上下文唯一
+· 下载动态解密，兼容多版本密钥回退
+
+3.3 MongoDB 批量写入
+· FileBatchWriter：缓冲通道 500，批量 50 条，10 秒强制 flush
+· 两种合并策略：DefaultMergeStrategy（按 MD5 合并）/ AutoUploadMergeStrategy（按 FileID 覆盖）
+· SensitiveFileUpdateQueue：全局单例，缓冲 2000 任务，单 worker 串行消费
+· NGEDR：BulkWrite 无序批量（SetOrdered(false)），动态间隔聚合（1/5/15/30 分钟）
+
+3.4 ClickHouse
+· 表：sensitive_file / sensitive_file_category / sensitive_file_level / sensitive_category_level
+· 聚合：groupUniqArray 做跨终端 UUID 去重，Scroll 分页替代 Offset 深分页
+· 查询语义：Match / Range / Aggs
+· 现场坑：Too many parts、PVC 未挂载导致 CANNOT_STATVFS
+
+3.5 NATS 消费者 Topic
+· NGDLP 7 个：aiop.ngdlp.sensitivefiletopic（5 消费者 / 100 协程池）、租户/终端/责任人删除、ERA 对账/过期/上报
+· NGEDR 8 个：终端上下线、病毒事件、威胁响应日志、高级威胁事件、终端批量删除等
+
+3.6 缓存层次
+· 进程内：bigcache（大对象）→ cache2go → ttlmap（小对象 TTL）；RBAC 分组权限 LRU 缓存 5 分钟
+· 分布式：Redis（会话、Token、任务队列、去重锁）；城汇玩分页缓存 TTL 1 分钟
+· cwpp：进程内 bigcache / cache2go / ttlmap + 分布式 Redis
+
+3.7 鉴权（两层体系）
+· 城汇玩：JWT（golang-jwt/v4）+ 微信授权登录
+· 天融信：BFF 统一 JWT 认证 / 租户隔离 / 角色注入；cwpp 用 JWT HS256+RS256 双算法 + Token 白名单 + Casbin RBAC（MongoDB adapter）
+· 威胁响应：GetChildGroupIDsByRole 递归取分组 → 注入 group_id $in 实现数据隔离
+
+3.8 城汇玩的 13 个定时任务
+每 1 分钟：活动审核、通用监控、部落任务状态；每 5 分钟：账户审核、用户提现、商户提现；每日：报名统计、活动统计、部落商品结算、微信银行列表；每小时：提现状态；每 5 小时：活动结束完结分账；每月：积分结算。
+
+3.9 支付 API 清单
+JSAPI 下单（PrepayWithRequestPayment）、退款（RefundsApiService.Create）、电商分账（ProfitSharing.OrdersApiService）、完结分账（UnfreezeOrder）、回退分账（ReturnOrdersApiService）；option.WithWechatPayAutoAuthCipher 自动签名验签，PEM 私钥加载，双商户实例。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. 面试可用的"结构性数字"（这些是有据可查的）
+
+数字    含义
+16    NGEDR 注入的 gRPC 客户端数量
+7 / 8    NGDLP / NGEDR 的 NATS 消费 topic 数量
+5 / 100    敏感文件 topic 消费者数 / 协程池大小
+500 / 50 / 10s    MongoDB 批量写入的缓冲 / 批量大小 / 强制 flush 间隔
+2000    敏感文件更新队列缓冲任务数
+65 / 130    城汇玩 golang-migrate 迁移版本数 / SQL 文件数
+13    城汇玩定时任务数量
+86    cwpp 管理台业务模块数量（了解即可，别认领）
+100000    情报导出每个 Sheet 的行数上限
+30min    SFC 异常时清理 extract_progress 历史记录的时间窗口
+
+性能优化的前后对比数字（秒数、QPS）不在此表，因为没有可靠来源，必须自己补。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. 技术选型对比弹药库（被问"为什么"时用）
+
+问题    要点
+ClickHouse vs MongoDB    列式存储 + 向量化执行适合 OLAP 聚合；MongoDB 适合 OLTP 和文档模型。我们分工：MongoDB 存明细、ClickHouse 做多维分析，不承载事务
+RabbitMQ vs Kafka    RabbitMQ 路由灵活、可靠投递，适合支付/提现这类不能丢的中等吞吐场景；Kafka 高吞吐、日志采集场景更强
+NATS vs RabbitMQ    NATS 轻量、低延迟、JetStream 补持久化；通过统一 queue 抽象层可切换
+gRPC vs HTTP/JSON    HTTP/2 多路复用、头部压缩、Protobuf 高效强类型；代价是调试麻烦、浏览器支持弱
+sync.Map vs map+Mutex    前者解决"动态 key 的并发安全容器"问题，`LoadOrStore` 原子；不是为了让单次加锁更快
+行锁 vs Redis 扣库存    行锁在数据库内保证强一致；Redis 快但故障和双写一致性难处理，量级不大时数据库够用
+本地事务 vs 分布式事务    项目规模没到需要 TCC/Saga；用本地事务 + 状态机 + 定时兜底，简单可靠
+Go vs Java    并发模型简单、编译部署快、单二进制交付，适合微服务和私有化场景
